@@ -26,7 +26,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font: 500 14px/1 var(--font-mono);
+  font: 500 14px/1 var(--font-sans);
   color: var(--on-dark-muted);
   font-variant-numeric: tabular-nums;
 }
@@ -77,7 +77,7 @@
   padding: 6px 10px;
   border-radius: 4px;
   background: rgba(52, 168, 114, 0.12);
-  font: 500 14px/1 var(--font-mono);
+  font: 500 14px/1 var(--font-sans);
   color: #8fdcb6;
   white-space: nowrap;
 }
@@ -92,7 +92,7 @@
   color: var(--on-dark-muted);
 }
 
-.panel__mono { font-family: var(--font-mono); color: var(--on-dark); }
+.panel__mono { font-weight: 500; color: var(--on-dark); font-variant-numeric: tabular-nums; }
 
 /* A slow monitoring sweep down the panel */
 .panel__scan {
@@ -108,8 +108,7 @@
 
 .caption {
   margin-top: 14px;
-  font: 500 13px/1 var(--font-mono);
-  letter-spacing: 0.04em;
+  font: 500 13px/1 var(--font-sans);
   color: var(--muted);
   text-align: right;
 }
