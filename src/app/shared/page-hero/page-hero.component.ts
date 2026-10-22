@@ -1,5 +1,6 @@
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { IconComponent } from '../icon/icon.component';
 
 export interface Crumb {
   label: string;
@@ -9,7 +10,7 @@ export interface Crumb {
 /** Title band used at the top of inner pages. */
 @Component({
   selector: 'or-page-hero',
-  imports: [RouterLink],
+  imports: [RouterLink, IconComponent],
   template: `
     <section class="page-hero">
       <div class="container">
@@ -25,7 +26,12 @@ export interface Crumb {
         @if (eyebrow()) {
           <p class="eyebrow tagline">{{ eyebrow() }}</p>
         }
-        <h1>{{ title() }}</h1>
+        <div class="heading">
+          @if (icon()) {
+            <span class="icon-tile heading__icon"><or-icon [name]="icon()" /></span>
+          }
+          <h1>{{ title() }}</h1>
+        </div>
         @if (lead()) {
           <p class="lead">{{ lead() }}</p>
         }
@@ -52,6 +58,10 @@ export interface Crumb {
       .crumbs a:hover { color: var(--ink); text-decoration: underline; }
       .crumbs [aria-current] { color: var(--ink); }
       .tagline { margin-bottom: 18px; }
+      .heading { display: flex; gap: 24px; align-items: center; }
+      .heading__icon { width: 64px; height: 64px; border-radius: 10px; background: #fff; flex: none; }
+      .heading__icon or-icon { width: 30px; height: 30px; }
+      @media (max-width: 640px) { .heading { flex-direction: column; align-items: flex-start; gap: 16px; } .heading__icon { width: 52px; height: 52px; } }
       h1 {
         max-width: 20ch;
         font-size: clamp(40px, 5vw, 64px);
@@ -75,4 +85,6 @@ export class PageHeroComponent {
   eyebrow = input<string>('');
   /** Optional middle breadcrumb, e.g. Services. */
   parent = input<Crumb | null>(null);
+  /** Optional icon name shown beside the title. */
+  icon = input<string>('');
 }

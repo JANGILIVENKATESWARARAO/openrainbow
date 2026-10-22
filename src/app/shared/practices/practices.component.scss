@@ -19,7 +19,8 @@
 
   &:hover { background: var(--paper); }
 
-  h3 { font-size: 26px; }
+  h3 { font-size: 24px; }
+  .icon-tile { margin-bottom: 4px; }
   .arrow-link { margin-top: auto; padding-top: 8px; }
 }
 
@@ -35,8 +36,21 @@
   color: var(--ink);
 
   li {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
     padding: 10px 0;
     border-top: 1px solid var(--line);
+
+    &::before {
+      content: '';
+      flex: none;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      transform: translateY(-3px);
+    }
   }
 }
 
@@ -64,6 +78,7 @@
 
   h2 { font-size: clamp(30px, 3vw, 40px); }
   p { color: var(--muted); }
+  .icon-tile { margin-bottom: 4px; }
 }
 
 .detail__items {

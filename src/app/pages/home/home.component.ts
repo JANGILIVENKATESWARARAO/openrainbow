@@ -1,22 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { StatusPanelComponent } from './status-panel/status-panel.component';
 import { PracticesComponent } from '../../shared/practices/practices.component';
 import { CtaBandComponent } from '../../shared/cta-band/cta-band.component';
-import { APPROACH, COMPANY, FEATURED, OUTCOMES, TECH_AREAS, VENDORS } from '../../core/data/site-content';
+import { IconComponent } from '../../shared/icon/icon.component';
+import { APPROACH, COMPANY, VENDORS } from '../../core/data/site-content';
+import { ContentService } from '../../core/services/content.service';
 
 @Component({
   selector: 'or-home',
-  imports: [RouterLink, StatusPanelComponent, PracticesComponent, CtaBandComponent],
+  imports: [RouterLink, DatePipe, StatusPanelComponent, PracticesComponent, CtaBandComponent, IconComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
+  private readonly content = inject(ContentService);
+
   readonly company = COMPANY;
   readonly vendors = VENDORS;
   readonly approach = APPROACH;
-  readonly outcomes = OUTCOMES;
-  readonly featured = FEATURED;
-  readonly areas = TECH_AREAS.slice(0, 6);
   readonly years = new Date().getFullYear() - COMPANY.founded;
+
+  readonly services = toSignal(this.content.services$);
+  readonly solutions = toSignal(this.content.solutions$);
+  private readonly posts = toSignal(this.content.posts$, { initialValue: [] });
+
+  readonly technologies = computed(() => this.solutions()?.technologies.slice(0, 6) ?? []);
+  readonly latestPost = computed(() => this.posts()[0]);
 }

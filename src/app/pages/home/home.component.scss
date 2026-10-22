@@ -93,6 +93,53 @@
   }
 }
 
+/* ---------- Specialist services strip ---------- */
+
+.specialist {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px 40px;
+  align-items: center;
+  margin-top: 40px;
+  padding: 24px 28px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+}
+
+.specialist__label {
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.specialist__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: #fff;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--ink);
+    text-decoration: none;
+    transition: border-color 0.2s, background-color 0.2s;
+
+    &:hover { border-color: var(--ink); }
+  }
+
+  or-icon { width: 18px; height: 18px; color: var(--navy-700); }
+}
+
 /* ---------- Approach ---------- */
 
 .approach {
@@ -154,6 +201,7 @@
 
   &:hover { background: var(--paper); }
 
+  .icon-tile { margin-bottom: 8px; }
   h3 { font-size: 21px; }
   p { color: var(--muted); font-size: 16px; }
 }
@@ -195,6 +243,8 @@
     &:hover h3 { text-decoration: underline; text-underline-offset: 4px; }
   }
 
+  .icon-tile { margin-bottom: 8px; }
+
   h3 { font-size: 20px; color: #fff; }
   p { font-size: 15px; }
 }
@@ -234,11 +284,49 @@
   color: var(--accent);
 }
 
+/* ---------- Insights ---------- */
+
+.insight {
+  display: grid;
+  gap: 16px;
+  padding: 44px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  text-decoration: none;
+  transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+
+  &:hover {
+    border-color: var(--line-strong);
+    box-shadow: 0 24px 48px -32px rgba(15, 34, 54, 0.4);
+  }
+
+  h3 { max-width: 28ch; font-size: clamp(26px, 2.8vw, 36px); }
+  p { max-width: 64ch; color: var(--muted); }
+}
+
+.insight__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  align-items: center;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.insight__cat {
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: var(--paper);
+  font-weight: 600;
+  color: var(--ink);
+}
+
 /* ---------- Quality ---------- */
 
 .quality {
   padding-block: clamp(72px, 9vw, 120px);
-  background: var(--paper);
+  background: var(--bg);
   border-top: 1px solid var(--line);
 
   blockquote { margin: 0; }
@@ -272,6 +360,7 @@
 @media (max-width: 640px) {
   .hero__facts, .approach__steps, .areas, .featured { grid-template-columns: 1fr; }
   .outcomes__list { grid-template-columns: 1fr; }
-  .offer { padding: 28px; }
+  .offer, .insight { padding: 28px; }
   .area { padding: 24px; }
+  .specialist { grid-template-columns: 1fr; padding: 20px; }
 }

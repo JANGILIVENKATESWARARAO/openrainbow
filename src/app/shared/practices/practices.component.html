@@ -1,7 +1,8 @@
 @if (!detailed()) {
   <div class="grid">
-    @for (p of practices; track p.id) {
+    @for (p of practices(); track p.id) {
       <article class="card">
+        <span class="icon-tile"><or-icon [name]="p.icon" /></span>
         <h3>{{ p.title }}</h3>
         <p class="card__summary">{{ p.summary }}</p>
         <ul class="card__items">
@@ -15,9 +16,10 @@
   </div>
 } @else {
   <div class="detail">
-    @for (p of practices; track p.id) {
+    @for (p of practices(); track p.id) {
       <section class="detail__block" [id]="p.id">
         <div class="detail__intro">
+          <span class="icon-tile"><or-icon [name]="p.icon" /></span>
           <h2>{{ p.title }}</h2>
           <p>{{ p.summary }}</p>
         </div>
