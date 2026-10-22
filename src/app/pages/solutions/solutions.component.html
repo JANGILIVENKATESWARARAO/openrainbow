@@ -4,65 +4,78 @@
   lead="Hyper-converged, on premise or in the cloud. We help you decide what is right, supply it from leading vendors, and support it for the long term."
 />
 
-<section class="section">
-  <div class="container">
-    <ul class="areas">
-      @for (a of areas; track a.title) {
-        <li class="area">
-          <h2>{{ a.title }}</h2>
-          <p>{{ a.text }}</p>
-          <ul class="area__vendors" aria-label="Vendors">
-            @for (v of a.vendors; track v) {
-              <li>{{ v }}</li>
-            }
-          </ul>
-        </li>
-      }
-    </ul>
-  </div>
-</section>
-
-<section class="section section--paper">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">Outcomes</p>
-        <h2>What our solutions deliver.</h2>
+@if (data(); as d) {
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Outcomes</p>
+          <h2>What our solutions deliver.</h2>
+        </div>
+        <p>Every solution is designed around a clear business outcome.</p>
       </div>
+      <ul class="outcomes">
+        @for (o of d.items; track o.slug) {
+          <li>
+            <a [routerLink]="['/solutions', o.slug]">
+              <span class="icon-tile"><or-icon [name]="o.icon" /></span>
+              <h3>{{ o.title }}</h3>
+              <p>{{ o.summary }}</p>
+              <span class="arrow-link">Learn more <span aria-hidden="true">&rarr;</span></span>
+            </a>
+          </li>
+        }
+      </ul>
     </div>
-    <ul class="outcomes">
-      @for (o of outcomes; track o.title) {
-        <li>
-          <a [routerLink]="['/solutions', o.slug]">
-            <h3>{{ o.title }}</h3>
-            <p>{{ o.text }}</p>
-            <span class="arrow-link">Learn more <span aria-hidden="true">&rarr;</span></span>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Technology</p>
+          <h2>Platforms we supply, deploy and support.</h2>
+        </div>
+      </div>
+      <ul class="areas">
+        @for (a of d.technologies; track a.title) {
+          <li class="area">
+            <span class="icon-tile"><or-icon [name]="a.icon" /></span>
+            <div class="area__body">
+              <h3>{{ a.title }}</h3>
+              <p>{{ a.text }}</p>
+              <ul class="area__vendors" aria-label="Vendors">
+                @for (v of a.vendors; track v) {
+                  <li>{{ v }}</li>
+                }
+              </ul>
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Featured</p>
+          <h2>Current offers.</h2>
+        </div>
+      </div>
+      <div class="featured">
+        @for (f of d.featured; track f.title) {
+          <a class="offer" routerLink="/contact" [queryParams]="{ topic: 'Hardware and software sales' }">
+            <span class="offer__label">{{ f.label }}</span>
+            <h3>{{ f.title }}</h3>
+            <p>{{ f.text }}</p>
+            <span class="arrow-link">Request details <span aria-hidden="true">&rarr;</span></span>
           </a>
-        </li>
-      }
-    </ul>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">Featured</p>
-        <h2>Current offers.</h2>
+        }
       </div>
     </div>
-    <div class="featured">
-      @for (f of featured; track f.title) {
-        <a class="offer" routerLink="/contact">
-          <span class="offer__label">{{ f.label }}</span>
-          <h3>{{ f.title }}</h3>
-          <p>{{ f.text }}</p>
-          <span class="arrow-link">Request details <span aria-hidden="true">&rarr;</span></span>
-        </a>
-      }
-    </div>
-  </div>
-</section>
+  </section>
+}
 
-<or-cta-band title="Talk to us about hardware and software sales." />
+<or-cta-band title="Talk to us about hardware and software sales." topic="Hardware and software sales" />

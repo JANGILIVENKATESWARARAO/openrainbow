@@ -1,3 +1,37 @@
+/* ---------- Outcomes ---------- */
+
+.outcomes {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+
+  li {
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  a {
+    display: grid;
+    gap: 12px;
+    align-content: start;
+    height: 100%;
+    padding: 28px 24px;
+    text-decoration: none;
+    transition: background-color 0.25s var(--ease);
+
+    &:hover { background: var(--paper); }
+    &:hover .arrow-link span { transform: translateX(4px); }
+  }
+
+  .icon-tile { margin-bottom: 8px; }
+  h3 { font-size: 19px; }
+  p { color: var(--muted); font-size: 15px; }
+  .arrow-link { margin-top: 4px; font-size: 15px; }
+}
+
+/* ---------- Technologies ---------- */
+
 .areas {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -6,13 +40,20 @@
 
 .area {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 12px;
-  align-content: start;
-  padding-block: 36px;
-  border-top: 1px solid var(--line);
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  padding-block: 32px;
+  border-top: 1px solid var(--line-strong);
 
-  h2 { font-size: 26px; }
+  .icon-tile { background: #fff; }
+}
+
+.area__body {
+  display: grid;
+  gap: 10px;
+
+  h3 { font-size: 22px; }
   p { color: var(--muted); max-width: 52ch; }
 }
 
@@ -24,35 +65,15 @@
 
   li {
     padding: 6px 10px;
-    border: 1px solid var(--line);
+    border: 1px solid var(--line-strong);
     border-radius: 4px;
+    background: #fff;
     font: 500 14px/1 var(--font-sans);
     color: var(--ink);
   }
 }
 
-.outcomes {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 32px;
-
-  a {
-    display: grid;
-    gap: 10px;
-    align-content: start;
-    height: 100%;
-    padding-top: 20px;
-    border-top: 2px solid var(--ink);
-    text-decoration: none;
-
-    &:hover h3 { color: var(--navy-700); }
-    &:hover .arrow-link span { transform: translateX(4px); }
-  }
-
-  h3 { font-size: 20px; transition: color 0.2s; }
-  p { color: var(--muted); font-size: 15px; }
-  .arrow-link { margin-top: 4px; font-size: 15px; }
-}
+/* ---------- Featured ---------- */
 
 .featured {
   display: grid;
