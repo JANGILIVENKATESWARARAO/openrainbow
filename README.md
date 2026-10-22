@@ -1,11 +1,8 @@
-# OpenRainbow IT website (Angular)
+# Open Rainbow website (Angular)
 
-Redesign of https://www.openrainbow.co.uk built with Angular 19 (standalone components, signals, new control flow).
+Professional redesign of https://www.openrainbow.co.uk built with Angular 19 (standalone components, signals, new control flow).
 
 ## Run it
-
-1. Unzip into `D:\Projects\Open Rainbow` so you get `D:\Projects\Open Rainbow\openrainbow`.
-2. Open a terminal in that folder:
 
 ```
 cd "D:\Projects\Open Rainbow\openrainbow"
@@ -19,13 +16,14 @@ Needs Node.js 18.19+ / 20.11+ / 22+.
 
 ## Pages
 
-| Route       | Page                                                    |
-|-------------|---------------------------------------------------------|
-| `/`         | Home: prism hero (6 life-cycle stages), services, outcomes |
-| `/services` | Life cycle, 3 service lines, capabilities (incl. OTDR)  |
-| `/about`    | Quality promise, ways to engage, offices                |
-| `/contact`  | Enquiry form (reactive forms + validation), contact details |
-| `**`        | 404                                                     |
+| Route        | Page                                                                 |
+|--------------|----------------------------------------------------------------------|
+| `/`          | Home: hero with monitoring panel, vendors, services, approach, solutions, outcomes, offers |
+| `/services`  | Infrastructure, managed and professional services + specialist services |
+| `/solutions` | Technology areas with vendors, outcomes, featured offers              |
+| `/about`     | Company story, ways to engage, offices                                |
+| `/contact`   | Enquiry form (reactive forms + validation), contact details           |
+| `**`         | 404                                                                  |
 
 ## Where things live
 
@@ -36,11 +34,12 @@ src/
     core/data/site-content.ts  ALL site copy: edit text here
     core/services/contact.service.ts  form submit (mocked, connect your API here)
     layout/header, footer
-    shared/logo, page-hero, cta-band, service-lines
-    pages/home (+ spectrum-hero), services, about, contact, not-found
+    shared/logo, page-hero, cta-band, practices
+    pages/home (+ status-panel), services, solutions, about, contact, not-found
 ```
 
 ## To do
 
 - Contact form: replace the mock in `contact.service.ts` with a real `HttpClient` POST (HttpClient is already provided).
-- Partners: the old site has partner logos. Add them to `public/` and a section on Home if needed.
+- Vendor logos: the vendor strip on Home uses text names. Add official logo files to `public/` if you have partner rights to use them.
+- The hero monitoring panel uses example data (labelled "Example monitoring view").
