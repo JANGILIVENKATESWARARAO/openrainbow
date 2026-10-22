@@ -1,0 +1,92 @@
+@let p = post();
+
+<header class="head">
+  <div class="container head__inner">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a routerLink="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a routerLink="/insights">Insights</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{{ p.category }}</span>
+    </nav>
+    <span class="head__cat">{{ p.category }}</span>
+    <h1>{{ p.title }}</h1>
+    <p class="head__lead">{{ p.excerpt }}</p>
+    <div class="head__meta">
+      <span><or-icon name="user" />{{ p.author }}</span>
+      <span><or-icon name="calendar" /><time [attr.datetime]="p.date">{{ p.date | date: 'd MMMM y' }}</time></span>
+      <span><or-icon name="clock" />{{ p.readingMinutes }} min read</span>
+    </div>
+  </div>
+</header>
+
+<div class="container layout">
+  <article class="prose">
+    @for (block of p.body; track $index) {
+      @switch (block.type) {
+        @case ('h2') {
+          <h2 [id]="block.id">{{ block.text }}</h2>
+        }
+        @case ('ul') {
+          <ul>
+            @for (item of block.items ?? []; track $index) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+        }
+        @default {
+          <p>{{ block.text }}</p>
+        }
+      }
+    }
+
+    <footer class="byline">
+      <span class="byline__avatar" aria-hidden="true"><or-icon name="user" /></span>
+      <div>
+        <p class="byline__name">{{ p.author }}</p>
+        <p class="byline__role">Open Rainbow</p>
+      </div>
+    </footer>
+  </article>
+
+  <aside class="aside">
+    @if (outline().length) {
+      <nav class="toc" aria-label="On this page">
+        <p class="aside__label">On this page</p>
+        <ul>
+          @for (h of outline(); track h.id) {
+            <li><a routerLink="." [fragment]="h.id">{{ h.text }}</a></li>
+          }
+        </ul>
+      </nav>
+    }
+    <div class="share">
+      <p class="aside__label">Share</p>
+      <div class="share__links">
+        <a [href]="shareLinkedIn()" target="_blank" rel="noopener">LinkedIn</a>
+        <a [href]="shareEmail()">Email</a>
+      </div>
+    </div>
+    <a routerLink="/insights" class="arrow-link back"><span aria-hidden="true">&larr;</span> All insights</a>
+  </aside>
+</div>
+
+@if (more().length) {
+  <section class="section more">
+    <div class="container">
+      <h2>More insights</h2>
+      <ul class="more__list">
+        @for (m of more(); track m.slug) {
+          <li>
+            <a [routerLink]="['/insights', m.slug]">
+              <span class="more__meta">{{ m.category }} &middot; {{ m.date | date: 'd MMM y' }}</span>
+              <span class="more__title">{{ m.title }}</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+}
+
+<or-cta-band title="Need help with your next upgrade?" />

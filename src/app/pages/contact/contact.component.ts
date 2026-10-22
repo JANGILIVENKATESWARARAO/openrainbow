@@ -1,9 +1,10 @@
-import { Component, OnInit, inject, input, signal } from '@angular/core';
+import { Component, computed, effect, inject, input, signal, untracked } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PageHeroComponent } from '../../shared/page-hero/page-hero.component';
 import { ContactService } from '../../core/services/contact.service';
 import { CONTACT, ENQUIRY_TOPICS } from '../../core/data/site-content';
-import { pagesIn } from '../../core/data/detail-pages';
+import { ContentService } from '../../core/services/content.service';
 
 type Status = 'idle' | 'sending' | 'sent' | 'error';
 type ControlName = 'name' | 'email' | 'company' | 'phone' | 'topic' | 'message' | 'consent';
@@ -14,7 +15,7 @@ type ControlName = 'name' | 'email' | 'company' | 'phone' | 'topic' | 'message' 
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent {
   private readonly fb = inject(FormBuilder);
   private readonly contactService = inject(ContactService);
 
@@ -22,11 +23,15 @@ export class ContactComponent implements OnInit {
   readonly topic = input<string>();
 
   readonly contact = CONTACT;
-  readonly topicGroups = [
+  private readonly content = inject(ContentService);
+  private readonly services = toSignal(this.content.pages('services'), { initialValue: [] });
+  private readonly solutions = toSignal(this.content.pages('solutions'), { initialValue: [] });
+
+  readonly topicGroups = computed(() => [
     { label: 'General', options: ENQUIRY_TOPICS },
-    { label: 'Services', options: pagesIn('services').map((p) => p.title) },
-    { label: 'Solutions', options: pagesIn('solutions').map((p) => p.title) },
-  ];
+    { label: 'Services', options: this.services().map((p) => p.title) },
+    { label: 'Solutions', options: this.solutions().map((p) => p.title) },
+  ]);
   readonly status = signal<Status>('idle');
 
   readonly form = this.fb.nonNullable.group({
@@ -39,11 +44,15 @@ export class ContactComponent implements OnInit {
     consent: [false, [Validators.requiredTrue]],
   });
 
-  ngOnInit(): void {
-    const topic = this.topic();
-    if (topic && this.topicGroups.some((g) => g.options.includes(topic))) {
-      this.form.controls.topic.setValue(topic);
-    }
+  constructor() {
+    // Pre-select the enquiry type once the topic list has loaded.
+    effect(() => {
+      const topic = this.topic();
+      const groups = this.topicGroups();
+      if (topic && groups.some((g) => g.options.includes(topic))) {
+        untracked(() => this.form.controls.topic.setValue(topic));
+      }
+    });
   }
 
   showError(name: ControlName): boolean {
