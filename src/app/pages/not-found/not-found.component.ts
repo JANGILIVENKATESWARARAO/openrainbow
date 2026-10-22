@@ -7,19 +7,18 @@ import { RouterLink } from '@angular/router';
   template: `
     <section class="nf">
       <div class="container">
-        <p class="eyebrow">404</p>
-        <h1>Signal lost.</h1>
-        <p class="lead">We couldn't find that page.</p>
-        <a routerLink="/" class="btn btn--spectrum">Back to home</a>
+        <p class="eyebrow">Error 404</p>
+        <h1>Page not found.</h1>
+        <p class="lead">The page you are looking for has moved or no longer exists.</p>
+        <a routerLink="/" class="btn btn--primary">Back to home</a>
       </div>
     </section>
   `,
   styles: [
     `
-      .nf { background: var(--ink); color: #fff; padding-block: 120px 160px; }
-      .eyebrow { color: var(--on-ink-muted); }
-      h1 { font-size: clamp(64px, 10vw, 140px); margin: 12px 0 20px; }
-      .lead { color: var(--on-ink-muted); font-size: 20px; margin-bottom: 32px; }
+      .nf { padding-block: 120px 160px; background: var(--paper); }
+      h1 { font-size: clamp(40px, 5vw, 64px); margin: 20px 0 16px; }
+      .lead { color: var(--muted); font-size: 19px; margin-bottom: 32px; }
     `,
   ],
 })

@@ -1,0 +1,26 @@
+<figure class="panel" aria-label="Example of a 24/7 monitoring view">
+  <div class="panel__bar">
+    <span class="panel__title">Service overview</span>
+    <span class="panel__live"><span class="dot" aria-hidden="true"></span>Monitored 24/7 &middot; {{ time() }} UK</span>
+  </div>
+
+  <ul class="panel__rows">
+    @for (row of rows; track row.system; let i = $index) {
+      <li class="row" [style.animation-delay]="0.25 + i * 0.08 + 's'">
+        <div>
+          <span class="row__system">{{ row.system }}</span>
+          <span class="row__detail">{{ row.detail }}</span>
+        </div>
+        <span class="row__state"><span class="dot dot--static" aria-hidden="true"></span>{{ row.state }}</span>
+      </li>
+    }
+  </ul>
+
+  <div class="panel__foot">
+    <span>Next maintenance window</span>
+    <span class="panel__mono">Sat 06:00, firmware update</span>
+  </div>
+
+  <div class="panel__scan" aria-hidden="true"></div>
+</figure>
+<p class="caption">Example monitoring view</p>

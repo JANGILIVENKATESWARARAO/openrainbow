@@ -1,0 +1,65 @@
+<or-page-hero
+  crumb="Solutions"
+  title="The right technology for your business."
+  lead="Hyper-converged, on premise or in the cloud. We help you decide what is right, supply it from leading vendors, and support it for the long term."
+/>
+
+<section class="section">
+  <div class="container">
+    <ul class="areas">
+      @for (a of areas; track a.title) {
+        <li class="area">
+          <h2>{{ a.title }}</h2>
+          <p>{{ a.text }}</p>
+          <ul class="area__vendors" aria-label="Vendors">
+            @for (v of a.vendors; track v) {
+              <li>{{ v }}</li>
+            }
+          </ul>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="section section--paper">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Outcomes</p>
+        <h2>What our solutions deliver.</h2>
+      </div>
+    </div>
+    <ul class="outcomes">
+      @for (o of outcomes; track o.title) {
+        <li>
+          <h3>{{ o.title }}</h3>
+          <p>{{ o.text }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Featured</p>
+        <h2>Current offers.</h2>
+      </div>
+    </div>
+    <div class="featured">
+      @for (f of featured; track f.title) {
+        <a class="offer" routerLink="/contact">
+          <span class="offer__label">{{ f.label }}</span>
+          <h3>{{ f.title }}</h3>
+          <p>{{ f.text }}</p>
+          <span class="arrow-link">Request details <span aria-hidden="true">&rarr;</span></span>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<or-cta-band title="Talk to us about hardware and software sales." />

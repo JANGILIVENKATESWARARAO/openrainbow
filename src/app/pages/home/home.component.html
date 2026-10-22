@@ -1,31 +1,139 @@
-<or-spectrum-hero />
-
-<section class="section services">
-  <div class="container">
-    <div class="services__head">
-      <h2>Three ways to work with us.</h2>
-      <a routerLink="/services" class="text-link">All services</a>
+<!-- Hero -->
+<section class="hero">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow">Established {{ company.founded }}</p>
+      <h1>Enterprise IT, designed, supplied and supported.</h1>
+      <p class="hero__lead">
+        Hardware, software and IT services for UK organisations. From the first business case to round-the-clock support.
+      </p>
+      <div class="hero__actions">
+        <a routerLink="/contact" class="btn btn--primary">Request a consultation</a>
+        <a routerLink="/services" class="btn btn--secondary">Explore services</a>
+      </div>
+      <dl class="hero__facts">
+        <div><dt>{{ years }}+ years</dt><dd>delivering IT services</dd></div>
+        <div><dt>24/7</dt><dd>monitoring and service desk</dd></div>
+        <div><dt>Independent</dt><dd>advice across vendors</dd></div>
+      </dl>
     </div>
-    <or-service-lines [linkToDetail]="true" />
+    <or-status-panel class="hero__panel" />
   </div>
 </section>
 
-<section class="section outcomes">
-  <div class="container">
-    <p class="eyebrow">What you get</p>
-    <ul class="outcomes__list">
-      @for (o of outcomes; track o.text) {
-        <li [style.--c]="o.color">{{ o.text }}</li>
+<!-- Vendors -->
+<section class="vendors" aria-label="Technology partners">
+  <div class="container vendors__inner">
+    <p class="vendors__label">Technology from leading vendors</p>
+    <ul class="vendors__list">
+      @for (v of vendors; track v) {
+        <li>{{ v }}</li>
       }
     </ul>
   </div>
 </section>
 
-<section class="promise">
+<!-- Services -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Services</p>
+        <h2>One partner across the full IT life cycle.</h2>
+      </div>
+      <p>Start a project with us or bring us in at any stage. However you engage, you are working with a responsible and responsive organisation.</p>
+    </div>
+    <or-practices />
+  </div>
+</section>
+
+<!-- Approach -->
+<section class="section section--paper">
+  <div class="container approach">
+    <div class="approach__intro">
+      <p class="eyebrow">Our approach</p>
+      <h2>First, we listen.</h2>
+      <p>
+        We don't default to the latest technology or only the biggest vendors. We get to know your business, then design, build, implement and support
+        solutions that work today and give you room to grow.
+      </p>
+    </div>
+    <ol class="approach__steps">
+      @for (step of approach; track step.title; let i = $index) {
+        <li>
+          <span class="approach__no">0{{ i + 1 }}</span>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.text }}</p>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
+
+<!-- Solutions -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Solutions</p>
+        <h2>Technology we supply, deploy and support.</h2>
+      </div>
+      <a routerLink="/solutions" class="arrow-link section-head__link">All solutions <span aria-hidden="true">&rarr;</span></a>
+    </div>
+    <ul class="areas">
+      @for (a of areas; track a.title) {
+        <li class="area">
+          <h3>{{ a.title }}</h3>
+          <p>{{ a.text }}</p>
+          <span class="area__vendors">{{ a.vendors.join(' · ') }}</span>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- Outcomes -->
+<section class="outcomes">
+  <div class="container">
+    <p class="eyebrow eyebrow--dark">What our clients gain</p>
+    <ul class="outcomes__list">
+      @for (o of outcomes; track o.title) {
+        <li>
+          <h3>{{ o.title }}</h3>
+          <p>{{ o.text }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- Featured -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Featured</p>
+        <h2>Current offers.</h2>
+      </div>
+    </div>
+    <div class="featured">
+      @for (f of featured; track f.title) {
+        <a class="offer" routerLink="/contact">
+          <span class="offer__label">{{ f.label }}</span>
+          <h3>{{ f.title }}</h3>
+          <p>{{ f.text }}</p>
+          <span class="arrow-link">Request details <span aria-hidden="true">&rarr;</span></span>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Quality -->
+<section class="quality">
   <div class="container">
     <blockquote>
-      <p>We won't ever compromise on quality.</p>
-      <p class="promise__kicker">And neither should you.</p>
+      <p>"We won't ever compromise on quality: of our people, our advice, our services or your solutions."</p>
     </blockquote>
   </div>
 </section>

@@ -1,42 +1,33 @@
 <or-page-hero
-  eyebrow="Services"
+  crumb="Services"
   title="A complete life cycle of IT services."
-  lead="Build a business case, design a new network, or manage and maintain your systems. Join us at any stage."
+  lead="Whether you need a business case, a new network design, or your systems managed and maintained, we can start a project with you or join at any stage."
 />
-
-<section class="cycle" aria-label="The IT life cycle">
-  <div class="container">
-    <ol class="cycle__list">
-      @for (s of stages; track s.id) {
-        <li [style.--c]="s.color">
-          <span class="cycle__no">{{ s.no }}</span>
-          <strong>{{ s.name }}</strong>
-          <p>{{ s.line }}</p>
-        </li>
-      }
-    </ol>
-  </div>
-</section>
 
 <section class="section">
   <div class="container">
-    <h2 class="block-title">Service lines</h2>
-    <or-service-lines />
+    <or-practices [detailed]="true" />
   </div>
 </section>
 
-<section class="section caps">
+<section class="section section--paper">
   <div class="container">
-    <h2 class="block-title">What we do on site</h2>
-    <ul class="caps__grid">
-      @for (c of capabilities; track c.title) {
-        <li class="cap">
-          <h3>{{ c.title }}</h3>
-          <p>{{ c.line }}</p>
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Specialist services</p>
+        <h2>Focused services for specific needs.</h2>
+      </div>
+      <p>Delivered on their own or as part of a wider project.</p>
+    </div>
+    <ul class="spec">
+      @for (s of specialist; track s.title) {
+        <li>
+          <h3>{{ s.title }}</h3>
+          <p>{{ s.text }}</p>
         </li>
       }
     </ul>
   </div>
 </section>
 
-<or-cta-band title="Tell us where you are." />
+<or-cta-band />

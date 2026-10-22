@@ -5,7 +5,7 @@ import { ContactService } from '../../core/services/contact.service';
 import { CONTACT, ENQUIRY_TOPICS } from '../../core/data/site-content';
 
 type Status = 'idle' | 'sending' | 'sent' | 'error';
-type ControlName = 'name' | 'email' | 'company' | 'phone' | 'topic' | 'message';
+type ControlName = 'name' | 'email' | 'company' | 'phone' | 'topic' | 'message' | 'consent';
 
 @Component({
   selector: 'or-contact',
@@ -28,6 +28,7 @@ export class ContactComponent {
     phone: ['', [Validators.pattern(/^[+()\d\s-]{7,20}$/)]],
     topic: [ENQUIRY_TOPICS[0]],
     message: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(2000)]],
+    consent: [false, [Validators.requiredTrue]],
   });
 
   showError(name: ControlName): boolean {
@@ -42,7 +43,8 @@ export class ContactComponent {
     }
 
     this.status.set('sending');
-    this.contactService.send(this.form.getRawValue()).subscribe({
+    const { consent: _consent, ...request } = this.form.getRawValue();
+    this.contactService.send(request).subscribe({
       next: () => {
         this.status.set('sent');
         this.form.reset();

@@ -1,7 +1,7 @@
 <or-page-hero
-  eyebrow="Contact"
-  title="Tell us where you are."
-  lead="A member of our team will respond to your enquiry."
+  crumb="Contact"
+  title="Talk to our team."
+  lead="Tell us about your requirements and a member of our team will respond to your enquiry."
 />
 
 <section class="section">
@@ -9,39 +9,39 @@
     <div class="contact__form">
       @if (status() === 'sent') {
         <div class="sent" role="status">
-          <div class="sent__thread" aria-hidden="true"></div>
-          <h2>Thanks for submitting!</h2>
+          <span class="sent__icon" aria-hidden="true">&#10003;</span>
+          <h2>Thank you for your enquiry.</h2>
           <p>A member of our team will respond to your enquiry.</p>
-          <button type="button" class="btn btn--ink" (click)="sendAnother()">Send another message</button>
+          <button type="button" class="btn btn--secondary" (click)="sendAnother()">Send another enquiry</button>
         </div>
       } @else {
         <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
           <div class="row">
             <div class="field" [class.has-error]="showError('name')">
-              <label for="name">Name</label>
+              <label for="name">Full name</label>
               <input id="name" type="text" formControlName="name" autocomplete="name" />
               @if (showError('name')) {
                 <span class="error">Please enter your name.</span>
               }
             </div>
 
-            <div class="field" [class.has-error]="showError('email')">
-              <label for="email">Email</label>
-              <input id="email" type="email" formControlName="email" autocomplete="email" />
-              @if (showError('email')) {
-                <span class="error">Please enter a valid email.</span>
-              }
+            <div class="field">
+              <label for="company">Company <span class="opt">(optional)</span></label>
+              <input id="company" type="text" formControlName="company" autocomplete="organization" />
             </div>
           </div>
 
           <div class="row">
-            <div class="field">
-              <label for="company">Company <span class="opt">optional</span></label>
-              <input id="company" type="text" formControlName="company" autocomplete="organization" />
+            <div class="field" [class.has-error]="showError('email')">
+              <label for="email">Work email</label>
+              <input id="email" type="email" formControlName="email" autocomplete="email" />
+              @if (showError('email')) {
+                <span class="error">Please enter a valid email address.</span>
+              }
             </div>
 
             <div class="field" [class.has-error]="showError('phone')">
-              <label for="phone">Phone <span class="opt">optional</span></label>
+              <label for="phone">Phone <span class="opt">(optional)</span></label>
               <input id="phone" type="tel" formControlName="phone" autocomplete="tel" />
               @if (showError('phone')) {
                 <span class="error">Please enter a valid phone number.</span>
@@ -49,23 +49,32 @@
             </div>
           </div>
 
-          <fieldset class="field topics">
-            <legend>What is it about?</legend>
-            <div class="topics__list">
-              @for (t of topics; track t) {
-                <label class="chip">
-                  <input type="radio" formControlName="topic" [value]="t" />
-                  <span>{{ t }}</span>
-                </label>
-              }
+          <div class="field">
+            <label for="topic">Enquiry type</label>
+            <div class="select">
+              <select id="topic" formControlName="topic">
+                @for (t of topics; track t) {
+                  <option [value]="t">{{ t }}</option>
+                }
+              </select>
             </div>
-          </fieldset>
+          </div>
 
           <div class="field" [class.has-error]="showError('message')">
-            <label for="message">Message</label>
+            <label for="message">How can we help?</label>
             <textarea id="message" rows="6" formControlName="message"></textarea>
             @if (showError('message')) {
-              <span class="error">Please tell us a little more (at least 10 characters).</span>
+              <span class="error">Please give us a few details (at least 10 characters).</span>
+            }
+          </div>
+
+          <div class="field" [class.has-error]="showError('consent')">
+            <label class="check">
+              <input type="checkbox" formControlName="consent" />
+              <span>I agree to Open Rainbow contacting me about this enquiry.</span>
+            </label>
+            @if (showError('consent')) {
+              <span class="error">Please confirm so we can reply to you.</span>
             }
           </div>
 
@@ -73,8 +82,8 @@
             <p class="error error--form" role="alert">Something went wrong. Please try again, or call us.</p>
           }
 
-          <button type="submit" class="btn btn--ink submit" [disabled]="status() === 'sending'">
-            {{ status() === 'sending' ? 'Sending...' : 'Send enquiry' }}
+          <button type="submit" class="btn btn--primary submit" [disabled]="status() === 'sending'">
+            {{ status() === 'sending' ? 'Sending...' : 'Submit enquiry' }}
           </button>
         </form>
       }
@@ -82,17 +91,17 @@
 
     <aside class="contact__details">
       <div class="detail">
-        <p class="eyebrow">Telephone</p>
+        <h2 class="detail__label">Telephone</h2>
         <a class="detail__big" [href]="contact.phoneHref">{{ contact.phone }}</a>
       </div>
       <div class="detail">
-        <p class="eyebrow">Email</p>
+        <h2 class="detail__label">Email</h2>
         <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>
-        <a [href]="'mailto:' + contact.salesEmail">{{ contact.salesEmail }}</a>
+        <a [href]="'mailto:' + contact.salesEmail">{{ contact.salesEmail }} <span class="opt">(sales)</span></a>
       </div>
       @for (o of contact.offices; track o.label) {
         <address class="detail">
-          <p class="eyebrow">{{ o.label }}</p>
+          <h2 class="detail__label">{{ o.label }}</h2>
           @for (line of o.lines; track line) {
             <span>{{ line }}</span>
           }
