@@ -1,0 +1,289 @@
+{
+  "practices": [
+    {
+      "id": "infrastructure",
+      "icon": "network",
+      "title": "Infrastructure services",
+      "summary": "We help you harness emerging technologies while getting the most out of your legacy environments, whether that is fixing problems when they occur or optimising capacity and availability.",
+      "items": [
+        {"title": "Contract management", "text": "Complete visibility and control of your supplier contracts, maximising performance and compliance."},
+        {"title": "Break/fix and monitoring", "text": "24/7 monitoring with proactive maintenance, so minor issues never escalate into bigger problems."},
+        {"title": "Server and desktop virtualisation", "text": "A modern model of service delivery that moves beyond outdated hardware-centric architectures."},
+        {"title": "Hosting and cloud", "text": "Virtualised resources or cloud hosting with the scalability you need, and security and privacy built in."}
+      ]
+    },
+    {
+      "id": "managed",
+      "icon": "headset",
+      "title": "Managed services",
+      "summary": "Managing IT assets can be resource heavy. Our managed services lighten the load, reduce risk and provide round-the-clock support, freeing your teams for more strategic work.",
+      "items": [
+        {"title": "Business continuity", "text": "Every infrastructure event detected and alerted in real time to minimise downtime."},
+        {"title": "Disaster recovery", "text": "Protection for key data and applications, from DR plan testing to remote mirroring."},
+        {"title": "Lifecycle management", "text": "Regular reviews of your infrastructure to keep it configured to perform, and costs under control."},
+        {"title": "Remote support", "text": "Instant access to specialists who understand your systems and core business processes."},
+        {"title": "Service desk", "text": "A single point of contact, available 24/7 for faults, incidents and requests."},
+        {"title": "Infrastructure maintenance", "text": "Configuration conformity testing, driver renewal and hardware and software upgrades."}
+      ]
+    },
+    {
+      "id": "professional",
+      "icon": "briefcase",
+      "title": "Professional services",
+      "summary": "Our IT professionals and project management teams establish where you are, where you want to be and how to get there, working with you from defining goals to procurement, deployment and beyond.",
+      "items": [
+        {"title": "Consultancy", "text": "Business cases, assessments and roadmaps grounded in your current and future requirements."},
+        {"title": "Project management", "text": "Experienced project teams with an Agile, structured approach to delivery."},
+        {"title": "Procurement", "text": "Hardware and software sourced from leading vendors, specified to fit the solution."},
+        {"title": "Deployment", "text": "Build, configuration, testing and handover, with minimal disruption to your business."}
+      ]
+    }
+  ],
+  "items": [
+    {
+      "slug": "infrastructure-assessment",
+      "icon": "clipboard",
+      "title": "Infrastructure assessment",
+      "summary": "Evaluate, optimise and secure your IT infrastructure, with data-driven findings to plan your next steps.",
+      "tagline": "Optimise. Fortify. Thrive.",
+      "lead": "A robust, secure IT infrastructure is essential to business success. Our assessment identifies where to improve, so you can make data-driven decisions about your IT environment.",
+      "whatTitle": "Why an assessment is the first step",
+      "what": "Technology keeps changing, and so do the risks. An infrastructure assessment gives you a clear, independent view of where you are today, what is holding you back and what to prioritise next.",
+      "sections": [
+        {
+          "layout": "columns",
+          "eyebrow": "Why it matters",
+          "title": "Know where you stand.",
+          "items": [
+            {"title": "Optimise efficiency", "text": "Uncover the inefficiencies and weak points that stop your business operating at its best."},
+            {"title": "Mitigate risk", "text": "Identify vulnerabilities and protect sensitive data against increasingly sophisticated cyber threats."},
+            {"title": "Plan for the future", "text": "Prepare for technology change and set out a long-term strategy for growth."}
+          ]
+        },
+        {
+          "layout": "grid",
+          "eyebrow": "What's included",
+          "title": "A complete review of your environment.",
+          "items": [
+            {"title": "Comprehensive analysis", "text": "A thorough inspection of every part of your IT environment, from servers and networks to security."},
+            {"title": "Detailed reporting", "text": "In-depth findings with clear, prioritised recommendations for improvement."},
+            {"title": "Personal consultation", "text": "We work with you to build a tailored action plan around your specific needs."}
+          ]
+        },
+        {
+          "layout": "dark",
+          "eyebrow": "Benefits",
+          "title": "What you gain.",
+          "items": [
+            {"title": "Maximum efficiency", "text": "Lower operating costs and better overall business efficiency."},
+            {"title": "Stronger security", "text": "Your data and sensitive information protected from security risks."},
+            {"title": "Strategic planning", "text": "A strong technology foundation for the future of your business."}
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hardware-and-software-upgrades",
+      "icon": "chip",
+      "title": "Hardware and software upgrades",
+      "summary": "Upgrades that improve performance, close vulnerabilities and lower long-term running costs.",
+      "tagline": "Enhance performance, security and efficiency",
+      "lead": "Planned upgrades that keep your systems fast, secure and in step with current technology, delivered with minimal disruption to your business.",
+      "whatTitle": "What are hardware and software upgrades?",
+      "what": "Upgrades are the process of enhancing and updating your IT infrastructure. As technology moves on, they keep your systems efficient, secure and compatible with the platforms your business depends on.",
+      "sections": [
+        {
+          "layout": "columns",
+          "eyebrow": "Why it matters",
+          "title": "Systems that keep up with your business.",
+          "items": [
+            {"title": "Better performance", "text": "Upgrades bring speed, efficiency and new functionality, so your systems run at their full potential."},
+            {"title": "Stronger security", "text": "Regular updates close vulnerabilities and protect your data and systems from evolving threats."},
+            {"title": "Cost efficiency", "text": "Optimised hardware and software reduce long-term running costs and improve return on investment."}
+          ]
+        },
+        {
+          "layout": "grid",
+          "eyebrow": "What's included",
+          "title": "End-to-end upgrade delivery.",
+          "items": [
+            {"title": "Hardware enhancements", "text": "Replacing or adding components such as CPUs, memory and storage to improve system performance."},
+            {"title": "Software updates", "text": "Operating systems, applications and software packages kept up to date for compatibility, security and features."},
+            {"title": "Optimisation strategies", "text": "Tailored tuning of your infrastructure for maximum efficiency and performance."}
+          ]
+        },
+        {
+          "layout": "dark",
+          "eyebrow": "Benefits",
+          "title": "What you gain.",
+          "items": [
+            {"title": "Improved performance", "text": "Faster processing, lower latency and more productive teams."},
+            {"title": "Advanced security", "text": "Up-to-date, secure systems that protect your data and operations."},
+            {"title": "Cost savings", "text": "Less downtime, better use of resources and a longer life for your IT assets."}
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "security-enhancements",
+      "icon": "shield",
+      "title": "Security enhancements",
+      "summary": "Measures to safeguard your data, systems and users against evolving threats.",
+      "tagline": "Fortify your IT infrastructure for maximum protection",
+      "lead": "Cyber threats never stand still. Our security enhancements strengthen the protective measures across your infrastructure to safeguard your digital assets and operations.",
+      "whatTitle": "What are security enhancements?",
+      "what": "Security enhancements raise the level of protection across your IT infrastructure. They combine proven technologies, regular updates and best practice to keep your organisation resilient against attack.",
+      "sections": [
+        {
+          "layout": "columns",
+          "eyebrow": "Why it matters",
+          "title": "Resilience against modern threats.",
+          "items": [
+            {"title": "Advanced threat defence", "text": "Robust protection against evolving cyber threats keeps your organisation resilient against sophisticated attacks."},
+            {"title": "Data protection", "text": "Sensitive data safeguarded from unauthorised access, alteration and loss, preserving integrity and compliance."},
+            {"title": "Business continuity", "text": "Less downtime and less impact from security incidents, keeping operations running."}
+          ]
+        },
+        {
+          "layout": "grid",
+          "eyebrow": "What's included",
+          "title": "Layered, up-to-date protection.",
+          "items": [
+            {"title": "Advanced threat detection", "text": "Intrusion detection, behaviour analytics and malware scanning to detect and prevent a wide range of threats."},
+            {"title": "Data encryption", "text": "Robust encryption that adds an extra layer of defence to your sensitive information."},
+            {"title": "Regular security updates", "text": "Protocols, software and patches kept current, so your defences stay ahead of new threats."}
+          ]
+        },
+        {
+          "layout": "dark",
+          "eyebrow": "Benefits",
+          "title": "What you gain.",
+          "items": [
+            {"title": "Threats stopped", "text": "Protection from malware, phishing and other cybercrime, reducing downtime and data loss."},
+            {"title": "Trust and reputation", "text": "A visible commitment to protecting the data of your clients and partners."},
+            {"title": "Regulatory compliance", "text": "Lower risk of penalties, legal issues and reputational damage under data protection law."}
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "scalability-and-optimisation",
+      "icon": "expand",
+      "title": "Scalability and optimisation",
+      "summary": "IT resources tuned for efficiency and performance, and ready to grow with you.",
+      "tagline": "Unlock your infrastructure's full potential",
+      "lead": "Infrastructure that grows when your business does, and runs at peak efficiency in the meantime.",
+      "whatTitle": "What are scalability and optimisation?",
+      "what": "Scalability is the ability of your systems to adapt and grow. Optimisation is the fine-tuning that keeps them performing at their best. Together, they make sure your technology investment delivers full value.",
+      "sections": [
+        {
+          "layout": "columns",
+          "eyebrow": "Why it matters",
+          "title": "Ready to grow, efficient today.",
+          "items": [
+            {"title": "Future-proof infrastructure", "text": "An IT environment that adapts and grows with the evolving needs of your business."},
+            {"title": "Better performance", "text": "Faster, more efficient operations, streamlined workflows and higher productivity."},
+            {"title": "Cost efficiency", "text": "Lower long-term costs and a better return on your technology investments."}
+          ]
+        },
+        {
+          "layout": "grid",
+          "eyebrow": "What's included",
+          "title": "From assessment to implementation.",
+          "items": [
+            {"title": "Comprehensive assessment", "text": "A detailed evaluation of your infrastructure to identify where to optimise and how to scale."},
+            {"title": "Tailored strategies", "text": "Plans aligned to your business objectives, so your infrastructure can scale when it needs to."},
+            {"title": "Implementation", "text": "Procurement, installation and configuration of the right solutions, managed by our experts."}
+          ]
+        },
+        {
+          "layout": "dark",
+          "eyebrow": "Benefits",
+          "title": "What you gain.",
+          "items": [
+            {"title": "Agility", "text": "An environment that adapts and grows, keeping your business competitive."},
+            {"title": "Enhanced performance", "text": "More productivity and more value from the technology you already own."},
+            {"title": "Cost efficiency", "text": "Streamlined IT costs and lower long-term expenses."}
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "redundancy-solutions",
+      "icon": "layers",
+      "title": "Redundancy solutions",
+      "summary": "Intelligent backup and failover strategies that keep operations running and minimise downtime.",
+      "tagline": "Elevate reliability and business continuity",
+      "lead": "Backup and failover built into your infrastructure, so your systems stay available even when something fails.",
+      "whatTitle": "What are redundancy solutions?",
+      "what": "Redundancy solutions add backup and failover mechanisms to your IT infrastructure. When downtime is costly, they keep your systems operational through unexpected hardware or software failures.",
+      "sections": [
+        {
+          "layout": "columns",
+          "eyebrow": "Why it matters",
+          "title": "No single point of failure.",
+          "items": [
+            {"title": "Continuous uptime", "text": "Uninterrupted access to critical systems and data, whatever fails."},
+            {"title": "Disaster resilience", "text": "A vital part of disaster recovery, so you can recover quickly without significant data loss or downtime."},
+            {"title": "Customer trust", "text": "Consistent, dependable service that strengthens your reputation."}
+          ]
+        },
+        {
+          "layout": "grid",
+          "eyebrow": "What's included",
+          "title": "Resilience at every layer.",
+          "items": [
+            {"title": "Failover systems", "text": "Backup servers, data centres and redundant network connections that take over if primary systems fail."},
+            {"title": "Data replication", "text": "Redundant copies of your data in geographically diverse locations."},
+            {"title": "Load balancing", "text": "Traffic distributed across multiple servers for optimal performance and no single overload."}
+          ]
+        },
+        {
+          "layout": "dark",
+          "eyebrow": "Benefits",
+          "title": "What you gain.",
+          "items": [
+            {"title": "Business continuity", "text": "Operations that continue through hardware failures and unforeseen events."},
+            {"title": "Data protection", "text": "Critical data safeguarded, with integrity and regulatory compliance maintained."},
+            {"title": "Customer satisfaction", "text": "Consistent uptime that builds long-lasting customer relationships."}
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "otdr-fibre-testing",
+      "icon": "pulse",
+      "title": "OTDR fibre testing",
+      "summary": "Optical Time Domain Reflectometry for precise fibre testing, fault finding and link certification.",
+      "tagline": "Precision optical fibre testing",
+      "lead": "Specialist Optical Time Domain Reflectometry (OTDR) testing for organisations upgrading their networks, with accurate results and minimal disruption.",
+      "whatTitle": "Why OTDR testing?",
+      "what": "A reliable network depends on healthy fibre. OTDR testing measures the condition of every link, locating faults, losses and weak points before they cause outages, so you can upgrade with confidence.",
+      "sections": [
+        {
+          "layout": "grid",
+          "eyebrow": "Why choose us",
+          "title": "Accurate testing, expert analysis.",
+          "items": [
+            {"title": "Latest technology", "text": "Current OTDR equipment for precise, accurate measurement of your optical fibre."},
+            {"title": "Experienced engineers", "text": "Skilled technicians who test thoroughly with minimal disruption to your operations."},
+            {"title": "In-depth analysis", "text": "Detailed insight into the health and performance of your fibre infrastructure."},
+            {"title": "Time and cost efficiency", "text": "A fast, accurate process that reduces downtime and the cost of network disruption."},
+            {"title": "Tailored to your project", "text": "Testing adapted to your upgrade, whether you are extending a network or adding new components."}
+          ]
+        },
+        {
+          "layout": "steps",
+          "eyebrow": "How we work",
+          "title": "From consultation to implementation.",
+          "items": [
+            {"title": "Consultation", "text": "We start by understanding your network requirements and objectives."},
+            {"title": "Testing", "text": "Our technicians carry out comprehensive OTDR testing of your optical fibre."},
+            {"title": "Analysis", "text": "You receive a detailed analysis of the results, with clear recommendations."},
+            {"title": "Implementation", "text": "We help you carry out the changes, upgrades or repairs that improve performance."}
+          ]
+        }
+      ]
+    }
+  ]
+}

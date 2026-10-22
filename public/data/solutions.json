@@ -1,0 +1,218 @@
+{
+  "technologies": [
+    {"icon": "server", "title": "Data centre", "text": "Advanced, reliable and resilient infrastructure, built for your needs today and into the future.", "vendors": ["HPE", "VMware", "Cisco", "Dell EMC"]},
+    {"icon": "database", "title": "Storage", "text": "High application uptime, simplified data management and greater business agility.", "vendors": ["NetApp", "HPE", "Pure Storage"]},
+    {"icon": "archive", "title": "Backup and recovery", "text": "Reliable protection for business-critical data, on premise or in the cloud.", "vendors": ["Veeam", "HPE", "NetApp"]},
+    {"icon": "boxes", "title": "Server virtualisation", "text": "Consolidate workloads on fewer servers, deploy applications faster and reduce downtime.", "vendors": ["Microsoft", "VMware"]},
+    {"icon": "network", "title": "Routing and switching", "text": "Secure, available networks for data, voice, video and wireless, with remote workers kept connected.", "vendors": ["Cisco", "HPE", "IBM", "Dell"]},
+    {"icon": "chat", "title": "Unified communications", "text": "Real-time collaboration that delivers cost savings and helps your people work smarter.", "vendors": ["Cisco", "Microsoft"]},
+    {"icon": "laptop", "title": "End user computing", "text": "The applications, data and mobility your people need to work more effectively.", "vendors": ["VMware", "Microsoft", "Oracle"]},
+    {"icon": "cloud", "title": "Hosting and cloud", "text": "Hyper-converged, on premise or cloud: we help you choose, and make the transition.", "vendors": ["Microsoft", "VMware"]}
+  ],
+  "items": [
+    {
+      "slug": "improved-performance",
+      "icon": "gauge",
+      "title": "Improved performance",
+      "summary": "Faster, more efficient systems and operations.",
+      "tagline": "Elevate your IT performance",
+      "lead": "Optimise and fine-tune your IT environment for peak efficiency, so your people and systems get more done.",
+      "whatTitle": "What is improved performance?",
+      "what": "Improved performance solutions optimise your infrastructure, applications and workflows. When speed matters, they help organisations of every size operate faster and more effectively.",
+      "sections": [
+        {
+          "layout": "columns",
+          "eyebrow": "Why it matters",
+          "title": "Speed is a business advantage.",
+          "items": [
+            {"title": "Greater efficiency", "text": "Faster operations, lower latency and tasks completed more effectively."},
+            {"title": "Cost optimisation", "text": "Streamlined workflows and less wasted resource improve your return on IT investment."},
+            {"title": "Competitive advantage", "text": "High-performing systems let you respond quickly to change and serve customers better."}
+          ]
+        },
+        {
+          "layout": "grid",
+          "eyebrow": "What's included",
+          "title": "Measure, improve, sustain.",
+          "items": [
+            {"title": "Comprehensive analysis", "text": "A detailed assessment of your environment to find bottlenecks and areas to improve."},
+            {"title": "Tailored strategies", "text": "Customised changes that optimise your infrastructure, applications and workflows."},
+            {"title": "Performance monitoring", "text": "Continuous monitoring and tuning to keep systems performing over time."}
+          ]
+        },
+        {
+          "layout": "dark",
+          "eyebrow": "Benefits",
+          "title": "What you gain.",
+          "items": [
+            {"title": "Higher productivity", "text": "Your team accomplishes more in less time."},
+            {"title": "Cost savings", "text": "Better resource use and a stronger return on investment."},
+            {"title": "Competitive edge", "text": "Systems that help you outpace competitors and delight customers."}
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "enhanced-security",
+      "icon": "lock",
+      "title": "Enhanced security",
+      "summary": "Data, systems and users protected against evolving threats.",
+      "tagline": "Fortify your IT environment",
+      "lead": "An advanced approach to protecting your digital assets, sensitive data and operations.",
+      "whatTitle": "What is enhanced security?",
+      "what": "Enhanced security is an advanced level of protection for your digital assets, data and IT operations. It brings together modern security technology, strategy and best practice to strengthen your whole infrastructure.",
+      "sections": [
+        {
+          "layout": "columns",
+          "eyebrow": "Why it matters",
+          "title": "Protection that keeps pace.",
+          "items": [
+            {"title": "Protection from advanced threats", "text": "Comprehensive defence that keeps your business resilient against sophisticated attacks."},
+            {"title": "Data integrity", "text": "Critical data protected from unauthorised access, alteration or loss, supporting trust and compliance."},
+            {"title": "Business continuity", "text": "Less downtime and smaller impact from incidents, keeping operations running."}
+          ]
+        },
+        {
+          "layout": "grid",
+          "eyebrow": "What's included",
+          "title": "Defence in depth.",
+          "items": [
+            {"title": "Firewalls and intrusion detection", "text": "Advanced firewalls and intrusion detection as the first line of defence."},
+            {"title": "Data encryption", "text": "Encryption that protects sensitive information from unauthorised access."},
+            {"title": "Regular security updates", "text": "Protocols and software updated consistently to stay ahead of new threats."}
+          ]
+        },
+        {
+          "layout": "dark",
+          "eyebrow": "Benefits",
+          "title": "What you gain.",
+          "items": [
+            {"title": "Proactive threat mitigation", "text": "Protection from malware, phishing and cybercrime, reducing downtime and data loss."},
+            {"title": "Brand trust", "text": "Stronger relationships built on a clear commitment to protecting data."},
+            {"title": "Regulatory compliance", "text": "Reduced risk of penalties, legal issues and reputational damage."}
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "reliability-and-redundancy",
+      "icon": "server",
+      "title": "Reliability and redundancy",
+      "summary": "Resilient infrastructure and uninterrupted operations.",
+      "tagline": "Dependable IT for uninterrupted operations",
+      "lead": "Infrastructure designed for continuous, fault-tolerant operation, because downtime is always costly.",
+      "whatTitle": "What are reliability and redundancy?",
+      "what": "Reliability and redundancy solutions build an IT infrastructure that keeps running when things go wrong. Critical data and applications stay available, even through unexpected failures.",
+      "sections": [
+        {
+          "layout": "columns",
+          "eyebrow": "Why it matters",
+          "title": "Always available.",
+          "items": [
+            {"title": "Uninterrupted operations", "text": "Consistent access to critical data and applications, even when issues arise."},
+            {"title": "Risk mitigation", "text": "Less exposure to system failures, disasters and cyber threats."},
+            {"title": "Operational efficiency", "text": "Less downtime, higher productivity and happier customers."}
+          ]
+        },
+        {
+          "layout": "grid",
+          "eyebrow": "What's included",
+          "title": "Built to keep running.",
+          "items": [
+            {"title": "Failover mechanisms", "text": "Backup systems and data centres that take over seamlessly if primary systems fail."},
+            {"title": "Geographically diverse backups", "text": "Redundant copies of data held in different locations to protect against disasters and outages."},
+            {"title": "Load distribution", "text": "Load balancing that maintains performance and prevents server overload."}
+          ]
+        },
+        {
+          "layout": "dark",
+          "eyebrow": "Benefits",
+          "title": "What you gain.",
+          "items": [
+            {"title": "Continuous operations", "text": "Systems and data available whenever your business needs them."},
+            {"title": "Business continuity", "text": "Robust protection against data loss and disruption."},
+            {"title": "Enhanced reputation", "text": "Reliable services that build customer trust and satisfaction."}
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "future-proofing",
+      "icon": "compass",
+      "title": "Future-proofing",
+      "summary": "Technology that stays ready for what comes next.",
+      "tagline": "IT resilience for tomorrow",
+      "lead": "Design and run IT systems that adapt to new technology and business change, without disruptive overhauls.",
+      "whatTitle": "What is future-proofing?",
+      "what": "Future-proofing is the design and implementation of IT systems and strategies that adapt and endure as technology and business requirements evolve.",
+      "sections": [
+        {
+          "layout": "columns",
+          "eyebrow": "Why it matters",
+          "title": "Stay ready for what comes next.",
+          "items": [
+            {"title": "Adaptability", "text": "Systems that adapt to new technologies and requirements, keeping you competitive."},
+            {"title": "Risk mitigation", "text": "Lower risk of obsolescence, data loss and security breaches."},
+            {"title": "Cost efficiency", "text": "Fewer updates and replacements, and lower cost over the long term."}
+          ]
+        },
+        {
+          "layout": "grid",
+          "eyebrow": "What's included",
+          "title": "Designed to evolve.",
+          "items": [
+            {"title": "Scalable architecture", "text": "Systems designed to grow with your needs, without a complete overhaul."},
+            {"title": "Integration flexibility", "text": "Solutions that work with a wide range of technologies as the industry moves on."},
+            {"title": "Regular evaluations", "text": "Periodic reviews that keep your environment aligned with technology trends and business goals."}
+          ]
+        },
+        {
+          "layout": "dark",
+          "eyebrow": "Benefits",
+          "title": "What you gain.",
+          "items": [
+            {"title": "Longevity", "text": "Systems that deliver value for years, with fewer replacements."},
+            {"title": "Agility", "text": "New technologies adopted easily as market conditions change."},
+            {"title": "Cost savings", "text": "Fewer disruptive overhauls and refreshes over time."}
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cost-savings",
+      "icon": "pound",
+      "title": "Cost savings",
+      "summary": "Lower running costs and a better return on IT investment.",
+      "tagline": "Optimise your IT costs for sustainable success",
+      "lead": "Reduce and optimise your IT spend while maintaining, or improving, performance and security.",
+      "whatTitle": "What are cost savings solutions?",
+      "what": "Cost savings solutions reduce and optimise IT expenditure without compromising performance. They make sure every pound spent on technology delivers value to your business.",
+      "sections": [
+        {
+          "layout": "columns",
+          "eyebrow": "Why it matters",
+          "title": "Technology as an asset, not a drain.",
+          "items": [
+            {"title": "Financial efficiency", "text": "Lower IT costs that free up capital for other strategic investments."},
+            {"title": "Optimised ROI", "text": "A higher return on your IT systems, so technology adds value rather than cost."},
+            {"title": "Sustainability", "text": "Savings that last, supporting financial stability and competitiveness."}
+          ]
+        },
+        {
+          "layout": "steps",
+          "eyebrow": "How we work",
+          "title": "Analyse, adjust, monitor.",
+          "items": [
+            {"title": "Cost analysis", "text": "A comprehensive review of your current IT spend to find where costs can be reduced."},
+            {"title": "Strategic adjustments", "text": "Strategies that streamline costs without compromising performance or security."},
+            {"title": "Implementation and monitoring", "text": "We put the plan into action and monitor results to make sure savings are sustained."}
+          ]
+        }
+      ]
+    }
+  ],
+  "featured": [
+    {"label": "Storage", "title": "Pure Storage RC20", "text": "Fixed-price enterprise storage, specified, supplied and supported by our team."},
+    {"label": "Data protection", "title": "Veeam Data Cloud", "text": "Backup and recovery delivered as a service, with no infrastructure to manage."}
+  ]
+}
