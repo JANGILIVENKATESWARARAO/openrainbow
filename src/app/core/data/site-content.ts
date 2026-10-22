@@ -1,28 +1,24 @@
 /**
  * All website copy lives here, so content can be edited in one place.
- * Copy is taken from the current openrainbow.co.uk site.
+ * Content is based on the current openrainbow.co.uk website.
  */
 
-export interface Stage {
-  no: string;
-  id: string;
-  name: string;
-  line: string;
-  color: string;
-}
-
-export interface ServiceLine {
+export interface Practice {
   id: string;
   title: string;
   summary: string;
-  stages: string[];
-  points: string[];
-  color: string;
+  items: { title: string; text: string }[];
 }
 
-export interface Capability {
+export interface Item {
   title: string;
-  line: string;
+  text: string;
+}
+
+export interface TechArea {
+  title: string;
+  text: string;
+  vendors: string[];
 }
 
 export interface Office {
@@ -30,64 +26,113 @@ export interface Office {
   lines: string[];
 }
 
-/** The IT life cycle. Order matters: this is a real sequence. */
-export const STAGES: Stage[] = [
-  { no: '01', id: 'design', name: 'Design', line: 'Business cases, network designs and roadmaps built around your goals.', color: '#e5484d' },
-  { no: '02', id: 'deploy', name: 'Deploy', line: 'Procurement, install and cut-over, managed from start to finish.', color: '#f0883e' },
-  { no: '03', id: 'test', name: 'Test', line: 'Every link proven before go-live, including OTDR fibre testing.', color: '#f5c84c' },
-  { no: '04', id: 'operate', name: 'Operate', line: 'Round-the-clock support that keeps your systems running.', color: '#3dbb78' },
-  { no: '05', id: 'maintain', name: 'Maintain', line: 'Routine tasks and fixes handled, so your team can do more.', color: '#3b8cf6' },
-  { no: '06', id: 'improve', name: 'Improve', line: 'Capacity, availability and cost tuned as your business grows.', color: '#8b5cf6' },
+export const COMPANY = {
+  name: 'Open Rainbow',
+  legalName: 'Open Rainbow Ltd',
+  founded: 2014,
+  tagline: 'IT services & solutions',
+};
+
+export const VENDORS: string[] = [
+  'Hewlett Packard Enterprise',
+  'Cisco',
+  'Microsoft',
+  'VMware',
+  'NetApp',
+  'Dell',
+  'IBM',
+  'Oracle',
+  'Pure Storage',
+  'Veeam',
 ];
 
-export const SERVICE_LINES: ServiceLine[] = [
+/** Design, deploy, operate, improve: the delivery approach, in order. */
+export const APPROACH: Item[] = [
+  { title: 'Design', text: 'We start by listening, then shape a solution around your current and future requirements.' },
+  { title: 'Deploy', text: 'Procurement, build and implementation, managed by our project teams from start to finish.' },
+  { title: 'Operate', text: '24/7 monitoring, service desk and maintenance that keep your systems running.' },
+  { title: 'Improve', text: 'Regular reviews of capacity, availability and cost, so your IT keeps pace with the business.' },
+];
+
+export const PRACTICES: Practice[] = [
   {
     id: 'infrastructure',
     title: 'Infrastructure services',
     summary:
-      'We help you harness the power of emerging technologies while getting the most out of your legacy environments. Whether that is fixing problems when they occur, or optimising capacity and availability.',
-    stages: ['Test', 'Improve'],
-    points: ['Infrastructure assessment', 'Hardware and software upgrades', 'Scalability and optimisation', 'OTDR fibre testing'],
-    color: '#f5c84c',
+      'We help you harness emerging technologies while getting the most out of your legacy environments, whether that is fixing problems when they occur or optimising capacity and availability.',
+    items: [
+      { title: 'Contract management', text: 'Complete visibility and control of your supplier contracts, maximising performance and compliance.' },
+      { title: 'Break/fix and monitoring', text: '24/7 monitoring with proactive maintenance, so minor issues never escalate into bigger problems.' },
+      { title: 'Server and desktop virtualisation', text: 'A modern model of service delivery that moves beyond outdated hardware-centric architectures.' },
+      { title: 'Hosting and cloud', text: 'Virtualised resources or cloud hosting with the scalability you need, and security and privacy built in.' },
+    ],
   },
   {
     id: 'managed',
     title: 'Managed services',
     summary:
-      'Managing IT assets can be a resource-heavy job. Our managed services lighten the load, reduce risk and give you round-the-clock IT support, freeing your teams for more strategic work.',
-    stages: ['Operate', 'Maintain'],
-    points: ['24/7 IT support', 'Security enhancements', 'Redundancy solutions', 'Routine maintenance'],
-    color: '#3dbb78',
+      'Managing IT assets can be resource heavy. Our managed services lighten the load, reduce risk and provide round-the-clock support, freeing your teams for more strategic work.',
+    items: [
+      { title: 'Business continuity', text: 'Every infrastructure event detected and alerted in real time to minimise downtime.' },
+      { title: 'Disaster recovery', text: 'Protection for key data and applications, from DR plan testing to remote mirroring.' },
+      { title: 'Lifecycle management', text: 'Regular reviews of your infrastructure to keep it configured to perform, and costs under control.' },
+      { title: 'Remote support', text: 'Instant access to specialists who understand your systems and core business processes.' },
+      { title: 'Service desk', text: 'A single point of contact, available 24/7 for faults, incidents and requests.' },
+      { title: 'Infrastructure maintenance', text: 'Configuration conformity testing, driver renewal and hardware and software upgrades.' },
+    ],
   },
   {
     id: 'professional',
     title: 'Professional services',
     summary:
-      'Our IT professionals and project managers work out where you are, where you want to be, and how to get there. We work with you at every step: goals, procurement, deployment and beyond.',
-    stages: ['Design', 'Deploy'],
-    points: ['Business cases', 'Network design', 'Project management', 'Procurement and deployment'],
-    color: '#e5484d',
+      'Our IT professionals and project management teams establish where you are, where you want to be and how to get there, working with you from defining goals to procurement, deployment and beyond.',
+    items: [
+      { title: 'Consultancy', text: 'Business cases, assessments and roadmaps grounded in your current and future requirements.' },
+      { title: 'Project management', text: 'Experienced project teams with an Agile, structured approach to delivery.' },
+      { title: 'Procurement', text: 'Hardware and software sourced from leading vendors, specified to fit the solution.' },
+      { title: 'Deployment', text: 'Build, configuration, testing and handover, with minimal disruption to your business.' },
+    ],
   },
 ];
 
-export const OUTCOMES: string[] = [
-  'Improved performance',
-  'Enhanced security',
-  'Cost savings',
-  'Reliability and redundancy',
-  'Future-proofing',
+export const SPECIALIST_SERVICES: Item[] = [
+  { title: 'Infrastructure assessment', text: 'Evaluate, optimise and secure your IT infrastructure, with data-driven findings to plan your next steps.' },
+  { title: 'Security enhancements', text: 'Measures to safeguard your data, systems and users against evolving threats.' },
+  { title: 'Hardware and software upgrades', text: 'Upgrades that improve performance, close vulnerabilities and lower long-term running costs.' },
+  { title: 'Scalability and optimisation', text: 'IT resources tuned for efficiency and performance, and ready to grow with you.' },
+  { title: 'Redundancy solutions', text: 'Intelligent backup and failover strategies that keep operations running and minimise downtime.' },
+  { title: 'OTDR fibre testing', text: 'Optical Time Domain Reflectometry for precise fibre testing, fault finding and link certification.' },
 ];
 
-export const CAPABILITIES: Capability[] = [
-  { title: 'Infrastructure assessment', line: 'A clear picture of what you have, what works and what is at risk.' },
-  { title: 'Hardware and software upgrades', line: 'Planned upgrades with minimal disruption to your business.' },
-  { title: 'Redundancy solutions', line: 'No single point of failure between you and your customers.' },
-  { title: 'Security enhancements', line: 'Hardened networks, systems and access, sized to your risk.' },
-  { title: 'Scalability and optimisation', line: 'Infrastructure that grows with demand, not ahead of budget.' },
-  { title: 'OTDR fibre testing', line: 'Optical Time Domain Reflectometry to find faults and certify links.' },
+export const TECH_AREAS: TechArea[] = [
+  { title: 'Data centre', text: 'Advanced, reliable and resilient infrastructure, built for your needs today and into the future.', vendors: ['HPE', 'VMware', 'Cisco', 'Dell EMC'] },
+  { title: 'Storage', text: 'High application uptime, simplified data management and greater business agility.', vendors: ['NetApp', 'HPE', 'Pure Storage'] },
+  { title: 'Backup and recovery', text: 'Reliable protection for business-critical data, on premise or in the cloud.', vendors: ['Veeam', 'HPE', 'NetApp'] },
+  { title: 'Server virtualisation', text: 'Consolidate workloads on fewer servers, deploy applications faster and reduce downtime.', vendors: ['Microsoft', 'VMware'] },
+  { title: 'Routing and switching', text: 'Secure, available networks for data, voice, video and wireless, with remote workers kept connected.', vendors: ['Cisco', 'HPE', 'IBM', 'Dell'] },
+  { title: 'Unified communications', text: 'Real-time collaboration that delivers cost savings and helps your people work smarter.', vendors: ['Cisco', 'Microsoft'] },
+  { title: 'End user computing', text: 'The applications, data and mobility your people need to work more effectively.', vendors: ['VMware', 'Microsoft', 'Oracle'] },
+  { title: 'Hosting and cloud', text: 'Hyper-converged, on premise or cloud: we help you choose, and make the transition.', vendors: ['Microsoft', 'VMware'] },
 ];
 
-export const QUALITY_PROMISE: string[] = ['our people', 'our advice', 'our services', 'your solutions'];
+export const OUTCOMES: Item[] = [
+  { title: 'Improved performance', text: 'Faster, more efficient systems and operations.' },
+  { title: 'Enhanced security', text: 'Data, systems and users protected against evolving threats.' },
+  { title: 'Cost savings', text: 'Lower running costs and a better return on IT investment.' },
+  { title: 'Reliability and redundancy', text: 'Resilient infrastructure and uninterrupted operations.' },
+  { title: 'Future-proofing', text: 'Technology that stays ready for what comes next.' },
+];
+
+export const FEATURED: { title: string; label: string; text: string }[] = [
+  { label: 'Storage', title: 'Pure Storage RC20', text: 'Fixed-price enterprise storage, specified, supplied and supported by our team.' },
+  { label: 'Data protection', title: 'Veeam Data Cloud', text: 'Backup and recovery delivered as a service, with no infrastructure to manage.' },
+];
+
+export const ENGAGEMENT: Item[] = [
+  { title: 'Start a project together', text: 'From the first business case, through design, procurement and deployment.' },
+  { title: 'Join at any stage', text: 'Already under way? We pick up wherever you are in your IT journey.' },
+  { title: 'Ongoing partnership', text: 'Managed services and regular reviews that keep your IT performing.' },
+];
 
 export const CONTACT = {
   phone: '+44 (0)20 7096 0558',
@@ -103,6 +148,7 @@ export const CONTACT = {
 
 export const ENQUIRY_TOPICS: string[] = [
   'General enquiry',
+  'Hardware and software sales',
   'Infrastructure services',
   'Managed services',
   'Professional services',

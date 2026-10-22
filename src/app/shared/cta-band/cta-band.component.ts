@@ -8,10 +8,13 @@ import { CONTACT } from '../../core/data/site-content';
   template: `
     <section class="cta">
       <div class="container cta__inner">
-        <h2>{{ title() }}</h2>
+        <div>
+          <h2>{{ title() }}</h2>
+          <p>A member of our team will respond to your enquiry.</p>
+        </div>
         <div class="cta__actions">
-          <a routerLink="/contact" class="btn btn--spectrum">Send an enquiry</a>
-          <a class="cta__phone" [href]="contact.phoneHref">or call {{ contact.phone }}</a>
+          <a routerLink="/contact" class="btn btn--light">Request a consultation</a>
+          <a class="btn btn--outline-light" [href]="contact.phoneHref">Call {{ contact.phone }}</a>
         </div>
       </div>
     </section>
@@ -19,29 +22,23 @@ import { CONTACT } from '../../core/data/site-content';
   styles: [
     `
       .cta {
-        background: var(--ink-2);
-        color: #fff;
-        padding-block: clamp(64px, 9vw, 112px);
+        background: var(--navy-800);
+        color: var(--on-dark-muted);
+        padding-block: clamp(64px, 8vw, 104px);
       }
       .cta__inner {
         display: flex;
         flex-wrap: wrap;
-        align-items: flex-end;
+        align-items: center;
         justify-content: space-between;
-        gap: 32px;
+        gap: 32px 48px;
       }
-      h2 { font-size: clamp(44px, 6.5vw, 88px); max-width: 14ch; }
-      .cta__actions { display: grid; gap: 14px; justify-items: start; }
-      .cta__phone {
-        font-weight: 700;
-        color: var(--on-ink-muted);
-        text-decoration: none;
-      }
-      .cta__phone:hover { color: #fff; }
+      h2 { color: #fff; font-size: clamp(30px, 3.4vw, 44px); max-width: 22ch; margin-bottom: 12px; }
+      .cta__actions { display: flex; flex-wrap: wrap; gap: 12px; }
     `,
   ],
 })
 export class CtaBandComponent {
   readonly contact = CONTACT;
-  title = input('Start at any stage.');
+  title = input('Discuss your requirements with our team.');
 }

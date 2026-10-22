@@ -1,0 +1,35 @@
+@if (!detailed()) {
+  <div class="grid">
+    @for (p of practices; track p.id) {
+      <article class="card">
+        <h3>{{ p.title }}</h3>
+        <p class="card__summary">{{ p.summary }}</p>
+        <ul class="card__items">
+          @for (item of p.items; track item.title) {
+            <li>{{ item.title }}</li>
+          }
+        </ul>
+        <a class="arrow-link" routerLink="/services" [fragment]="p.id">Learn more <span aria-hidden="true">&rarr;</span></a>
+      </article>
+    }
+  </div>
+} @else {
+  <div class="detail">
+    @for (p of practices; track p.id) {
+      <section class="detail__block" [id]="p.id">
+        <div class="detail__intro">
+          <h2>{{ p.title }}</h2>
+          <p>{{ p.summary }}</p>
+        </div>
+        <ul class="detail__items">
+          @for (item of p.items; track item.title) {
+            <li>
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.text }}</p>
+            </li>
+          }
+        </ul>
+      </section>
+    }
+  </div>
+}

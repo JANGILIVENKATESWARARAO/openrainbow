@@ -6,7 +6,6 @@ import { CONTACT } from '../../core/data/site-content';
 interface NavLink {
   label: string;
   path: string;
-  exact: boolean;
 }
 
 @Component({
@@ -21,10 +20,10 @@ export class HeaderComponent {
   readonly scrolled = signal(false);
 
   readonly links: NavLink[] = [
-    { label: 'Home', path: '/', exact: true },
-    { label: 'Services', path: '/services', exact: false },
-    { label: 'About', path: '/about', exact: false },
-    { label: 'Contact', path: '/contact', exact: false },
+    { label: 'Services', path: '/services' },
+    { label: 'Solutions', path: '/solutions' },
+    { label: 'About', path: '/about' },
+    { label: 'Contact', path: '/contact' },
   ];
 
   toggle(): void {
@@ -37,7 +36,7 @@ export class HeaderComponent {
 
   @HostListener('window:scroll')
   onScroll(): void {
-    this.scrolled.set(window.scrollY > 8);
+    this.scrolled.set(window.scrollY > 40);
   }
 
   @HostListener('document:keydown.escape')

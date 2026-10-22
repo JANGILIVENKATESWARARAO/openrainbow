@@ -1,54 +1,45 @@
 import { Component, input } from '@angular/core';
 
-/** Six-arc rainbow mark + wordmark. */
+/** Open Rainbow wordmark with monogram. */
 @Component({
   selector: 'or-logo',
   template: `
-    <svg class="mark" viewBox="0 0 48 28" aria-hidden="true">
-      @for (arc of arcs; track arc.r) {
-        <path [attr.d]="arc.d" [style.stroke]="arc.color" />
-      }
-    </svg>
-    @if (!compact()) {
-      <span class="word"><span class="word__open">Open</span>Rainbow<span class="word__it">IT</span></span>
-    }
+    <span class="mono" aria-hidden="true">OR</span>
+    <span class="word">
+      <span class="word__name">Open Rainbow</span>
+      <span class="word__tag">IT services &amp; solutions</span>
+    </span>
   `,
+  host: { '[class.is-inverse]': 'inverse()' },
   styles: [
     `
-      :host { display: inline-flex; align-items: center; gap: 10px; color: inherit; }
-      .mark { width: 44px; height: 26px; overflow: visible; }
-      .mark path { fill: none; stroke-width: 2.6; stroke-linecap: round; }
-      .word {
-        font-family: var(--font-display);
-        font-weight: 700;
-        font-size: 26px;
-        line-height: 1;
-        letter-spacing: 0.01em;
-        display: inline-flex;
-        align-items: baseline;
+      :host { display: inline-flex; align-items: center; gap: 12px; color: var(--ink); }
+      .mono {
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 6px;
+        background: var(--navy-800);
+        color: #fff;
+        font: 600 16px/1 var(--font-sans);
+        letter-spacing: 0.04em;
       }
-      .word__open { font-weight: 500; opacity: 0.85; }
-      .word__it {
-        margin-left: 6px;
-        padding: 3px 6px 1px;
-        border-radius: 5px;
-        font-size: 14px;
+      .word { display: grid; gap: 3px; }
+      .word__name { font: 600 20px/1 var(--font-sans); letter-spacing: -0.01em; }
+      .word__tag {
+        font: 500 12px/1 var(--font-mono);
         letter-spacing: 0.08em;
-        background: var(--on-ink);
-        color: var(--ink);
+        text-transform: uppercase;
+        color: var(--muted);
       }
+      :host(.is-inverse) { color: #fff; }
+      :host(.is-inverse) .mono { background: #fff; color: var(--navy-800); }
+      :host(.is-inverse) .word__tag { color: var(--on-dark-muted); }
     `,
   ],
 })
 export class LogoComponent {
-  compact = input(false);
-
-  private readonly colors = ['#e5484d', '#f0883e', '#f5c84c', '#3dbb78', '#3b8cf6', '#8b5cf6'];
-
-  readonly arcs = this.colors.map((color, i) => {
-    const r = 22 - i * 3.2;
-    const cx = 24;
-    const cy = 26;
-    return { r, color, d: `M ${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy}` };
-  });
+  /** White version for dark backgrounds. */
+  inverse = input(false);
 }

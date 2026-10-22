@@ -1,10 +1,17 @@
 <footer class="footer">
-  <div class="footer__thread" aria-hidden="true"></div>
   <div class="container footer__grid">
     <div class="footer__brand">
-      <a routerLink="/" aria-label="OpenRainbow IT home"><or-logo /></a>
-      <p>Design, deploy, test, operate, maintain and improve.</p>
+      <a routerLink="/" aria-label="Open Rainbow home"><or-logo [inverse]="true" /></a>
+      <p>A complete life cycle of IT services, from business case to round-the-clock support. Established {{ company.founded }}.</p>
     </div>
+
+    <nav class="footer__col" aria-label="Footer">
+      <h2 class="footer__label">Company</h2>
+      <a routerLink="/services">Services</a>
+      <a routerLink="/solutions">Solutions</a>
+      <a routerLink="/about">About</a>
+      <a routerLink="/contact">Contact</a>
+    </nav>
 
     @for (office of contact.offices; track office.label) {
       <address class="footer__col">
@@ -16,7 +23,7 @@
     }
 
     <div class="footer__col">
-      <h2 class="footer__label">Talk to us</h2>
+      <h2 class="footer__label">Contact</h2>
       <a [href]="contact.phoneHref">{{ contact.phone }}</a>
       <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>
       <a [href]="'mailto:' + contact.salesEmail">{{ contact.salesEmail }}</a>
@@ -24,11 +31,6 @@
   </div>
 
   <div class="container footer__base">
-    <span>&copy; {{ year }} OpenRainbow IT. {{ contact.registration }}.</span>
-    <nav aria-label="Footer">
-      <a routerLink="/services">Services</a>
-      <a routerLink="/about">About</a>
-      <a routerLink="/contact">Contact</a>
-    </nav>
+    <span>&copy; {{ year }} {{ company.legalName }}. {{ contact.registration }}.</span>
   </div>
 </footer>

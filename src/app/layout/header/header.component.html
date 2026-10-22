@@ -1,6 +1,16 @@
+<div class="utility">
+  <div class="container utility__bar">
+    <span class="utility__note">Hardware, software and IT services for UK organisations</span>
+    <div class="utility__contact">
+      <a [href]="contact.phoneHref">{{ contact.phone }}</a>
+      <a [href]="'mailto:' + contact.salesEmail">{{ contact.salesEmail }}</a>
+    </div>
+  </div>
+</div>
+
 <header class="header" [class.is-open]="menuOpen()" [class.is-scrolled]="scrolled()">
   <div class="container header__bar">
-    <a routerLink="/" class="header__brand" aria-label="OpenRainbow IT home" (click)="close()">
+    <a routerLink="/" class="header__brand" aria-label="Open Rainbow home" (click)="close()">
       <or-logo />
     </a>
 
@@ -19,18 +29,11 @@
       <ul class="header__links">
         @for (link of links; track link.path) {
           <li>
-            <a
-              [routerLink]="link.path"
-              routerLinkActive="is-active"
-              [routerLinkActiveOptions]="{ exact: link.exact }"
-              (click)="close()"
-              >{{ link.label }}</a
-            >
+            <a [routerLink]="link.path" routerLinkActive="is-active" (click)="close()">{{ link.label }}</a>
           </li>
         }
       </ul>
-      <a class="header__phone" [href]="contact.phoneHref">{{ contact.phone }}</a>
-      <a routerLink="/contact" class="btn btn--spectrum header__cta" (click)="close()">Get in touch</a>
+      <a routerLink="/contact" class="btn btn--primary header__cta" (click)="close()">Request a consultation</a>
     </nav>
   </div>
 </header>
