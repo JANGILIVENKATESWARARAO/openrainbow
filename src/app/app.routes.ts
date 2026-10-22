@@ -1,15 +1,7 @@
 import { Routes } from '@angular/router';
-import { DETAIL_PAGES } from './core/data/detail-pages';
+import { contentPageResolver, contentPageTitle, postResolver, postTitle } from './core/resolvers';
 
 const detailPage = () => import('./pages/detail/detail.component').then((m) => m.DetailComponent);
-
-/** Old Wix URLs, redirected so existing links and search results keep working. */
-const legacyRedirects: Routes = [
-  { path: 'what-we-do', redirectTo: 'services', pathMatch: 'full' },
-  { path: 'copia-di-solutions', redirectTo: 'services', pathMatch: 'full' },
-  { path: 'general-4-1', redirectTo: 'solutions', pathMatch: 'full' },
-  ...DETAIL_PAGES.map((p) => ({ path: p.legacyPath, redirectTo: `${p.category}/${p.slug}`, pathMatch: 'full' as const })),
-];
 
 export const routes: Routes = [
   {
@@ -22,14 +14,36 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/services/services.component').then((m) => m.ServicesComponent),
     title: 'Services | Open Rainbow',
   },
-  // Title for detail pages is set by the component from its content.
-  { path: 'services/:slug', loadComponent: detailPage, data: { category: 'services' } },
+  {
+    path: 'services/:slug',
+    loadComponent: detailPage,
+    data: { category: 'services' },
+    resolve: { page: contentPageResolver('services') },
+    title: contentPageTitle('services'),
+  },
   {
     path: 'solutions',
     loadComponent: () => import('./pages/solutions/solutions.component').then((m) => m.SolutionsComponent),
     title: 'Solutions | Open Rainbow',
   },
-  { path: 'solutions/:slug', loadComponent: detailPage, data: { category: 'solutions' } },
+  {
+    path: 'solutions/:slug',
+    loadComponent: detailPage,
+    data: { category: 'solutions' },
+    resolve: { page: contentPageResolver('solutions') },
+    title: contentPageTitle('solutions'),
+  },
+  {
+    path: 'insights',
+    loadComponent: () => import('./pages/insights/insights.component').then((m) => m.InsightsComponent),
+    title: 'Insights | Open Rainbow',
+  },
+  {
+    path: 'insights/:slug',
+    loadComponent: () => import('./pages/article/article.component').then((m) => m.ArticleComponent),
+    resolve: { post: postResolver },
+    title: postTitle,
+  },
   {
     path: 'about',
     loadComponent: () => import('./pages/about/about.component').then((m) => m.AboutComponent),
@@ -40,7 +54,6 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/contact/contact.component').then((m) => m.ContactComponent),
     title: 'Contact | Open Rainbow',
   },
-  ...legacyRedirects,
   {
     path: '**',
     loadComponent: () => import('./pages/not-found/not-found.component').then((m) => m.NotFoundComponent),

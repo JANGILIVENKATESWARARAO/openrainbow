@@ -1,0 +1,77 @@
+{
+  "posts": [
+    {
+      "slug": "windows-11-whats-new-and-the-benefits-of-upgrading",
+      "title": "Windows 11: what's new and the benefits of upgrading",
+      "excerpt": "A modern design, an AI assistant, stronger security and better performance. What Windows 11 offers, what it needs, and why businesses should upgrade.",
+      "category": "Software",
+      "author": "Raffaele Geuns",
+      "date": "2023-11-25",
+      "readingMinutes": 7,
+      "body": [
+        {
+          "type": "p",
+          "text": "Windows 11 is Microsoft's latest operating system, released on 5 October 2021. It brings a range of new features and improvements over Windows 10. In this article we look at the main features of Windows 11, the minimum requirements to install it, and why it is worth upgrading to take full advantage of Copilot, the AI-powered assistant that is changing how we interact with our computers."
+        },
+        {"type": "h2", "id": "whats-new", "text": "What's new in Windows 11"},
+        {"type": "p", "text": "Windows 11 has a redesigned interface based on Fluent Design, Microsoft's visual style for modern, intuitive applications. The Start menu now sits in the centre of the taskbar and shows your most-used apps, recent documents and personalised recommendations. Settings, calendar, battery and volume are one click away from the icons at the bottom right."},
+        {"type": "p", "text": "Widgets are back: panels that show the latest news, weather, photos and other useful information on a dedicated, customisable screen. Open them from the taskbar or with Win + W."},
+        {"type": "p", "text": "To improve productivity, Windows 11 introduces snap layouts: predefined arrangements for open windows. Press Win + Z and choose a layout, or drag windows to the edges of the screen to arrange them automatically."},
+        {"type": "p", "text": "Microsoft Teams is integrated directly into the taskbar, making it easy to chat, call and hold video meetings, create groups and share files."},
+        {"type": "p", "text": "For gaming, Windows 11 supports DirectX 12 Ultimate for better performance and graphics, Game Mode to optimise PC resources, and the Game Bar to record and stream games, check system statistics and access Xbox Game Pass."},
+        {
+          "type": "p",
+          "text": "There are also important improvements under the hood that make the operating system more secure, stable and fast. The most significant is the requirement for TPM 2.0, a security chip that protects sensitive data and credentials and makes attacks by malware harder. Windows 11 also offers better support for touch-screen devices and improves battery life through optimised power consumption."
+        },
+        {"type": "h2", "id": "requirements", "text": "Windows 11 requirements"},
+        {"type": "p", "text": "To install Windows 11, your PC must meet minimum hardware and software requirements. These are higher than for Windows 10 and can rule out many PCs that are a few years old:"},
+        {
+          "type": "ul",
+          "items": [
+            "Processor: 1 GHz or faster with two or more cores, 64-bit compatible. Supported processors include AMD Ryzen 2000 and Intel Core 8th generation or later.",
+            "Memory: at least 4 GB of RAM.",
+            "Storage: at least 64 GB.",
+            "Graphics: compatible with DirectX 12 or later, with a WDDM 2.0 driver.",
+            "Display: at least 9 inches with HD (720p) resolution.",
+            "Internet connection: required for activation and for some updates and features.",
+            "UEFI firmware: required to start the operating system securely.",
+            "TPM 2.0: required to protect data and credentials."
+          ]
+        },
+        {"type": "p", "text": "To check whether your PC is compatible, use Microsoft's free PC Health Check tool. It scans your PC, tells you whether it can be upgraded and, if not, which requirements are not met."},
+        {"type": "h2", "id": "differences", "text": "Windows 10 vs Windows 11: the main differences"},
+        {
+          "type": "ul",
+          "items": [
+            "Design: Windows 11 has a more modern look, with rounded corners, transparency effects and a centred Start menu. Windows 10 has a more classic design with a left-aligned Start menu.",
+            "Features: Windows 11 adds widgets, snap layouts, Teams integration and Copilot. Windows 10 includes features such as Live Tiles and Timeline that Windows 11 does not.",
+            "Performance: Windows 11 is optimised for modern hardware and power efficiency. Windows 10 remains more compatible with older, less powerful PCs.",
+            "Security: Windows 11 requires TPM 2.0, UEFI firmware and Secure Boot, which better protect data and credentials. Windows 10 still offers Microsoft Defender, BitLocker and Windows Hello.",
+            "Gaming: Windows 11 supports DirectX 12 Ultimate, Game Mode and the Game Bar for improved graphics and performance."
+          ]
+        },
+        {"type": "h2", "id": "why-upgrade", "text": "Why upgrading matters"},
+        {"type": "p", "text": "If your PC is compatible, upgrading lets you take advantage of everything the new operating system offers. The upgrade is free for devices with a valid Windows 10 licence and is delivered through Windows Update. To check availability, go to Settings > Update & Security > Windows Update and select Check for updates."},
+        {"type": "p", "text": "The new design is more modern and consistent across applications. Widgets, snap layouts and Teams integration improve productivity and collaboration. Improvements under the hood, including TPM 2.0, better touch support and optimised power consumption, make the system more secure, stable and fast."},
+        {"type": "p", "text": "One of the main reasons to upgrade is Copilot, the AI-powered assistant designed to change the way we interact with our computers."},
+        {"type": "h2", "id": "home-vs-pro", "text": "Windows 11 Home vs Pro: which should you choose?"},
+        {"type": "p", "text": "Windows 11 Home is designed for personal use. Windows 11 Pro is designed for professional and business use. The main differences are:"},
+        {
+          "type": "ul",
+          "items": [
+            "Set-up: Windows 11 Home requires a Microsoft account and an internet connection during set-up. Windows 11 Pro can be set up with a local account.",
+            "Features: Windows 11 Pro adds domain join, Remote Desktop, BitLocker encryption, Group Policy, Hyper-V virtualisation and the option to defer updates. These are essential for managing and securing a network of business devices.",
+            "Hardware limits: Windows 11 Pro supports up to two processors, 128 cores and 2 TB of RAM. Windows 11 Home supports one processor, 64 cores and 128 GB of RAM.",
+            "Price: Windows 11 Pro costs more than Home, but both are free upgrades from a licensed copy of Windows 10 on compatible hardware."
+          ]
+        },
+        {"type": "p", "text": "For most organisations, Windows 11 Pro is the right choice: it provides the management and security features a business network needs."},
+        {"type": "h2", "id": "copilot", "text": "Copilot: AI for work and more"},
+        {"type": "p", "text": "Copilot is one of the most significant new features in Windows 11, the result of Microsoft's collaboration with OpenAI. It integrates with Windows 11 and Microsoft applications to offer AI-powered services that simplify everyday work."},
+        {"type": "p", "text": "Copilot opens in a sidebar from the taskbar. You can interact with it by voice or keyboard and ask it to do anything from simple tasks, such as switching on dark mode or taking a screenshot, to more advanced work such as summarising content or generating ideas."},
+        {"type": "h2", "id": "rollout", "text": "Planning a Windows 11 rollout?"},
+        {"type": "p", "text": "Open Rainbow can assess your estate for Windows 11 compatibility, recommend hardware where it is needed, and plan and manage the upgrade with minimal disruption to your users."}
+      ]
+    }
+  ]
+}
