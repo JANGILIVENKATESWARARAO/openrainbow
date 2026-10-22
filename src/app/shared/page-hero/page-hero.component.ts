@@ -1,6 +1,11 @@
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+export interface Crumb {
+  label: string;
+  path: string;
+}
+
 /** Title band used at the top of inner pages. */
 @Component({
   selector: 'or-page-hero',
@@ -10,9 +15,16 @@ import { RouterLink } from '@angular/router';
       <div class="container">
         <nav class="crumbs" aria-label="Breadcrumb">
           <a routerLink="/">Home</a>
+          @if (parent(); as p) {
+            <span aria-hidden="true">/</span>
+            <a [routerLink]="p.path">{{ p.label }}</a>
+          }
           <span aria-hidden="true">/</span>
           <span aria-current="page">{{ crumb() }}</span>
         </nav>
+        @if (eyebrow()) {
+          <p class="eyebrow tagline">{{ eyebrow() }}</p>
+        }
         <h1>{{ title() }}</h1>
         @if (lead()) {
           <p class="lead">{{ lead() }}</p>
@@ -29,14 +41,17 @@ import { RouterLink } from '@angular/router';
       }
       .crumbs {
         display: flex;
+        flex-wrap: wrap;
         gap: 10px;
         margin-bottom: 28px;
-        font: 500 14px/1 var(--font-mono);
+        font-weight: 500;
+        font-size: 14px;
         color: var(--muted);
       }
       .crumbs a { color: var(--muted); text-decoration: none; }
       .crumbs a:hover { color: var(--ink); text-decoration: underline; }
       .crumbs [aria-current] { color: var(--ink); }
+      .tagline { margin-bottom: 18px; }
       h1 {
         max-width: 20ch;
         font-size: clamp(40px, 5vw, 64px);
@@ -57,4 +72,7 @@ export class PageHeroComponent {
   crumb = input.required<string>();
   title = input.required<string>();
   lead = input<string>('');
+  eyebrow = input<string>('');
+  /** Optional middle breadcrumb, e.g. Services. */
+  parent = input<Crumb | null>(null);
 }

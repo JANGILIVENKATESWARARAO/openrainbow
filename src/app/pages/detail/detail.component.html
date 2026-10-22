@@ -1,0 +1,103 @@
+@if (page(); as p) {
+  <or-page-hero
+    [crumb]="p.title"
+    [parent]="{ label: categoryLabel(), path: '/' + p.category }"
+    [eyebrow]="p.tagline"
+    [title]="p.title"
+    [lead]="p.lead"
+  />
+
+  <!-- Overview -->
+  <section class="section">
+    <div class="container overview">
+      <h2>{{ p.whatTitle }}</h2>
+      <div class="overview__body">
+        <p>{{ p.what }}</p>
+        <a routerLink="/contact" [queryParams]="{ topic: p.title }" class="btn btn--primary">Request a consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content sections -->
+  @for (s of p.sections; track s.title; let odd = $odd) {
+    <section class="block" [class.block--dark]="s.layout === 'dark'" [class.block--paper]="s.layout !== 'dark' && !odd">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow" [class.eyebrow--dark]="s.layout === 'dark'">{{ s.eyebrow }}</p>
+            <h2>{{ s.title }}</h2>
+          </div>
+        </div>
+
+        @switch (s.layout) {
+          @case ('grid') {
+            <ul class="cells">
+              @for (item of s.items; track item.title) {
+                <li>
+                  <h3>{{ item.title }}</h3>
+                  <p>{{ item.text }}</p>
+                </li>
+              }
+            </ul>
+          }
+          @case ('steps') {
+            <ol class="steps" [style.--count]="s.items.length">
+              @for (item of s.items; track item.title; let i = $index) {
+                <li>
+                  <span class="steps__no">{{ pad(i + 1) }}</span>
+                  <h3>{{ item.title }}</h3>
+                  <p>{{ item.text }}</p>
+                </li>
+              }
+            </ol>
+          }
+          @default {
+            <ul class="cols">
+              @for (item of s.items; track item.title) {
+                <li>
+                  <h3>{{ item.title }}</h3>
+                  <p>{{ item.text }}</p>
+                </li>
+              }
+            </ul>
+          }
+        }
+      </div>
+    </section>
+  }
+
+  <!-- Related -->
+  <section class="section related">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">More {{ categoryLabel().toLowerCase() }}</p>
+          <h2>Related {{ categoryLabel().toLowerCase() }}.</h2>
+        </div>
+        <a [routerLink]="'/' + p.category" class="arrow-link section-head__link">All {{ categoryLabel().toLowerCase() }} <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <ul class="related__list">
+        @for (r of related(); track r.slug) {
+          <li>
+            <a [routerLink]="['/', r.category, r.slug]">
+              <span class="related__title">{{ r.title }}</span>
+              <span class="related__tag">{{ r.tagline }}</span>
+              <span class="related__arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <or-cta-band [topic]="p.title" />
+} @else {
+  <section class="missing">
+    <div class="container">
+      <p class="eyebrow">Error 404</p>
+      <h1>Page not found.</h1>
+      <p>We couldn't find that page. It may have moved.</p>
+      <a [routerLink]="'/' + category()" class="btn btn--primary">Back to {{ categoryLabel().toLowerCase() }}</a>
+    </div>
+  </section>
+}

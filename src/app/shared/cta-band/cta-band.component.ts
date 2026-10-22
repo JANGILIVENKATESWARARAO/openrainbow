@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CONTACT } from '../../core/data/site-content';
 
@@ -13,7 +13,7 @@ import { CONTACT } from '../../core/data/site-content';
           <p>A member of our team will respond to your enquiry.</p>
         </div>
         <div class="cta__actions">
-          <a routerLink="/contact" class="btn btn--light">Request a consultation</a>
+          <a routerLink="/contact" [queryParams]="query()" class="btn btn--light">Request a consultation</a>
           <a class="btn btn--outline-light" [href]="contact.phoneHref">Call {{ contact.phone }}</a>
         </div>
       </div>
@@ -41,4 +41,7 @@ import { CONTACT } from '../../core/data/site-content';
 export class CtaBandComponent {
   readonly contact = CONTACT;
   title = input('Discuss your requirements with our team.');
+  /** Pre-selects the enquiry type on the contact form. */
+  topic = input<string>('');
+  readonly query = computed(() => (this.topic() ? { topic: this.topic() } : {}));
 }
