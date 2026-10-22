@@ -99,8 +99,10 @@
     <ul class="outcomes__list">
       @for (o of outcomes; track o.title) {
         <li>
-          <h3>{{ o.title }}</h3>
-          <p>{{ o.text }}</p>
+          <a [routerLink]="['/solutions', o.slug]">
+            <h3>{{ o.title }}</h3>
+            <p>{{ o.text }}</p>
+          </a>
         </li>
       }
     </ul>

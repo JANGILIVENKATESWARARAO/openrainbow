@@ -71,7 +71,7 @@
 
 .vendors__label {
   flex: none;
-  font: 500 13px/1.3 var(--font-mono);
+  font: 600 13px/1.3 var(--font-sans);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
@@ -128,7 +128,7 @@
 }
 
 .approach__no {
-  font: 500 14px/1 var(--font-mono);
+  font: 600 14px/1 var(--font-sans);
   color: var(--accent);
 }
 
@@ -160,7 +160,7 @@
 
 .area__vendors {
   margin-top: 4px;
-  font: 500 13px/1.4 var(--font-mono);
+  font: 500 14px/1.4 var(--font-sans);
   color: var(--ink);
 }
 
@@ -186,6 +186,13 @@
     align-content: start;
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  a {
+    display: grid;
+    gap: 10px;
+    text-decoration: none;
+    &:hover h3 { text-decoration: underline; text-underline-offset: 4px; }
   }
 
   h3 { font-size: 20px; color: #fff; }
@@ -221,7 +228,7 @@
 }
 
 .offer__label {
-  font: 500 13px/1 var(--font-mono);
+  font: 600 13px/1 var(--font-sans);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent);

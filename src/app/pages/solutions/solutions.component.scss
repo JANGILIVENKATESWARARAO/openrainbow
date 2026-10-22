@@ -26,7 +26,7 @@
     padding: 6px 10px;
     border: 1px solid var(--line);
     border-radius: 4px;
-    font: 500 13px/1 var(--font-mono);
+    font: 500 14px/1 var(--font-sans);
     color: var(--ink);
   }
 }
@@ -36,16 +36,22 @@
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 32px;
 
-  li {
+  a {
     display: grid;
     gap: 10px;
     align-content: start;
+    height: 100%;
     padding-top: 20px;
     border-top: 2px solid var(--ink);
+    text-decoration: none;
+
+    &:hover h3 { color: var(--navy-700); }
+    &:hover .arrow-link span { transform: translateX(4px); }
   }
 
-  h3 { font-size: 20px; }
+  h3 { font-size: 20px; transition: color 0.2s; }
   p { color: var(--muted); font-size: 15px; }
+  .arrow-link { margin-top: 4px; font-size: 15px; }
 }
 
 .featured {
@@ -75,7 +81,7 @@
 }
 
 .offer__label {
-  font: 500 13px/1 var(--font-mono);
+  font: 600 13px/1 var(--font-sans);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent);

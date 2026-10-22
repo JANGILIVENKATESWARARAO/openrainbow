@@ -22,8 +22,11 @@
     <ul class="spec">
       @for (s of specialist; track s.title) {
         <li>
-          <h3>{{ s.title }}</h3>
-          <p>{{ s.text }}</p>
+          <a [routerLink]="['/services', s.slug]">
+            <h3>{{ s.title }}</h3>
+            <p>{{ s.text }}</p>
+            <span class="arrow-link">Learn more <span aria-hidden="true">&rarr;</span></span>
+          </a>
         </li>
       }
     </ul>
