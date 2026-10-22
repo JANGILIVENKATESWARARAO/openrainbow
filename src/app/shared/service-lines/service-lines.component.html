@@ -1,0 +1,25 @@
+<div class="lines">
+  @for (line of lines; track line.id) {
+    <article class="line" [id]="line.id" [style.--c]="line.color">
+      <div class="line__head">
+        <ul class="line__stages" aria-label="Life-cycle stages">
+          @for (stage of line.stages; track stage) {
+            <li>{{ stage }}</li>
+          }
+        </ul>
+        <h3 class="line__title">{{ line.title }}</h3>
+      </div>
+      <p class="line__summary">{{ line.summary }}</p>
+      <ul class="line__points">
+        @for (point of line.points; track point) {
+          <li>{{ point }}</li>
+        }
+      </ul>
+      @if (linkToDetail()) {
+        <a class="line__link" routerLink="/services" [fragment]="line.id" [attr.aria-label]="'More about ' + line.title">
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      }
+    </article>
+  }
+</div>

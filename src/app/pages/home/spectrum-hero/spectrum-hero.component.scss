@@ -1,0 +1,208 @@
+.hero {
+  position: relative;
+  background:
+    radial-gradient(1200px 500px at 80% 40%, rgba(24, 82, 126, 0.55), transparent 60%),
+    var(--ink);
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: 24px;
+  min-height: min(calc(100vh - var(--header-h)), 820px);
+  padding-block: 48px 64px;
+}
+
+.hero__copy {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.eyebrow {
+  color: var(--on-ink-muted);
+  margin-bottom: 20px;
+}
+
+.hero__title {
+  font-size: clamp(56px, 6.6vw, 100px);
+  font-weight: 600;
+  line-height: 0.88;
+  animation: rise 0.9s var(--ease) both;
+
+  span {
+    display: inline-block;
+    background: var(--spectrum);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+.hero__lead {
+  margin-top: 24px;
+  font-size: 20px;
+  color: var(--on-ink-muted);
+  animation: rise 0.9s 0.1s var(--ease) both;
+}
+
+/* Caption for the active stage */
+.hero__stage {
+  min-height: 92px;
+  margin-top: 28px;
+}
+
+.stage {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  max-width: 460px;
+  padding: 16px 20px;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 3px 0 0 var(--c);
+  animation: swap 0.5s var(--ease) both;
+}
+
+.stage__no {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1;
+  color: var(--c);
+}
+
+.stage__name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.stage__line {
+  font-size: 16px;
+  color: var(--on-ink-muted);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+/* ---------- The prism + fibres ---------- */
+
+.hero__art svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.beam {
+  fill: none;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.beam-pulse {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 14 120;
+  animation: travel 1.6s linear infinite;
+  filter: drop-shadow(0 0 6px #fff);
+}
+
+.prism {
+  fill: rgba(255, 255, 255, 0.07);
+  stroke: rgba(255, 255, 255, 0.85);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.fibre {
+  cursor: pointer;
+  outline: none;
+
+  &:focus-visible .fibre__name { text-decoration: underline; }
+}
+
+.fibre__hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 28;
+}
+
+.fibre__core {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  opacity: 0.4;
+  transition: opacity 0.4s var(--ease), stroke-width 0.4s var(--ease);
+}
+
+.fibre__pulse {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 9 115;
+  animation: travel 2.6s linear infinite;
+  opacity: 0.8;
+}
+
+.fibre__end { opacity: 0.5; transition: opacity 0.4s, r 0.4s; }
+
+.fibre__no {
+  font: 700 18px var(--font-display);
+}
+
+.fibre__name {
+  font: 600 26px var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  fill: var(--on-ink-muted);
+  transition: fill 0.3s;
+}
+
+.fibre:hover .fibre__core { opacity: 0.75; }
+.fibre:hover .fibre__name { fill: #fff; }
+
+.fibre.is-active {
+  .fibre__core { opacity: 1; stroke-width: 4.5; filter: drop-shadow(0 0 8px currentColor); }
+  .fibre__pulse { stroke: #fff; stroke-width: 4.5; opacity: 1; }
+  .fibre__end { opacity: 1; r: 7px; filter: drop-shadow(0 0 8px currentColor); }
+  .fibre__name { fill: #fff; }
+}
+
+@keyframes travel {
+  from { stroke-dashoffset: 124; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+}
+
+@keyframes swap {
+  from { opacity: 0; transform: translateX(-12px); }
+}
+
+@media (max-width: 960px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    max-height: none;
+    padding-block: 48px 64px;
+  }
+  .hero__art { max-width: 620px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fibre__pulse, .beam-pulse { display: none; }
+}

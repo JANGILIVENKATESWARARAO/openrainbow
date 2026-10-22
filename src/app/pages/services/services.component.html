@@ -1,0 +1,42 @@
+<or-page-hero
+  eyebrow="Services"
+  title="A complete life cycle of IT services."
+  lead="Build a business case, design a new network, or manage and maintain your systems. Join us at any stage."
+/>
+
+<section class="cycle" aria-label="The IT life cycle">
+  <div class="container">
+    <ol class="cycle__list">
+      @for (s of stages; track s.id) {
+        <li [style.--c]="s.color">
+          <span class="cycle__no">{{ s.no }}</span>
+          <strong>{{ s.name }}</strong>
+          <p>{{ s.line }}</p>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="block-title">Service lines</h2>
+    <or-service-lines />
+  </div>
+</section>
+
+<section class="section caps">
+  <div class="container">
+    <h2 class="block-title">What we do on site</h2>
+    <ul class="caps__grid">
+      @for (c of capabilities; track c.title) {
+        <li class="cap">
+          <h3>{{ c.title }}</h3>
+          <p>{{ c.line }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<or-cta-band title="Tell us where you are." />

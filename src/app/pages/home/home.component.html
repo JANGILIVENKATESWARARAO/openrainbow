@@ -1,0 +1,33 @@
+<or-spectrum-hero />
+
+<section class="section services">
+  <div class="container">
+    <div class="services__head">
+      <h2>Three ways to work with us.</h2>
+      <a routerLink="/services" class="text-link">All services</a>
+    </div>
+    <or-service-lines [linkToDetail]="true" />
+  </div>
+</section>
+
+<section class="section outcomes">
+  <div class="container">
+    <p class="eyebrow">What you get</p>
+    <ul class="outcomes__list">
+      @for (o of outcomes; track o.text) {
+        <li [style.--c]="o.color">{{ o.text }}</li>
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="promise">
+  <div class="container">
+    <blockquote>
+      <p>We won't ever compromise on quality.</p>
+      <p class="promise__kicker">And neither should you.</p>
+    </blockquote>
+  </div>
+</section>
+
+<or-cta-band />

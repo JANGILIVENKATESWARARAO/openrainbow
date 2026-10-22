@@ -1,0 +1,103 @@
+<or-page-hero
+  eyebrow="Contact"
+  title="Tell us where you are."
+  lead="A member of our team will respond to your enquiry."
+/>
+
+<section class="section">
+  <div class="container contact">
+    <div class="contact__form">
+      @if (status() === 'sent') {
+        <div class="sent" role="status">
+          <div class="sent__thread" aria-hidden="true"></div>
+          <h2>Thanks for submitting!</h2>
+          <p>A member of our team will respond to your enquiry.</p>
+          <button type="button" class="btn btn--ink" (click)="sendAnother()">Send another message</button>
+        </div>
+      } @else {
+        <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+          <div class="row">
+            <div class="field" [class.has-error]="showError('name')">
+              <label for="name">Name</label>
+              <input id="name" type="text" formControlName="name" autocomplete="name" />
+              @if (showError('name')) {
+                <span class="error">Please enter your name.</span>
+              }
+            </div>
+
+            <div class="field" [class.has-error]="showError('email')">
+              <label for="email">Email</label>
+              <input id="email" type="email" formControlName="email" autocomplete="email" />
+              @if (showError('email')) {
+                <span class="error">Please enter a valid email.</span>
+              }
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="company">Company <span class="opt">optional</span></label>
+              <input id="company" type="text" formControlName="company" autocomplete="organization" />
+            </div>
+
+            <div class="field" [class.has-error]="showError('phone')">
+              <label for="phone">Phone <span class="opt">optional</span></label>
+              <input id="phone" type="tel" formControlName="phone" autocomplete="tel" />
+              @if (showError('phone')) {
+                <span class="error">Please enter a valid phone number.</span>
+              }
+            </div>
+          </div>
+
+          <fieldset class="field topics">
+            <legend>What is it about?</legend>
+            <div class="topics__list">
+              @for (t of topics; track t) {
+                <label class="chip">
+                  <input type="radio" formControlName="topic" [value]="t" />
+                  <span>{{ t }}</span>
+                </label>
+              }
+            </div>
+          </fieldset>
+
+          <div class="field" [class.has-error]="showError('message')">
+            <label for="message">Message</label>
+            <textarea id="message" rows="6" formControlName="message"></textarea>
+            @if (showError('message')) {
+              <span class="error">Please tell us a little more (at least 10 characters).</span>
+            }
+          </div>
+
+          @if (status() === 'error') {
+            <p class="error error--form" role="alert">Something went wrong. Please try again, or call us.</p>
+          }
+
+          <button type="submit" class="btn btn--ink submit" [disabled]="status() === 'sending'">
+            {{ status() === 'sending' ? 'Sending...' : 'Send enquiry' }}
+          </button>
+        </form>
+      }
+    </div>
+
+    <aside class="contact__details">
+      <div class="detail">
+        <p class="eyebrow">Telephone</p>
+        <a class="detail__big" [href]="contact.phoneHref">{{ contact.phone }}</a>
+      </div>
+      <div class="detail">
+        <p class="eyebrow">Email</p>
+        <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>
+        <a [href]="'mailto:' + contact.salesEmail">{{ contact.salesEmail }}</a>
+      </div>
+      @for (o of contact.offices; track o.label) {
+        <address class="detail">
+          <p class="eyebrow">{{ o.label }}</p>
+          @for (line of o.lines; track line) {
+            <span>{{ line }}</span>
+          }
+        </address>
+      }
+    </aside>
+  </div>
+</section>

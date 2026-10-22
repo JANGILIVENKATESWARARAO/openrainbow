@@ -1,0 +1,34 @@
+<footer class="footer">
+  <div class="footer__thread" aria-hidden="true"></div>
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a routerLink="/" aria-label="OpenRainbow IT home"><or-logo /></a>
+      <p>Design, deploy, test, operate, maintain and improve.</p>
+    </div>
+
+    @for (office of contact.offices; track office.label) {
+      <address class="footer__col">
+        <h2 class="footer__label">{{ office.label }}</h2>
+        @for (line of office.lines; track line) {
+          <span>{{ line }}</span>
+        }
+      </address>
+    }
+
+    <div class="footer__col">
+      <h2 class="footer__label">Talk to us</h2>
+      <a [href]="contact.phoneHref">{{ contact.phone }}</a>
+      <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>
+      <a [href]="'mailto:' + contact.salesEmail">{{ contact.salesEmail }}</a>
+    </div>
+  </div>
+
+  <div class="container footer__base">
+    <span>&copy; {{ year }} OpenRainbow IT. {{ contact.registration }}.</span>
+    <nav aria-label="Footer">
+      <a routerLink="/services">Services</a>
+      <a routerLink="/about">About</a>
+      <a routerLink="/contact">Contact</a>
+    </nav>
+  </div>
+</footer>

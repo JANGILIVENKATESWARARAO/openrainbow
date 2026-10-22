@@ -1,0 +1,47 @@
+<or-page-hero
+  eyebrow="About us"
+  title="Responsible. Responsive."
+  lead="We are flexible about how you work with us. We are never flexible about quality."
+/>
+
+<section class="section promise">
+  <div class="container">
+    <p class="promise__line">
+      No compromise on
+      <span class="promise__swap" aria-live="polite">
+        @for (w of [words[i()]]; track w) {
+          <span class="promise__word">{{ w }}.</span>
+        }
+      </span>
+    </p>
+  </div>
+</section>
+
+<section class="section ways">
+  <div class="container ways__grid">
+    <h2>However you choose to engage.</h2>
+    <ul class="ways__list">
+      @for (w of ways; track w.title) {
+        <li>
+          <h3>{{ w.title }}</h3>
+          <p>{{ w.line }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="section offices">
+  <div class="container offices__grid">
+    @for (o of offices; track o.label) {
+      <address>
+        <p class="eyebrow">{{ o.label }}</p>
+        @for (line of o.lines; track line) {
+          <span>{{ line }}</span>
+        }
+      </address>
+    }
+  </div>
+</section>
+
+<or-cta-band />

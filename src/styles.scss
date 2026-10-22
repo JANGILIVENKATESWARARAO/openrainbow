@@ -1,0 +1,195 @@
+/* ==========================================================================
+   OpenRainbow IT: global design tokens + base styles
+   Idea: light travelling down fibre. Deep "fibre navy" surfaces, white
+   light, and the six-colour spectrum used only where it carries meaning
+   (one colour per life-cycle stage).
+   ========================================================================== */
+
+:root {
+  /* Surfaces */
+  --ink: #041d2c;          /* fibre navy: header, hero, footer */
+  --ink-2: #06314e;        /* raised navy */
+  --ink-3: #18527e;        /* navy accent / links on light */
+  --paper: #f5f6f2;        /* page background (tinted, not pure white) */
+  --card: #ffffff;
+  --line: #dfe3dc;
+
+  /* Text */
+  --text: #0d2433;
+  --muted: #546270;
+  --on-ink: #eef3f6;
+  --on-ink-muted: #b9cad6;
+
+  /* Spectrum: one colour per life-cycle stage */
+  --sp-red: #e5484d;     /* Design   */
+  --sp-orange: #f0883e;  /* Deploy   */
+  --sp-yellow: #f5c84c;  /* Test     */
+  --sp-green: #3dbb78;   /* Operate  */
+  --sp-blue: #3b8cf6;    /* Maintain */
+  --sp-violet: #8b5cf6;  /* Improve  */
+  --spectrum: linear-gradient(90deg, var(--sp-red), var(--sp-orange), var(--sp-yellow), var(--sp-green), var(--sp-blue), var(--sp-violet));
+
+  /* Type */
+  --font-display: 'Khand', 'Arial Narrow', sans-serif;
+  --font-body: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Layout */
+  --container: 1200px;
+  --gutter: clamp(20px, 4vw, 40px);
+  --radius: 14px;
+  --header-h: 76px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.005em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+p { margin: 0; }
+a { color: inherit; }
+img, svg { display: block; max-width: 100%; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+::selection { background: var(--sp-yellow); color: var(--ink); }
+
+:focus-visible {
+  outline: 3px solid var(--sp-yellow);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------- Helpers ---------- */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section { padding-block: clamp(72px, 10vw, 128px); }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  --btn-bg: var(--ink);
+  --btn-fg: var(--on-ink);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font: 700 16px/1 var(--font-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease), background-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+
+  &:hover { transform: translateY(-2px); }
+  &:active { transform: translateY(0); }
+  &[disabled] { opacity: 0.6; cursor: progress; transform: none; }
+}
+
+/* White button with a spectrum rim: the brand's main call to action */
+.btn--spectrum {
+  --btn-bg: #fff;
+  --btn-fg: var(--ink);
+  isolation: isolate;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--spectrum);
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: #fff;
+  }
+  &:hover { box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.6); }
+}
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: currentColor;
+  box-shadow: inset 0 0 0 2px currentColor;
+  &:hover { --btn-bg: rgba(255, 255, 255, 0.08); }
+}
+
+.btn--ink {
+  --btn-bg: var(--ink);
+  --btn-fg: #fff;
+  &:hover { --btn-bg: var(--ink-2); }
+}
+
+.text-link {
+  font-weight: 800;
+  color: var(--ink-3);
+  text-decoration: none;
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 2px;
+  transition: color 0.2s;
+  &:hover { color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
