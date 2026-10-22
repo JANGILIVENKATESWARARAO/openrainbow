@@ -13,6 +13,8 @@ export interface Practice {
 export interface Item {
   title: string;
   text: string;
+  /** Detail page slug, when the item has its own page. */
+  slug?: string;
 }
 
 export interface TechArea {
@@ -96,12 +98,12 @@ export const PRACTICES: Practice[] = [
 ];
 
 export const SPECIALIST_SERVICES: Item[] = [
-  { title: 'Infrastructure assessment', text: 'Evaluate, optimise and secure your IT infrastructure, with data-driven findings to plan your next steps.' },
-  { title: 'Security enhancements', text: 'Measures to safeguard your data, systems and users against evolving threats.' },
-  { title: 'Hardware and software upgrades', text: 'Upgrades that improve performance, close vulnerabilities and lower long-term running costs.' },
-  { title: 'Scalability and optimisation', text: 'IT resources tuned for efficiency and performance, and ready to grow with you.' },
-  { title: 'Redundancy solutions', text: 'Intelligent backup and failover strategies that keep operations running and minimise downtime.' },
-  { title: 'OTDR fibre testing', text: 'Optical Time Domain Reflectometry for precise fibre testing, fault finding and link certification.' },
+  { slug: 'infrastructure-assessment', title: 'Infrastructure assessment', text: 'Evaluate, optimise and secure your IT infrastructure, with data-driven findings to plan your next steps.' },
+  { slug: 'security-enhancements', title: 'Security enhancements', text: 'Measures to safeguard your data, systems and users against evolving threats.' },
+  { slug: 'hardware-and-software-upgrades', title: 'Hardware and software upgrades', text: 'Upgrades that improve performance, close vulnerabilities and lower long-term running costs.' },
+  { slug: 'scalability-and-optimisation', title: 'Scalability and optimisation', text: 'IT resources tuned for efficiency and performance, and ready to grow with you.' },
+  { slug: 'redundancy-solutions', title: 'Redundancy solutions', text: 'Intelligent backup and failover strategies that keep operations running and minimise downtime.' },
+  { slug: 'otdr-fibre-testing', title: 'OTDR fibre testing', text: 'Optical Time Domain Reflectometry for precise fibre testing, fault finding and link certification.' },
 ];
 
 export const TECH_AREAS: TechArea[] = [
@@ -116,11 +118,11 @@ export const TECH_AREAS: TechArea[] = [
 ];
 
 export const OUTCOMES: Item[] = [
-  { title: 'Improved performance', text: 'Faster, more efficient systems and operations.' },
-  { title: 'Enhanced security', text: 'Data, systems and users protected against evolving threats.' },
-  { title: 'Cost savings', text: 'Lower running costs and a better return on IT investment.' },
-  { title: 'Reliability and redundancy', text: 'Resilient infrastructure and uninterrupted operations.' },
-  { title: 'Future-proofing', text: 'Technology that stays ready for what comes next.' },
+  { slug: 'improved-performance', title: 'Improved performance', text: 'Faster, more efficient systems and operations.' },
+  { slug: 'enhanced-security', title: 'Enhanced security', text: 'Data, systems and users protected against evolving threats.' },
+  { slug: 'cost-savings', title: 'Cost savings', text: 'Lower running costs and a better return on IT investment.' },
+  { slug: 'reliability-and-redundancy', title: 'Reliability and redundancy', text: 'Resilient infrastructure and uninterrupted operations.' },
+  { slug: 'future-proofing', title: 'Future-proofing', text: 'Technology that stays ready for what comes next.' },
 ];
 
 export const FEATURED: { title: string; label: string; text: string }[] = [
@@ -146,11 +148,11 @@ export const CONTACT = {
   registration: 'Registered in England & Wales',
 };
 
+/** General enquiry types. Service and solution pages are added as extra groups on the contact form. */
 export const ENQUIRY_TOPICS: string[] = [
   'General enquiry',
   'Hardware and software sales',
   'Infrastructure services',
   'Managed services',
   'Professional services',
-  'OTDR fibre testing',
 ];

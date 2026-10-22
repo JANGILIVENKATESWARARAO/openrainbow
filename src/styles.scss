@@ -1,6 +1,6 @@
 /* ==========================================================================
    Open Rainbow: global design tokens + base styles
-   Calm, corporate, precise. Navy and graphite, one restrained bronze accent.
+   Calm, corporate, precise. Inter type, navy and graphite, one restrained bronze accent.
    ========================================================================== */
 
 :root {
@@ -27,8 +27,7 @@
   --ok: #34a872;
 
   /* Type */
-  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', monospace;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   /* Layout */
   --container: 1240px;
@@ -51,6 +50,7 @@ body {
   line-height: 1.6;
   color: var(--text);
   background: var(--bg);
+  font-feature-settings: 'cv11', 'ss01';
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -58,9 +58,9 @@ body {
 h1, h2, h3, h4 {
   margin: 0;
   font-family: var(--font-sans);
-  font-weight: 500;
-  line-height: 1.12;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
   color: var(--ink);
 }
 
@@ -88,15 +88,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .section { padding-block: clamp(72px, 9vw, 120px); }
 .section--paper { background: var(--paper); }
 
-/* Small mono label above headings */
+/* Small label above headings */
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 0.06em;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
 
