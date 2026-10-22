@@ -1,16 +1,16 @@
 <div class="utility">
   <div class="container utility__bar">
-    <span class="utility__note">Hardware, software and IT services for UK organisations</span>
+    <span class="utility__note">Hardware, software and IT services for UK organisations since 2014</span>
     <div class="utility__contact">
-      <a [href]="contact.phoneHref">{{ contact.phone }}</a>
-      <a [href]="'mailto:' + contact.salesEmail">{{ contact.salesEmail }}</a>
+      <a [href]="contact.phoneHref"><or-icon name="phone" />{{ contact.phone }}</a>
+      <a [href]="'mailto:' + contact.salesEmail"><or-icon name="mail" />{{ contact.salesEmail }}</a>
     </div>
   </div>
 </div>
 
 <header class="header" [class.is-open]="menuOpen()" [class.is-scrolled]="scrolled()">
   <div class="container header__bar">
-    <a routerLink="/" class="header__brand" aria-label="Open Rainbow home" (click)="close()">
+    <a routerLink="/" class="header__brand" aria-label="Open Rainbow home">
       <or-logo />
     </a>
 
@@ -27,25 +27,40 @@
 
     <nav id="main-nav" class="header__nav" aria-label="Main">
       <ul class="header__links">
-        @for (link of links; track link.path) {
-          <li [class.has-menu]="!!link.children">
-            <a class="top" [routerLink]="link.path" routerLinkActive="is-active" (click)="close()">{{ link.label }}</a>
-            @if (link.children) {
-              <div class="menu">
-                <ul class="menu__list">
-                  @for (child of link.children; track child.path) {
+        @for (link of links(); track link.path) {
+          <li [class.has-menu]="!!link.menu">
+            <a class="top" [routerLink]="link.path" routerLinkActive="is-active" (click)="blur($event)">{{ link.label }}</a>
+
+            @if (link.menu; as menu) {
+              <div class="mega">
+                <div class="mega__intro">
+                  <p class="mega__label">{{ link.label }}</p>
+                  <p class="mega__text">{{ menu.intro }}</p>
+                  <a class="arrow-link" [routerLink]="link.path" (click)="blur($event)">View all {{ link.label.toLowerCase() }} <span aria-hidden="true">&rarr;</span></a>
+                  <div class="mega__contact">
+                    <span>Speak to a specialist</span>
+                    <a [href]="contact.phoneHref">{{ contact.phone }}</a>
+                  </div>
+                </div>
+                <ul class="mega__list">
+                  @for (item of menu.items; track item.slug) {
                     <li>
-                      <a [routerLink]="child.path" routerLinkActive="is-current" (click)="close()">{{ child.label }}</a>
+                      <a [routerLink]="[link.path, item.slug]" routerLinkActive="is-current" (click)="blur($event)">
+                        <span class="icon-tile icon-tile--sm"><or-icon [name]="item.icon" /></span>
+                        <span class="mega__item">
+                          <span class="mega__title">{{ item.title }}</span>
+                          <span class="mega__summary">{{ item.summary }}</span>
+                        </span>
+                      </a>
                     </li>
                   }
                 </ul>
-                <a class="menu__all" [routerLink]="link.path" (click)="close()">All {{ link.label.toLowerCase() }} <span aria-hidden="true">&rarr;</span></a>
               </div>
             }
           </li>
         }
       </ul>
-      <a routerLink="/contact" class="btn btn--primary header__cta" (click)="close()">Request a consultation</a>
+      <a routerLink="/contact" class="btn btn--primary header__cta">Request a consultation</a>
     </nav>
   </div>
 </header>
