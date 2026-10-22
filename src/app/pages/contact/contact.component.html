@@ -53,8 +53,12 @@
             <label for="topic">Enquiry type</label>
             <div class="select">
               <select id="topic" formControlName="topic">
-                @for (t of topics; track t) {
-                  <option [value]="t">{{ t }}</option>
+                @for (g of topicGroups; track g.label) {
+                  <optgroup [label]="g.label">
+                    @for (t of g.options; track t) {
+                      <option [value]="t">{{ t }}</option>
+                    }
+                  </optgroup>
                 }
               </select>
             </div>

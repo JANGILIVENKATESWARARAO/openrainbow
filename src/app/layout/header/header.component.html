@@ -28,8 +28,20 @@
     <nav id="main-nav" class="header__nav" aria-label="Main">
       <ul class="header__links">
         @for (link of links; track link.path) {
-          <li>
-            <a [routerLink]="link.path" routerLinkActive="is-active" (click)="close()">{{ link.label }}</a>
+          <li [class.has-menu]="!!link.children">
+            <a class="top" [routerLink]="link.path" routerLinkActive="is-active" (click)="close()">{{ link.label }}</a>
+            @if (link.children) {
+              <div class="menu">
+                <ul class="menu__list">
+                  @for (child of link.children; track child.path) {
+                    <li>
+                      <a [routerLink]="child.path" routerLinkActive="is-current" (click)="close()">{{ child.label }}</a>
+                    </li>
+                  }
+                </ul>
+                <a class="menu__all" [routerLink]="link.path" (click)="close()">All {{ link.label.toLowerCase() }} <span aria-hidden="true">&rarr;</span></a>
+              </div>
+            }
           </li>
         }
       </ul>

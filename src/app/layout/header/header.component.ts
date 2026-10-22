@@ -2,10 +2,13 @@ import { Component, HostListener, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LogoComponent } from '../../shared/logo/logo.component';
 import { CONTACT } from '../../core/data/site-content';
+import { pagesIn } from '../../core/data/detail-pages';
 
 interface NavLink {
   label: string;
   path: string;
+  /** Dropdown links (detail pages). */
+  children?: { label: string; path: string }[];
 }
 
 @Component({
@@ -20,8 +23,16 @@ export class HeaderComponent {
   readonly scrolled = signal(false);
 
   readonly links: NavLink[] = [
-    { label: 'Services', path: '/services' },
-    { label: 'Solutions', path: '/solutions' },
+    {
+      label: 'Services',
+      path: '/services',
+      children: pagesIn('services').map((p) => ({ label: p.title, path: `/services/${p.slug}` })),
+    },
+    {
+      label: 'Solutions',
+      path: '/solutions',
+      children: pagesIn('solutions').map((p) => ({ label: p.title, path: `/solutions/${p.slug}` })),
+    },
     { label: 'About', path: '/about' },
     { label: 'Contact', path: '/contact' },
   ];

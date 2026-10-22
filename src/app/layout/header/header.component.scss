@@ -57,7 +57,9 @@
   display: flex;
   gap: 4px;
 
-  a {
+  > li { position: relative; }
+
+  .top {
     position: relative;
     display: block;
     padding: 10px 14px;
@@ -83,6 +85,80 @@
     &.is-active { color: var(--ink); }
     &.is-active::after { transform: scaleX(1); }
   }
+}
+
+.has-menu > .top::before {
+  content: '';
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin-top: -5px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  opacity: 0.6;
+}
+
+.has-menu > .top { padding-right: 28px; }
+
+/* Dropdown panel (desktop): opens on hover or keyboard focus */
+.menu {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 18px);
+  min-width: 300px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 24px 48px -24px rgba(15, 34, 54, 0.35);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.18s var(--ease), transform 0.18s var(--ease), visibility 0.18s;
+
+  /* hover bridge over the gap */
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -19px;
+    height: 19px;
+  }
+}
+
+.has-menu:hover .menu,
+.has-menu:focus-within .menu {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.menu__list a,
+.menu__all {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover { background: var(--paper); color: var(--ink); }
+}
+
+.menu__list a.is-current { color: var(--ink); background: var(--paper); }
+
+.menu__all {
+  margin-top: 6px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  border-radius: 0 0 6px 6px;
+  color: var(--ink);
 }
 
 .header__cta { flex: none; }
@@ -136,6 +212,7 @@
     gap: 24px;
     padding: 16px var(--gutter) 40px;
     background: #fff;
+    overflow-y: auto;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.2s var(--ease), visibility 0.2s;
@@ -146,11 +223,26 @@
   .header__links {
     flex-direction: column;
 
-    a {
+    .top {
       padding: 18px 0;
       border-bottom: 1px solid var(--line);
       font-size: 22px;
-      &::after { display: none; }
+      &::after, &::before { display: none; }
     }
   }
+
+  .menu {
+    position: static;
+    min-width: 0;
+    padding: 8px 0 12px;
+    border: 0;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    &::before { display: none; }
+  }
+
+  .menu__list a { padding: 8px 0; font-size: 16px; color: var(--muted); }
+  .menu__all { display: none; }
 }

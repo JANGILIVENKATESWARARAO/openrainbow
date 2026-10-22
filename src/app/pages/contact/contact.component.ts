@@ -1,8 +1,9 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, input, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PageHeroComponent } from '../../shared/page-hero/page-hero.component';
 import { ContactService } from '../../core/services/contact.service';
 import { CONTACT, ENQUIRY_TOPICS } from '../../core/data/site-content';
+import { pagesIn } from '../../core/data/detail-pages';
 
 type Status = 'idle' | 'sending' | 'sent' | 'error';
 type ControlName = 'name' | 'email' | 'company' | 'phone' | 'topic' | 'message' | 'consent';
@@ -13,12 +14,19 @@ type ControlName = 'name' | 'email' | 'company' | 'phone' | 'topic' | 'message' 
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
   private readonly fb = inject(FormBuilder);
   private readonly contactService = inject(ContactService);
 
+  /** Optional ?topic= query parameter, e.g. from a service page. */
+  readonly topic = input<string>();
+
   readonly contact = CONTACT;
-  readonly topics = ENQUIRY_TOPICS;
+  readonly topicGroups = [
+    { label: 'General', options: ENQUIRY_TOPICS },
+    { label: 'Services', options: pagesIn('services').map((p) => p.title) },
+    { label: 'Solutions', options: pagesIn('solutions').map((p) => p.title) },
+  ];
   readonly status = signal<Status>('idle');
 
   readonly form = this.fb.nonNullable.group({
@@ -30,6 +38,13 @@ export class ContactComponent {
     message: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(2000)]],
     consent: [false, [Validators.requiredTrue]],
   });
+
+  ngOnInit(): void {
+    const topic = this.topic();
+    if (topic && this.topicGroups.some((g) => g.options.includes(topic))) {
+      this.form.controls.topic.setValue(topic);
+    }
+  }
 
   showError(name: ControlName): boolean {
     const control = this.form.controls[name];

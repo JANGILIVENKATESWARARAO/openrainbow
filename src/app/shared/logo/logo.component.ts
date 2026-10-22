@@ -28,7 +28,7 @@ import { Component, input } from '@angular/core';
       .word { display: grid; gap: 3px; }
       .word__name { font: 600 20px/1 var(--font-sans); letter-spacing: -0.01em; }
       .word__tag {
-        font: 500 12px/1 var(--font-mono);
+        font: 600 12px/1 var(--font-sans);
         letter-spacing: 0.08em;
         text-transform: uppercase;
         color: var(--muted);
