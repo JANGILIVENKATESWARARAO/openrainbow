@@ -242,6 +242,13 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   color: var(--on-dark);
 }
 
+/* Heading on a dark band: light title and lead in both themes */
+.section-head--dark {
+  h2, .emphasis { color: var(--on-band); }
+  p { color: var(--on-dark-muted); }
+  .eyebrow { color: var(--on-dark); }
+}
+
 /* Centred heading block, used for major sections */
 .section-head--center {
   grid-template-columns: 1fr;

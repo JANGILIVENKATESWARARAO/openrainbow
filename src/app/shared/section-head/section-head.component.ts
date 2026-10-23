@@ -11,7 +11,7 @@ import { RevealDirective } from '../reveal/reveal.directive';
   selector: 'or-section-head',
   imports: [RevealDirective],
   template: `
-    <div class="section-head" [class.section-head--center]="center()" orReveal>
+    <div class="section-head" [class.section-head--center]="center()" [class.section-head--dark]="dark()" orReveal>
       <div>
         @if (heading().eyebrow) {
           <p class="eyebrow" [class.eyebrow--dark]="dark()">{{ heading().eyebrow }}</p>
