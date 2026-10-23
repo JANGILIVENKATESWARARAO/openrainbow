@@ -170,31 +170,75 @@
   color: var(--text);
 }
 
-/* ---------- Vendors ---------- */
+/* ---------- Partners (logo strip) ---------- */
 
-.vendors { padding-block: 24px 16px; text-align: center; }
+.partners { padding-block: 24px 8px; text-align: center; }
 
-.vendors__label {
-  margin-bottom: 24px;
+.partners__label {
+  margin-bottom: 20px;
   font-weight: 500;
   font-size: 15px;
   color: var(--ink);
 }
 
-.vendors__list {
+.marquee {
+  --gap: 56px;
+  overflow: hidden;
+  /* Soft fade at both edges */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.marquee__track {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px 44px;
+  width: max-content;
+  animation: marquee 45s linear infinite;
+}
+
+.marquee:hover .marquee__track { animation-play-state: paused; }
+
+.marquee__group {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  padding-right: var(--gap);
 
   li {
-    font-weight: 600;
-    font-size: 19px;
-    letter-spacing: -0.02em;
-    color: var(--subtle);
-    transition: color 0.2s;
-    &:hover { color: var(--ink); }
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 140px;
+    height: 64px;
   }
+
+  /* Light theme: quiet grey logos, full colour on hover */
+  img {
+    max-width: 100%;
+    max-height: 44px;
+    width: auto;
+    height: auto;
+    filter: grayscale(1);
+    opacity: 0.6;
+    transition: filter 0.3s var(--ease), opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+
+  li:hover img { filter: none; opacity: 1; transform: scale(1.06); }
+}
+
+/* Dark theme: white logos, brighter on hover */
+:host-context([data-theme='dark']) .marquee__group {
+  img { filter: brightness(0) invert(1); opacity: 0.55; }
+  li:hover img { filter: brightness(0) invert(1); opacity: 0.95; }
+}
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* Reduced motion: a still, centred grid of logos */
+@media (prefers-reduced-motion: reduce) {
+  .marquee { -webkit-mask-image: none; mask-image: none; }
+  .marquee__track { width: auto; justify-content: center; animation: none; }
+  .marquee__group { flex-wrap: wrap; justify-content: center; padding: 0 var(--gutter); }
+  .marquee__group[aria-hidden] { display: none; }
 }
 
 /* ---------- Services grid ---------- */

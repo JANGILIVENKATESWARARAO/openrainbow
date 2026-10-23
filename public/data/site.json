@@ -84,17 +84,51 @@
     ],
     "salesLabel": "Sales enquiries"
   },
-  "vendors": [
-    "Hewlett Packard Enterprise",
-    "Cisco",
-    "Microsoft",
-    "VMware",
-    "NetApp",
-    "Dell",
-    "IBM",
-    "Oracle",
-    "Pure Storage",
-    "Veeam"
+  "partners": [
+    {
+      "name": "Lenovo",
+      "logo": "images/partners/lenovo.svg"
+    },
+    {
+      "name": "HP",
+      "logo": "images/partners/hp.svg"
+    },
+    {
+      "name": "Microsoft",
+      "logo": "images/partners/microsoft.svg"
+    },
+    {
+      "name": "Cisco",
+      "logo": "images/partners/cisco.svg"
+    },
+    {
+      "name": "Dell EMC",
+      "logo": "images/partners/dell-emc.svg"
+    },
+    {
+      "name": "NVIDIA",
+      "logo": "images/partners/nvidia.svg"
+    },
+    {
+      "name": "ReaQta",
+      "logo": "images/partners/reaqta.svg"
+    },
+    {
+      "name": "Hewlett Packard Enterprise",
+      "logo": "images/partners/hpe.svg"
+    },
+    {
+      "name": "Veeam",
+      "logo": "images/partners/veeam.svg"
+    },
+    {
+      "name": "HPE Aruba Networking",
+      "logo": "images/partners/hpe-aruba.svg"
+    },
+    {
+      "name": "RUCKUS CommScope",
+      "logo": "images/partners/ruckus.svg"
+    }
   ],
   "enquiryTopics": [
     "General enquiry",

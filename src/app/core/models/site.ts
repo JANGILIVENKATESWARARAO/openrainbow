@@ -37,6 +37,12 @@ export interface StatusRow {
   state: string;
 }
 
+/** Partner logo strip on the home page. Logo files live in public/images/partners. */
+export interface Partner {
+  name: string;
+  logo: string;
+}
+
 export interface Stat {
   value: string;
   label: string;
@@ -55,7 +61,7 @@ export interface SiteData {
   navigation: NavItem[];
   header: { cta: Link; viewAll: string };
   footer: { companyLabel: string; servicesLabel: string; solutionsLabel: string; links: Link[]; salesLabel: string };
-  vendors: string[];
+  partners: Partner[];
   enquiryTopics: string[];
   cta: { title: string; text: string; primary: string; phonePrefix: string };
   home: {
