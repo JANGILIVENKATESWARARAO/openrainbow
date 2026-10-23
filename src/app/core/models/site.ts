@@ -43,6 +43,12 @@ export interface Partner {
   logo: string;
 }
 
+export interface SocialLink {
+  label: string;
+  icon: 'linkedin' | 'x' | 'facebook' | 'instagram' | 'youtube';
+  url: string;
+}
+
 export interface Stat {
   value: string;
   label: string;
@@ -60,7 +66,18 @@ export interface SiteData {
   };
   navigation: NavItem[];
   header: { cta: Link; viewAll: string };
-  footer: { companyLabel: string; servicesLabel: string; solutionsLabel: string; links: Link[]; salesLabel: string };
+  footer: {
+    companyLabel: string;
+    servicesLabel: string;
+    solutionsLabel: string;
+    links: Link[];
+    salesLabel: string;
+    followLabel: string;
+    /** Social links. Leave url empty until the page exists; the icon still shows. */
+    social: SocialLink[];
+    /** Tooltip for social icons without a link yet. */
+    socialSoon: string;
+  };
   partners: Partner[];
   enquiryTopics: string[];
   cta: { title: string; text: string; primary: string; phonePrefix: string };
@@ -73,14 +90,8 @@ export interface SiteData {
       footLabel: string;
       footValue: string;
       coverage: { label: string; stats: Stat[] };
-      desk: {
-        label: string;
-        ringLabel: string;
-        ringValue: string;
-        ringSub: string;
-        ringPercent: number;
-        items: { icon: string; text: string }[];
-      };
+      /** Label for the life cycle ring (its steps come from home.approach.steps). */
+      cycleLabel: string;
       note: string;
     };
     vendorsLabel: string;
@@ -130,6 +141,6 @@ export interface SiteData {
       sent: { title: string; text: string; again: string };
       details: { phone: string; email: string; sales: string };
     };
-    notFound: Heading & { cta: Link };
+    notFound: Heading & { code: string; cta: Link; linksLabel: string };
   };
 }

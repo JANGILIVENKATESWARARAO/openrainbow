@@ -450,13 +450,14 @@ a.card-soft:hover .icon-tile,
   position: relative;
   display: grid;
   place-items: center;
-  width: 128px;
-  height: 128px;
+  /* Size of the orbit; the logo scales with it. Override --orbit to resize (e.g. on the 404 page). */
+  width: var(--orbit, 128px);
+  height: var(--orbit, 128px);
 }
 
 .or-loader__mark {
-  width: 56px;
-  height: 56px;
+  width: calc(var(--orbit, 128px) * 0.4375);
+  height: calc(var(--orbit, 128px) * 0.4375);
   border-radius: 50%;
   animation: or-loader-breathe 2.4s ease-in-out infinite;
 }
@@ -464,7 +465,8 @@ a.card-soft:hover .icon-tile,
 /* Each arc is a comet: a bright head with a tail that fades out behind it */
 .or-loader__arc {
   --arc: var(--loader-arc-1);
-  --thick: 3px;
+  --thick: var(--arc-thick, 3px);
+  --head: var(--arc-head, 7px);
   position: absolute;
   inset: 0;
   animation: or-loader-spin 1.6s cubic-bezier(0.45, 0.1, 0.4, 0.9) infinite;
@@ -483,10 +485,10 @@ a.card-soft:hover .icon-tile,
   &::after {
     content: '';
     position: absolute;
-    top: calc(var(--thick) / 2 - 3.5px);
-    left: calc(50% - 3.5px);
-    width: 7px;
-    height: 7px;
+    top: calc(var(--thick) / 2 - var(--head) / 2);
+    left: calc(50% - var(--head) / 2);
+    width: var(--head);
+    height: var(--head);
     border-radius: 50%;
     background: var(--arc);
     box-shadow:

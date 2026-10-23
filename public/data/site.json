@@ -10,7 +10,7 @@
     "phone": "+44 (0)20 7096 0558",
     "phoneHref": "tel:+442070960558",
     "email": "info@openrainbow.co.uk",
-    "salesEmail": "",
+    "salesEmail": "sales@openrainbow.co.uk",
     "registration": "Registered in England & Wales",
     "offices": [
       {
@@ -82,7 +82,36 @@
         "path": "/contact"
       }
     ],
-    "salesLabel": "Sales enquiries"
+    "salesLabel": "Sales enquiries",
+    "followLabel": "Follow us",
+    "social": [
+      {
+        "label": "LinkedIn",
+        "icon": "linkedin",
+        "url": "https://www.linkedin.com/company/open-rainbow-ltd"
+      },
+      {
+        "label": "X",
+        "icon": "x",
+        "url": ""
+      },
+      {
+        "label": "Facebook",
+        "icon": "facebook",
+        "url": ""
+      },
+      {
+        "label": "Instagram",
+        "icon": "instagram",
+        "url": ""
+      },
+      {
+        "label": "YouTube",
+        "icon": "youtube",
+        "url": ""
+      }
+    ],
+    "socialSoon": "Coming soon"
   },
   "partners": [
     {
@@ -212,24 +241,8 @@
           }
         ]
       },
-      "desk": {
-        "label": "Service desk",
-        "ringLabel": "Online",
-        "ringValue": "24",
-        "ringSub": "of 24 hosts",
-        "ringPercent": 100,
-        "items": [
-          {
-            "icon": "clock",
-            "text": "Nightly backup verified"
-          },
-          {
-            "icon": "headset",
-            "text": "Engineers on call"
-          }
-        ]
-      },
-      "note": "Example monitoring view"
+      "note": "Example monitoring view",
+      "cycleLabel": "Our IT life cycle"
     },
     "vendorsLabel": "Technology from the vendors you already trust",
     "services": {
@@ -436,19 +449,21 @@
       "details": {
         "phone": "Telephone",
         "email": "Email",
-        "sales": ""
+        "sales": "(sales)"
       },
       "topicGroup": "General"
     },
     "notFound": {
       "eyebrow": "Error 404",
+      "code": "404",
       "title": "Page not",
       "emphasis": "found.",
       "lead": "The page you are looking for has moved or no longer exists.",
       "cta": {
         "label": "Back to home",
         "path": "/"
-      }
+      },
+      "linksLabel": "Or try one of these pages"
     }
   }
 }
