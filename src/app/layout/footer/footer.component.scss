@@ -35,6 +35,33 @@
   }
 }
 
+.footer__social {
+  display: grid;
+  gap: 4px;
+
+  ul { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  a {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--band-line);
+    border-radius: 50%;
+    color: var(--on-dark);
+    text-decoration: none;
+    transition: border-color 0.2s, background-color 0.2s, color 0.2s, transform 0.2s var(--ease);
+
+    &:hover { border-color: var(--on-band); background: var(--band-tint); color: var(--on-band); transform: translateY(-2px); }
+  }
+
+  /* Icons without a link yet: same look, not clickable */
+  a.is-soon { cursor: default; opacity: 0.6; }
+  a.is-soon:hover { border-color: var(--band-line); background: none; color: var(--on-dark); transform: none; }
+
+  or-social-icon { width: 18px; height: 18px; }
+}
+
 .footer__col {
   display: grid;
   gap: 10px;

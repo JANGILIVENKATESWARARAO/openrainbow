@@ -5,10 +5,11 @@ import { LogoComponent } from '../../shared/logo/logo.component';
 import { IconComponent } from '../../shared/icon/icon.component';
 import { ContentService } from '../../core/services/content.service';
 import { RevealDirective } from '../../shared/reveal/reveal.directive';
+import { SocialIconComponent } from '../../shared/social-icon/social-icon.component';
 
 @Component({
   selector: 'or-footer',
-  imports: [RouterLink, LogoComponent, IconComponent, RevealDirective],
+  imports: [RouterLink, LogoComponent, IconComponent, RevealDirective, SocialIconComponent],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })

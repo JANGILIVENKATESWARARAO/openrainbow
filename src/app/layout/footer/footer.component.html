@@ -10,6 +10,26 @@
           <li><or-icon name="pin" /><span>{{ o.lines.join(', ') }}</span></li>
         }
       </ul>
+
+      <div class="footer__social">
+        <p class="footer__label">{{ footer().followLabel }}</p>
+        <ul>
+          @for (s of footer().social; track s.icon) {
+            <li>
+              @if (s.url) {
+                <a [href]="s.url" target="_blank" rel="noopener" [attr.aria-label]="s.label" [attr.title]="s.label">
+                  <or-social-icon [name]="s.icon" />
+                </a>
+              } @else {
+                <!-- No link yet: shown, but not clickable -->
+                <a class="is-soon" aria-disabled="true" [attr.aria-label]="s.label + ' (' + footer().socialSoon + ')'" [attr.title]="s.label + ': ' + footer().socialSoon">
+                  <or-social-icon [name]="s.icon" />
+                </a>
+              }
+            </li>
+          }
+        </ul>
+      </div>
     </div>
 
     <nav class="footer__col" [attr.aria-label]="footer().servicesLabel" orReveal="fade" [revealDelay]="80">
