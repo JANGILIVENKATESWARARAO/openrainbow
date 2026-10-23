@@ -187,22 +187,30 @@
 @media (max-width: 1080px) {
   .header__toggle { display: grid; }
 
+  /* Full-screen panel under the bar.
+     "absolute" + viewport height (not "fixed"): the bar's blur effect would otherwise squash a fixed panel to the bar's own height. */
   .header__nav {
-    position: fixed;
-    inset: var(--header-h) 0 0 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
     flex-direction: column;
     align-items: stretch;
     gap: 24px;
-    height: auto;
-    padding: 8px var(--gutter) 40px;
+    height: calc(100vh - var(--header-h));
+    height: calc(100dvh - var(--header-h));
+    padding: 8px var(--gutter) calc(40px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--line);
     background: var(--bg);
     overflow-y: auto;
+    overscroll-behavior: contain;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.2s var(--ease), visibility 0.2s;
+    transform: translateY(-8px);
+    transition: opacity 0.2s var(--ease), transform 0.25s var(--ease), visibility 0.2s;
   }
 
-  .is-open .header__nav { opacity: 1; visibility: visible; }
+  .is-open .header__nav { opacity: 1; visibility: visible; transform: none; }
 
   .header__links {
     position: static;
@@ -216,10 +224,14 @@
 
     .top {
       height: auto;
-      padding: 18px 0;
+      padding: 16px 0;
       border-bottom: 1px solid var(--line);
       font-size: 20px;
     }
+
+    /* Sub pages sit under their heading, slightly indented */
+    .has-menu .top { border-bottom: 0; padding-bottom: 6px; }
+    .has-menu { border-bottom: 1px solid var(--line); }
   }
 
   .top__chevron { display: none; }
@@ -236,11 +248,18 @@
     visibility: visible;
     transform: none;
 
-    ul a { padding: 10px 0; white-space: normal; }
-    ul a:hover, ul a.is-current { background: transparent; }
+    ul { padding-left: 14px; border-left: 2px solid var(--line); }
+    ul a { padding: 8px 0; font-size: 16px; white-space: normal; color: var(--muted); }
+    ul a:hover, ul a.is-current { background: transparent; color: var(--ink); }
   }
 
-  .drop__all { padding-inline: 0; }
+  .drop__all { margin-top: 4px; padding: 8px 0 4px; border-top: 0; }
 
-  .header__actions { justify-content: space-between; }
+  .header__actions { justify-content: space-between; padding-top: 8px; }
+}
+
+@media (max-width: 480px) {
+  .header__actions { flex-direction: column-reverse; align-items: stretch; gap: 16px; }
+  .header__cta { min-height: 48px; }
+  .header__actions or-theme-toggle { align-self: center; }
 }

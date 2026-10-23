@@ -22,6 +22,7 @@ interface NavLink extends NavItem {
   host: {
     '[class.is-hidden]': 'hidden()',
     '(window:scroll)': 'onScroll()',
+    '(window:resize)': 'onResize()',
     '(focusin)': 'show()',
     '(document:keydown.escape)': 'onEscape()',
   },
@@ -61,11 +62,23 @@ export class HeaderComponent {
   }
 
   toggle(): void {
-    this.menuOpen.update((open) => !open);
+    this.setMenu(!this.menuOpen());
   }
 
   close(): void {
-    this.menuOpen.set(false);
+    this.setMenu(false);
+  }
+
+  /** Opens/closes the mobile menu and stops the page behind it from scrolling while it is open. */
+  private setMenu(open: boolean): void {
+    this.menuOpen.set(open);
+    this.document.documentElement.classList.toggle('menu-open', open);
+    if (open) this.setHidden(false);
+  }
+
+  /** Closes the mobile menu when the screen grows to desktop width (e.g. tablet rotated). */
+  onResize(): void {
+    if (this.menuOpen() && window.innerWidth > 1080) this.close();
   }
 
   /** Removes focus so a hover/focus dropdown closes after a click. */
