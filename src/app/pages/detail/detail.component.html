@@ -1,13 +1,9 @@
 @let p = page();
 
-<or-page-hero
-  [crumb]="p.title"
-  [parent]="{ label: label(), path: '/' + category() }"
-  [eyebrow]="p.tagline"
-  [icon]="p.icon"
-  [title]="p.title"
-  [lead]="p.lead"
-/>
+@let labels = copy();
+@let c = contact();
+
+<or-page-hero [crumb]="p.title" [parent]="{ label: label(), path: '/' + category() }" [icon]="p.icon" [heading]="hero()" />
 
 <!-- Overview + specialist card -->
 <section class="section">
@@ -16,7 +12,7 @@
       <h2>{{ p.whatTitle }}</h2>
       <p>{{ p.what }}</p>
       <div class="overview__points">
-        <p class="overview__label">Key benefits</p>
+        <p class="overview__label">{{ labels.benefitsLabel }}</p>
         <ul>
           @for (point of keyPoints(); track point) {
             <li><or-icon name="check" />{{ point }}</li>
@@ -25,13 +21,13 @@
       </div>
     </div>
 
-    <aside class="specialist" aria-label="Speak to a specialist">
-      <p class="specialist__label">Speak to a specialist</p>
-      <p class="specialist__text">Tell us about your requirements and a member of our team will respond to your enquiry.</p>
-      <a routerLink="/contact" [queryParams]="{ topic: p.title }" class="btn btn--primary specialist__cta">Request a consultation</a>
+    <aside class="specialist" [attr.aria-label]="labels.specialist.label">
+      <p class="specialist__label">{{ labels.specialist.label }}</p>
+      <p class="specialist__text">{{ labels.specialist.text }}</p>
+      <a routerLink="/contact" [queryParams]="{ topic: p.title }" class="btn btn--primary specialist__cta">{{ labels.specialist.cta }}</a>
       <ul class="specialist__reach">
-        <li><or-icon name="phone" /><a [href]="contact.phoneHref">{{ contact.phone }}</a></li>
-        <li><or-icon name="mail" /><a [href]="'mailto:' + contact.salesEmail">{{ contact.salesEmail }}</a></li>
+        <li><or-icon name="phone" /><a [href]="c.phoneHref">{{ c.phone }}</a></li>
+        <li><or-icon name="mail" /><a [href]="'mailto:' + c.salesEmail">{{ c.salesEmail }}</a></li>
       </ul>
     </aside>
   </div>
@@ -41,12 +37,7 @@
 @for (s of p.sections; track s.title; let odd = $odd) {
   <section class="block" [class.block--dark]="s.layout === 'dark'" [class.block--paper]="s.layout !== 'dark' && !odd">
     <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow" [class.eyebrow--dark]="s.layout === 'dark'">{{ s.eyebrow }}</p>
-          <h2>{{ s.title }}</h2>
-        </div>
-      </div>
+      <or-section-head [heading]="s" [dark]="s.layout === 'dark'" />
 
       @switch (s.layout) {
         @case ('grid') {
@@ -87,18 +78,14 @@
 }
 
 <!-- Related -->
-@if (related().length) {
+@if (others().length) {
   <section class="section related">
     <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">More {{ label().toLowerCase() }}</p>
-          <h2>Related {{ label().toLowerCase() }}.</h2>
-        </div>
-        <a [routerLink]="'/' + category()" class="arrow-link section-head__link">All {{ label().toLowerCase() }} <span aria-hidden="true">&rarr;</span></a>
-      </div>
+      <or-section-head [heading]="related().heading">
+        <a [routerLink]="'/' + category()" class="arrow-link section-head__link">{{ related().link }} <span aria-hidden="true">&rarr;</span></a>
+      </or-section-head>
       <ul class="related__list">
-        @for (r of related(); track r.slug) {
+        @for (r of others(); track r.slug) {
           <li>
             <a [routerLink]="['/', category(), r.slug]">
               <span class="icon-tile icon-tile--sm"><or-icon [name]="r.icon" /></span>

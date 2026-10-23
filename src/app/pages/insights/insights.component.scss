@@ -5,7 +5,7 @@
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   overflow: hidden;
   border-radius: 18px;
-  background: #fff;
+  background: var(--surface);
   text-decoration: none;
 
   &:hover .arrow-link span { transform: translateX(4px); }
@@ -18,10 +18,10 @@
   place-items: center;
   min-height: 320px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 100%) 0 0 / 28px 28px,
-    radial-gradient(90% 80% at 100% 0%, rgba(138, 98, 32, 0.35), transparent 60%),
-    linear-gradient(160deg, var(--navy-700), var(--navy-900));
-  color: #fff;
+    linear-gradient(135deg, var(--band-tint) 0 1px, transparent 1px 100%) 0 0 / 28px 28px,
+    radial-gradient(90% 80% at 100% 0%, var(--band-glow), transparent 60%),
+    linear-gradient(160deg, var(--band-from), var(--band-to));
+  color: var(--on-band);
 
   or-icon { width: 96px; height: 96px; opacity: 0.85; }
 }
@@ -31,7 +31,7 @@
   left: 24px;
   top: 24px;
   padding: 6px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid var(--band-line);
   border-radius: 999px;
   font-weight: 600;
   font-size: 13px;

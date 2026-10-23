@@ -6,16 +6,14 @@ import { switchMap } from 'rxjs';
 import { PageHeroComponent } from '../../shared/page-hero/page-hero.component';
 import { CtaBandComponent } from '../../shared/cta-band/cta-band.component';
 import { IconComponent } from '../../shared/icon/icon.component';
-import { CONTACT } from '../../core/data/site-content';
+import { SectionHeadComponent } from '../../shared/section-head/section-head.component';
 import { Category, ContentPage } from '../../core/models/content';
 import { ContentService } from '../../core/services/content.service';
-
-const LABELS: Record<Category, string> = { services: 'Services', solutions: 'Solutions' };
 
 /** One template for every service and solution page. Content comes from the route resolver. */
 @Component({
   selector: 'or-detail',
-  imports: [RouterLink, PageHeroComponent, CtaBandComponent, IconComponent],
+  imports: [RouterLink, PageHeroComponent, CtaBandComponent, IconComponent, SectionHeadComponent],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss',
 })
@@ -27,11 +25,23 @@ export class DetailComponent {
   readonly page = input.required<ContentPage>();
   readonly category = input.required<Category>();
 
-  readonly contact = CONTACT;
-  readonly label = computed(() => LABELS[this.category()]);
+  /** Labels and contact details from site.json. */
+  readonly copy = computed(() => this.content.site().pages.detail);
+  readonly contact = computed(() => this.content.site().contact);
+  readonly label = computed(() => this.content.site().pages[this.category()].crumb);
+
+  readonly hero = computed(() => ({ eyebrow: this.page().tagline, title: this.page().title, lead: this.page().lead }));
+  readonly related = computed(() => {
+    const r = this.copy().related;
+    const category = this.label().toLowerCase();
+    return {
+      heading: { eyebrow: this.content.fill(r.eyebrow, { category }), title: r.title, emphasis: this.content.fill(r.emphasis, { category }) },
+      link: this.content.fill(r.link, { category }),
+    };
+  });
 
   private readonly siblings = toSignal(toObservable(this.category).pipe(switchMap((c) => this.content.pages(c))), { initialValue: [] });
-  readonly related = computed(() => this.siblings().filter((p) => p.slug !== this.page().slug));
+  readonly others = computed(() => this.siblings().filter((p) => p.slug !== this.page().slug));
 
   /** Benefit titles for the overview: the benefits band if there is one, otherwise the first section. */
   readonly keyPoints = computed(() => {

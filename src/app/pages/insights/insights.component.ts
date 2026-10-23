@@ -15,7 +15,10 @@ import { ContentService } from '../../core/services/content.service';
   styleUrl: './insights.component.scss',
 })
 export class InsightsComponent {
-  private readonly posts = toSignal(inject(ContentService).posts$);
+  private readonly content = inject(ContentService);
+  private readonly posts = toSignal(this.content.posts$);
+
+  readonly copy = computed(() => this.content.site().pages.insights);
 
   readonly loaded = computed(() => this.posts() !== undefined);
   readonly featured = computed(() => this.posts()?.[0]);
