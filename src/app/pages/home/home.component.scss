@@ -30,7 +30,7 @@
   animation: rise 0.7s var(--ease) both;
 
   h1 {
-    max-width: 22ch;
+    text-wrap: balance;
     font-size: clamp(40px, 5.2vw, 68px);
     line-height: 1.04;
     color: var(--muted);

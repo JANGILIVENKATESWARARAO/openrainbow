@@ -40,7 +40,7 @@ import { RevealDirective } from '../reveal/reveal.directive';
       }
       /* Slow drift of the corner glow, so the band feels alive */
       @keyframes glow-drift { from { background-position: 100% 0%, 0 0; } to { background-position: 60% 40%, 0 0; } }
-      h2 { color: var(--on-band); font-size: clamp(36px, 4.4vw, 56px); max-width: 20ch; }
+      h2 { color: var(--on-band); font-size: clamp(36px, 4.4vw, 56px); text-wrap: balance; }
       .cta__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 12px; }
     `,
   ],

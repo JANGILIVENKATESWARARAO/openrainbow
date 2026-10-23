@@ -85,7 +85,8 @@ export interface Crumb {
       .heading__icon { width: 56px; height: 56px; border-radius: 14px; }
       .heading__icon or-icon { width: 28px; height: 28px; }
       h1 {
-        max-width: 20ch;
+        /* One line while it fits; wraps neatly when it does not */
+        text-wrap: pretty;
         font-size: clamp(40px, 5vw, 64px);
         line-height: 1.06;
         animation: rise 0.6s var(--ease) both;
