@@ -1,57 +1,33 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { ContentService } from '../../core/services/content.service';
+import { ThemeService } from '../../core/services/theme.service';
 
-/** Open Rainbow wordmark with monogram. */
+/**
+ * Open Rainbow logo.
+ * Dark text on the light theme, white text on the dark theme and on dark bands (inverse).
+ * Files: public/images/logo-light.svg and public/images/logo-dark.svg.
+ */
 @Component({
   selector: 'or-logo',
-  template: `
-    <span class="mono" aria-hidden="true">{{ initials() }}</span>
-    <span class="word">
-      <span class="word__name">{{ company().name }}</span>
-      <span class="word__tag">{{ company().tagline }}</span>
-    </span>
-  `,
+  template: `<img [src]="src()" [alt]="name()" width="413" height="88" />`,
   host: { '[class.is-inverse]': 'inverse()' },
   styles: [
     `
-      :host { display: inline-flex; align-items: center; gap: 12px; color: var(--ink); }
-      .mono {
-        display: grid;
-        place-items: center;
-        width: 40px;
-        height: 40px;
-        border-radius: 10px;
-        background: var(--btn-bg);
-        color: var(--btn-fg);
-        font: 600 16px/1 var(--font-sans);
-        letter-spacing: 0.04em;
-      }
-      .word { display: grid; gap: 3px; }
-      .word__name { font: 600 20px/1 var(--font-sans); letter-spacing: -0.01em; }
-      .word__tag {
-        font: 600 12px/1 var(--font-sans);
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--muted);
-      }
-      :host(.is-inverse) { color: var(--on-band); }
-      :host(.is-inverse) .mono { background: var(--on-band); color: var(--navy-800); }
-      :host(.is-inverse) .word__tag { color: var(--on-dark-muted); }
+      :host { display: inline-flex; align-items: center; }
+      img { display: block; width: auto; height: 40px; }
+      :host(.is-inverse) img { height: 44px; }
     `,
   ],
 })
 export class LogoComponent {
+  private readonly theme = inject(ThemeService).theme;
   private readonly site = inject(ContentService).site;
-  protected readonly company = computed(() => this.site().company);
-  /** White version for dark backgrounds. */
+
+  /** White version for dark backgrounds (footer). */
   readonly inverse = input(false);
 
-  protected readonly initials = computed(() =>
-    this.company()
-      .name.split(/\s+/)
-      .map((word) => word[0])
-      .join('')
-      .slice(0, 2)
-      .toUpperCase(),
+  protected readonly name = computed(() => this.site().company.name);
+  protected readonly src = computed(() =>
+    this.inverse() || this.theme() === 'dark' ? 'images/logo-dark.svg' : 'images/logo-light.svg',
   );
 }

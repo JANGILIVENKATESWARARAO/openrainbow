@@ -34,12 +34,12 @@ export const routes: Routes = [
     title: contentPageTitle('solutions'),
   },
   {
-    path: 'insights',
-    loadComponent: () => import('./pages/insights/insights.component').then((m) => m.InsightsComponent),
-    title: siteTitle((site) => site.pages.insights.crumb),
+    path: 'blog',
+    loadComponent: () => import('./pages/blog/blog.component').then((m) => m.BlogComponent),
+    title: siteTitle((site) => site.pages.blog.crumb),
   },
   {
-    path: 'insights/:slug',
+    path: 'blog/:slug',
     loadComponent: () => import('./pages/article/article.component').then((m) => m.ArticleComponent),
     resolve: { post: postResolver },
     title: postTitle,
@@ -54,6 +54,9 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/contact/contact.component').then((m) => m.ContactComponent),
     title: siteTitle((site) => site.pages.contact.crumb),
   },
+  // Old Insights links keep working.
+  { path: 'insights', redirectTo: 'blog', pathMatch: 'full' },
+  { path: 'insights/:slug', redirectTo: 'blog/:slug' },
   {
     path: '**',
     loadComponent: () => import('./pages/not-found/not-found.component').then((m) => m.NotFoundComponent),

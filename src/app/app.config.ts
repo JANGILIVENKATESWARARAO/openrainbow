@@ -5,6 +5,7 @@ import { routes } from './app.routes';
 import { ContentService } from './core/services/content.service';
 import { ThemeService } from './core/services/theme.service';
 import { SiteTitleStrategy } from './core/title.strategy';
+import { provideIcons } from './shared/icon/icons';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,6 +17,7 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({ scrollPositionRestoration: 'top', anchorScrolling: 'enabled' }),
     ),
     provideHttpClient(withFetch()),
+    provideIcons(),
     { provide: TitleStrategy, useClass: SiteTitleStrategy },
     // Load site.json before the first render, and apply the saved theme.
     provideAppInitializer(() => {

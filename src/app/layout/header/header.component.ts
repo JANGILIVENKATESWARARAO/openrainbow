@@ -10,7 +10,7 @@ import { ContentPage } from '../../core/models/content';
 import { NavItem } from '../../core/models/site';
 
 interface NavLink extends NavItem {
-  /** Pages for the mega menu (services or solutions). */
+  /** Pages for the dropdown (services or solutions). */
   items: ContentPage[];
 }
 
@@ -28,7 +28,6 @@ export class HeaderComponent {
   private readonly content = inject(ContentService);
   private readonly site = this.content.site;
 
-  readonly contact = computed(() => this.site().contact);
   readonly header = computed(() => this.site().header);
   readonly menuOpen = signal(false);
   readonly scrolled = signal(false);
@@ -36,7 +35,7 @@ export class HeaderComponent {
   private readonly services = toSignal(this.content.pages('services'), { initialValue: [] });
   private readonly solutions = toSignal(this.content.pages('solutions'), { initialValue: [] });
 
-  /** Navigation from site.json; mega menus are filled from services.json and solutions.json. */
+  /** Navigation from site.json; dropdowns are filled from services.json and solutions.json. */
   readonly links = computed<NavLink[]>(() =>
     this.site().navigation.map((item) => ({
       ...item,
@@ -62,7 +61,7 @@ export class HeaderComponent {
     this.menuOpen.set(false);
   }
 
-  /** Removes focus so a hover/focus mega menu closes after a click. */
+  /** Removes focus so a hover/focus dropdown closes after a click. */
   blur(event: Event): void {
     (event.currentTarget as HTMLElement | null)?.blur();
     (document.activeElement as HTMLElement | null)?.blur();

@@ -9,42 +9,35 @@
       class="header__toggle"
       aria-controls="main-nav"
       [attr.aria-expanded]="menuOpen()"
+      [attr.aria-label]="menuOpen() ? 'Close menu' : 'Open menu'"
       (click)="toggle()"
     >
-      <span class="sr-only">{{ menuOpen() ? 'Close menu' : 'Open menu' }}</span>
-      <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+      <or-icon [name]="menuOpen() ? 'close' : 'menu'" />
     </button>
 
     <nav id="main-nav" class="header__nav" aria-label="Main">
       <ul class="header__links">
         @for (link of links(); track link.path) {
           <li [class.has-menu]="link.items.length > 0">
-            <a class="top" [routerLink]="link.path" routerLinkActive="is-active" (click)="blur($event)">{{ link.label }}</a>
+            <a class="top" [routerLink]="link.path" routerLinkActive="is-active" (click)="blur($event)">
+              {{ link.label }}
+              @if (link.items.length) {
+                <or-icon class="top__chevron" name="chevron" />
+              }
+            </a>
 
             @if (link.items.length) {
-              <div class="mega">
-                <div class="mega__intro">
-                  <p class="mega__label">{{ link.label }}</p>
-                  <p class="mega__text">{{ link.intro }}</p>
-                  <a class="arrow-link" [routerLink]="link.path" (click)="blur($event)">View all {{ link.label.toLowerCase() }} <span aria-hidden="true">&rarr;</span></a>
-                  <div class="mega__contact">
-                    <span>{{ header().menuContact }}</span>
-                    <a [href]="contact().phoneHref">{{ contact().phone }}</a>
-                  </div>
-                </div>
-                <ul class="mega__list">
+              <div class="drop">
+                <ul>
                   @for (item of link.items; track item.slug) {
                     <li>
-                      <a [routerLink]="[link.path, item.slug]" routerLinkActive="is-current" (click)="blur($event)">
-                        <span class="icon-tile icon-tile--sm"><or-icon [name]="item.icon" /></span>
-                        <span class="mega__item">
-                          <span class="mega__title">{{ item.title }}</span>
-                          <span class="mega__summary">{{ item.summary }}</span>
-                        </span>
-                      </a>
+                      <a [routerLink]="[link.path, item.slug]" routerLinkActive="is-current" (click)="blur($event)">{{ item.title }}</a>
                     </li>
                   }
                 </ul>
+                <a class="drop__all" [routerLink]="link.path" (click)="blur($event)">
+                  {{ header().viewAll }} {{ link.label.toLowerCase() }} <or-icon name="arrow" />
+                </a>
               </div>
             }
           </li>

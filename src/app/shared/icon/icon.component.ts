@@ -1,24 +1,20 @@
 import { Component, computed, input } from '@angular/core';
-import { ICONS } from './icons';
+import { LucideDynamicIcon } from '@lucide/angular';
+import { ICON_NAMES } from './icons';
 
-/** Inline line icon. Usage: <or-icon name="shield" /> */
+/** Lucide line icon. Usage: <or-icon name="shield" /> (short name or any Lucide name). */
 @Component({
   selector: 'or-icon',
-  template: `
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      @for (d of paths(); track $index) {
-        <path [attr.d]="d" />
-      }
-    </svg>
-  `,
+  imports: [LucideDynamicIcon],
+  template: `<svg [lucideIcon]="lucideName()" [strokeWidth]="1.75" aria-hidden="true"></svg>`,
   styles: [
     `
       :host { display: inline-flex; width: 24px; height: 24px; flex: none; color: inherit; }
-      svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+      svg { width: 100%; height: 100%; }
     `,
   ],
 })
 export class IconComponent {
   readonly name = input.required<string>();
-  readonly paths = computed(() => ICONS[this.name()] ?? []);
+  readonly lucideName = computed(() => ICON_NAMES[this.name()] ?? this.name());
 }

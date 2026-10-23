@@ -5,15 +5,17 @@ import { inject, provideAppInitializer, provideZonelessChangeDetection } from '@
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { ContentService } from '../src/app/core/services/content.service';
+import { provideIcons } from '../src/app/shared/icon/icons';
 
 const preview: Preview = {
   decorators: [
-    // Same providers as the app: router, HttpClient and site.json loaded before render.
+    // Same providers as the app: router, HttpClient, icons and site.json loaded before render.
     applicationConfig({
       providers: [
         provideZonelessChangeDetection(),
         provideRouter([]),
         provideHttpClient(withFetch()),
+        provideIcons(),
         provideAppInitializer(() => inject(ContentService).loadSite()),
       ],
     }),
