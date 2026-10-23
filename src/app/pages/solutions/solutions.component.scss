@@ -3,24 +3,18 @@
 .outcomes {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+  gap: 16px;
 
-  li {
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
+  li { background: #fff; }
 
   a {
     display: grid;
     gap: 12px;
     align-content: start;
     height: 100%;
-    padding: 28px 24px;
+    padding: 24px;
     text-decoration: none;
-    transition: background-color 0.25s var(--ease);
 
-    &:hover { background: var(--paper); }
     &:hover .arrow-link span { transform: translateX(4px); }
   }
 
@@ -35,7 +29,7 @@
 .areas {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 64px;
+  gap: 20px;
 }
 
 .area {
@@ -43,10 +37,8 @@
   grid-template-columns: auto minmax(0, 1fr);
   gap: 20px;
   align-items: start;
-  padding-block: 32px;
-  border-top: 1px solid var(--line-strong);
-
-  .icon-tile { background: #fff; }
+  padding: 28px;
+  background: #fff;
 }
 
 .area__body {
@@ -64,10 +56,10 @@
   margin-top: 6px;
 
   li {
-    padding: 6px 10px;
-    border: 1px solid var(--line-strong);
-    border-radius: 4px;
-    background: #fff;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--paper);
     font: 500 14px/1 var(--font-sans);
     color: var(--ink);
   }
@@ -86,17 +78,9 @@
   gap: 14px;
   align-content: start;
   padding: 40px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
   text-decoration: none;
-  transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
 
-  &:hover {
-    border-color: var(--line-strong);
-    box-shadow: 0 24px 48px -32px rgba(15, 34, 54, 0.4);
-  }
-
-  h3 { font-size: 30px; }
+  h3 { font-family: var(--font-display); font-weight: 400; font-size: 38px; letter-spacing: 0; }
   p { color: var(--muted); max-width: 44ch; }
   .arrow-link { margin-top: 8px; }
 }

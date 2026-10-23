@@ -1,6 +1,8 @@
 <or-page-hero
   crumb="Solutions"
-  title="The right technology for your business."
+  eyebrow="Solutions"
+  title="The right technology for"
+  emphasis="your business"
   lead="Hyper-converged, on premise or in the cloud. We help you decide what is right, supply it from leading vendors, and support it for the long term."
 />
 
@@ -10,13 +12,13 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">Outcomes</p>
-          <h2>What our solutions deliver.</h2>
+          <h2>What our solutions <em>deliver</em></h2>
         </div>
         <p>Every solution is designed around a clear business outcome.</p>
       </div>
       <ul class="outcomes">
         @for (o of d.items; track o.slug) {
-          <li>
+          <li class="card-soft">
             <a [routerLink]="['/solutions', o.slug]">
               <span class="icon-tile"><or-icon [name]="o.icon" /></span>
               <h3>{{ o.title }}</h3>
@@ -34,12 +36,12 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">Technology</p>
-          <h2>Platforms we supply, deploy and support.</h2>
+          <h2>Platforms we supply, deploy and <em>support</em></h2>
         </div>
       </div>
       <ul class="areas">
         @for (a of d.technologies; track a.title) {
-          <li class="area">
+          <li class="area card-soft">
             <span class="icon-tile"><or-icon [name]="a.icon" /></span>
             <div class="area__body">
               <h3>{{ a.title }}</h3>
@@ -61,12 +63,12 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">Featured</p>
-          <h2>Current offers.</h2>
+          <h2>Current <em>offers</em></h2>
         </div>
       </div>
       <div class="featured">
         @for (f of d.featured; track f.title) {
-          <a class="offer" routerLink="/contact" [queryParams]="{ topic: 'Hardware and software sales' }">
+          <a class="offer card-soft" routerLink="/contact" [queryParams]="{ topic: 'Hardware and software sales' }">
             <span class="offer__label">{{ f.label }}</span>
             <h3>{{ f.title }}</h3>
             <p>{{ f.text }}</p>

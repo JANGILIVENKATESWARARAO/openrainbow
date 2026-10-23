@@ -1,30 +1,23 @@
 .spec {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+  gap: 20px;
 
-  li {
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    background: var(--bg);
-  }
+  li { background: #fff; }
 
   a {
     display: grid;
     gap: 12px;
     align-content: start;
     height: 100%;
-    padding: 32px;
+    padding: 28px;
     text-decoration: none;
-    transition: background-color 0.25s var(--ease);
 
-    &:hover { background: var(--paper); }
     &:hover .arrow-link span { transform: translateX(4px); }
   }
 
-  .icon-tile { margin-bottom: 8px; }
-  h3 { font-size: 21px; }
+  .icon-tile { margin-bottom: 16px; }
+  h3 { font-size: 19px; }
   p { color: var(--muted); font-size: 16px; }
   .arrow-link { margin-top: 8px; }
 }

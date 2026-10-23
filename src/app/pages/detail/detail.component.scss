@@ -11,7 +11,7 @@
   display: grid;
   gap: 24px;
 
-  h2 { font-size: clamp(30px, 3.2vw, 40px); }
+  h2 { font-size: clamp(36px, 3.8vw, 50px); }
   > p { max-width: 62ch; font-size: 19px; line-height: 1.7; color: var(--text); }
 }
 
@@ -45,8 +45,10 @@
   display: grid;
   gap: 16px;
   padding: 32px;
-  border-radius: 10px;
-  background: var(--navy-800);
+  border-radius: 18px;
+  background:
+    radial-gradient(90% 80% at 100% 0%, rgba(138, 98, 32, 0.35), transparent 60%),
+    linear-gradient(160deg, var(--navy-700), var(--navy-900));
   color: var(--on-dark-muted);
 }
 
@@ -94,23 +96,29 @@
   h2, h3 { color: #fff; }
 }
 
-.eyebrow--dark { color: var(--on-dark-muted); }
+.eyebrow--dark {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: transparent;
+  color: var(--on-dark);
+}
 
 /* Three columns with a check mark */
 .cols {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 40px;
+  gap: 20px;
 
   li {
     display: grid;
     gap: 12px;
     align-content: start;
-    padding-top: 24px;
-    border-top: 2px solid var(--ink);
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: #fff;
   }
 
-  h3 { font-size: 21px; }
+  h3 { font-size: 20px; }
   p { color: var(--muted); }
 }
 
@@ -120,33 +128,32 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--navy-800);
-  color: #fff;
+  background: var(--accent-soft);
+  color: var(--accent);
 
   or-icon { width: 18px; height: 18px; }
 }
 
 .block--dark .cols {
-  li { border-top-color: rgba(255, 255, 255, 0.25); }
+  li { border-color: rgba(255, 255, 255, 0.12); background: rgba(255, 255, 255, 0.04); }
   p { color: var(--on-dark-muted); }
-  .cols__check { background: #fff; color: var(--navy-900); }
+  .cols__check { background: rgba(230, 200, 143, 0.16); color: #e6c88f; }
 }
 
 /* Bordered cells */
 .cells {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+  gap: 20px;
 
   li {
     display: grid;
     gap: 12px;
     align-content: start;
-    padding: 36px 32px;
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    background: var(--bg);
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: #fff;
   }
 
   h3 { font-size: 21px; }
@@ -157,13 +164,16 @@
 .steps {
   display: grid;
   grid-template-columns: repeat(var(--count, 4), minmax(0, 1fr));
+  gap: 20px;
 
   li {
     display: grid;
     gap: 12px;
     align-content: start;
-    padding: 28px 28px 0 0;
-    border-top: 2px solid var(--ink);
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: #fff;
   }
 
   h3 { font-size: 21px; }
@@ -186,16 +196,22 @@
 .related__list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 48px;
+  gap: 16px;
 
   a {
     position: relative;
     display: flex;
     gap: 16px;
     align-items: flex-start;
-    padding: 24px 48px 24px 0;
-    border-top: 1px solid var(--line);
+    height: 100%;
+    padding: 22px 56px 22px 22px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: var(--card);
     text-decoration: none;
+    transition: border-color 0.2s;
+
+    &:hover { border-color: var(--line-strong); }
 
     &:hover .related__title { color: var(--navy-700); }
     &:hover .related__arrow { transform: translate(4px, -50%); }
@@ -208,10 +224,10 @@
 
 .related__arrow {
   position: absolute;
-  right: 8px;
+  right: 22px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--ink);
+  color: var(--accent);
   transition: transform 0.2s var(--ease);
 }
 
@@ -221,12 +237,10 @@
   .overview { grid-template-columns: 1fr; }
   .specialist { position: static; max-width: 520px; }
   .cells, .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .steps { gap: 40px 0; }
   .section-head__link { justify-self: start; }
 }
 
 @media (max-width: 700px) {
   .cols, .cells, .steps, .related__list { grid-template-columns: 1fr; }
-  .cols { gap: 32px; }
   .cells li { padding: 28px 24px; }
 }
