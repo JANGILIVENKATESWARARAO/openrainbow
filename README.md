@@ -49,6 +49,7 @@ Use the theme switch in the Storybook toolbar to see light and dark.
 - **Content reveal:** add `orReveal` to any element and it slides in the first time it scrolls into view. Effects: `orReveal` (up, default), `orReveal="down"`, `"left"`, `"right"`, `"zoom"`, `"fade"`. Stagger lists with `[revealDelay]="$index * 80"` (ms, max 480). Code: `src/app/shared/reveal/reveal.directive.ts`, styles: `.reveal` in `src/styles.scss`.
 - **Count up:** `<dt [orCountUp]="'30+'"></dt>` counts the number up when it comes into view (years and values like `24/7` stay as they are).
 - **Page change:** a soft fade between pages (router view transitions). The header stays still.
+- **Loader:** the OR mark (`public/images/logo-mark.svg`) with two glowing "falling star" arcs orbiting it. Shown at start-up (`index.html`) and when a page takes longer than 250 ms to load (`src/app/shared/loader`). Arc colours: `--loader-arc-1` and `--loader-arc-2` in `src/styles.scss`.
 - Cards lift on hover, the CTA band glow drifts slowly, and blog posts show a reading bar.
 - Everything respects the "reduce motion" setting of the device.
 

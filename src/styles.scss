@@ -83,6 +83,10 @@
   --danger: #b4323a;
   --focus-ring: rgba(15, 34, 54, 0.12);
   --input-hover: #9fadbb;
+
+  /* Loader arcs: bronze accent + violet from the logo */
+  --loader-arc-1: #8a6220;
+  --loader-arc-2: #6a3fb5;
 }
 
 [data-theme='dark'] {
@@ -134,6 +138,9 @@
   --danger: #f08a90;
   --focus-ring: rgba(226, 184, 102, 0.28);
   --input-hover: #4a505a;
+
+  --loader-arc-1: #e2b866;
+  --loader-arc-2: #a98bf0;
 }
 
 *,
@@ -419,6 +426,87 @@ a.card-soft:hover .icon-tile,
 /* Numbers that count up keep the same width while counting */
 .count-up { font-variant-numeric: tabular-nums; }
 
+/* ---------- Loader: OR mark with two "falling star" arcs (index.html + shared/loader) ---------- */
+
+.or-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  transition: opacity 0.4s var(--ease), visibility 0.4s;
+
+  &.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+/* Page-change version: see-through, so the old page shows softly behind it */
+.or-loader--overlay {
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+.or-loader__orbit {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 128px;
+  height: 128px;
+}
+
+.or-loader__mark {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  animation: or-loader-breathe 2.4s ease-in-out infinite;
+}
+
+/* Each arc is a comet: a bright head with a tail that fades out behind it */
+.or-loader__arc {
+  --arc: var(--loader-arc-1);
+  --thick: 3px;
+  position: absolute;
+  inset: 0;
+  animation: or-loader-spin 1.6s cubic-bezier(0.45, 0.1, 0.4, 0.9) infinite;
+
+  /* Tail: a ring that fades from clear to full colour, ending at the top */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent 0deg 150deg, color-mix(in srgb, var(--arc) 35%, transparent) 260deg, var(--arc) 358deg, transparent 360deg);
+    mask: radial-gradient(farthest-side, transparent calc(100% - var(--thick)), #000 calc(100% - var(--thick) + 0.5px));
+  }
+
+  /* Head: a small glowing star at the front of the arc */
+  &::after {
+    content: '';
+    position: absolute;
+    top: calc(var(--thick) / 2 - 3.5px);
+    left: calc(50% - 3.5px);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--arc);
+    box-shadow:
+      0 0 6px 1px var(--arc),
+      0 0 14px 3px color-mix(in srgb, var(--arc) 45%, transparent);
+  }
+}
+
+/* Second arc: closer to the logo, different colour and speed, starts on the other side */
+.or-loader__arc--inner {
+  --arc: var(--loader-arc-2);
+  --thick: 2px;
+  inset: 16px;
+  animation-duration: 2.4s;
+  animation-delay: -1.2s;
+}
+
+@keyframes or-loader-spin { to { transform: rotate(360deg); } }
+@keyframes or-loader-breathe { 50% { transform: scale(0.94); } }
+
 /* ---------- Page change animation (router view transitions) ---------- */
 
 or-header { view-transition-name: site-header; }
@@ -433,6 +521,7 @@ or-header { view-transition-name: site-header; }
   .reveal:not(.is-revealed) { opacity: 1; }
   ::view-transition-old(root),
   ::view-transition-new(root) { animation: none; }
+  .or-loader__mark { animation: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
