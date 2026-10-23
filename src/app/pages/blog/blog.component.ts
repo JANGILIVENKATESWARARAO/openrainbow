@@ -17,11 +17,10 @@ import { RevealDirective } from '../../shared/reveal/reveal.directive';
 })
 export class BlogComponent {
   private readonly content = inject(ContentService);
-  private readonly posts = toSignal(this.content.posts$);
+  private readonly all = toSignal(this.content.posts$);
 
   readonly copy = computed(() => this.content.site().pages.blog);
 
-  readonly loaded = computed(() => this.posts() !== undefined);
-  readonly featured = computed(() => this.posts()?.[0]);
-  readonly rest = computed(() => this.posts()?.slice(1) ?? []);
+  readonly loaded = computed(() => this.all() !== undefined);
+  readonly posts = computed(() => this.all() ?? []);
 }
