@@ -1,6 +1,6 @@
 /* ==========================================================================
    Open Rainbow: global design tokens + base styles
-   Light and airy. Serif display headlines, Inter for everything else,
+   Light and airy. Inter everywhere (no serif, no italics),
    navy pill buttons, soft rounded cards, one warm bronze accent.
    Light and dark themes share one set of semantic tokens.
    ========================================================================== */
@@ -22,7 +22,6 @@
 
   /* ---------- Type ---------- */
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
 
   /* ---------- Layout ---------- */
   --container: 1240px;
@@ -160,15 +159,18 @@ h1, h2, h3, h4 {
   color: var(--ink);
 }
 
-/* Large headings use the serif display face; italics carry the emphasis */
+/* Large headings: Inter, heavier weight and tight tracking */
 h1, h2 {
-  font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.08;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.03em;
 }
 
-h1 em, h2 em { font-style: italic; color: var(--ink); }
+/* Emphasised end of a heading: same upright Inter, stronger colour */
+.emphasis { color: var(--ink); }
+
+/* No italic text anywhere on the site */
+em, i, cite, address { font-style: normal; }
 
 p { margin: 0; }
 a { color: inherit; }
@@ -224,7 +226,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   align-items: end;
   margin-bottom: clamp(40px, 5vw, 64px);
 
-  h2 { font-size: clamp(38px, 4.4vw, 56px); margin-top: 18px; }
+  h2 { font-size: clamp(34px, 4vw, 50px); margin-top: 18px; }
   p { color: var(--muted); max-width: 56ch; }
 }
 

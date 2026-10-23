@@ -33,7 +33,7 @@ export interface Crumb {
         <h1>
           {{ heading().title }}
           @if (heading().emphasis) {
-            <em>{{ heading().emphasis }}</em>
+            <span class="emphasis">{{ heading().emphasis }}</span>
           }
         </h1>
         @if (heading().lead) {
@@ -86,8 +86,8 @@ export interface Crumb {
       .heading__icon or-icon { width: 28px; height: 28px; }
       h1 {
         max-width: 20ch;
-        font-size: clamp(44px, 5.6vw, 76px);
-        line-height: 1.04;
+        font-size: clamp(40px, 5vw, 64px);
+        line-height: 1.06;
         animation: rise 0.6s var(--ease) both;
       }
       .lead {
@@ -103,7 +103,7 @@ export interface Crumb {
 export class PageHeroComponent {
   /** Current page name in the breadcrumb. */
   readonly crumb = input.required<string>();
-  /** Pill label, title, italic ending and lead, usually straight from site.json. */
+  /** Pill label, title, emphasised ending and lead, usually straight from site.json. */
   readonly heading = input.required<Heading>();
   /** Optional middle breadcrumb, e.g. Services. */
   readonly parent = input<Crumb | null>(null);

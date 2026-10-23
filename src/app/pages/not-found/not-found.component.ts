@@ -13,7 +13,7 @@ import { ContentService } from '../../core/services/content.service';
         <h1>
           {{ page.title }}
           @if (page.emphasis) {
-            <em>{{ page.emphasis }}</em>
+            <span class="emphasis">{{ page.emphasis }}</span>
           }
         </h1>
         <p class="lead">{{ page.lead }}</p>

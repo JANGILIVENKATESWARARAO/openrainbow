@@ -2,7 +2,7 @@ import { Component, input } from '@angular/core';
 import { Heading } from '../../core/models/site';
 
 /**
- * Section heading from JSON: pill label, serif title with an italic ending, and an optional lead.
+ * Section heading from JSON: pill label, title with an emphasised ending, and an optional lead.
  * Anything placed inside (for example an "All solutions" link) is shown on the right.
  */
 @Component({
@@ -16,7 +16,7 @@ import { Heading } from '../../core/models/site';
         <h2>
           {{ heading().title }}
           @if (heading().emphasis) {
-            <em>{{ heading().emphasis }}</em>
+            <span class="emphasis">{{ heading().emphasis }}</span>
           }
         </h2>
       </div>
