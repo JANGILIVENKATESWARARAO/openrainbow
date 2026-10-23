@@ -31,7 +31,7 @@ export class HomeComponent {
 
   /** All copy for this page comes from site.json → home. */
   readonly home = computed(() => this.site().home);
-  readonly vendors = computed(() => this.site().vendors);
+  readonly partners = computed(() => this.site().partners);
   readonly hero = computed(() => {
     const hero = this.home().hero;
     return { ...hero, eyebrow: this.content.fill(hero.eyebrow ?? ''), checks: hero.checks.map((c) => this.content.fill(c)) };

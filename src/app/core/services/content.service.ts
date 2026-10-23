@@ -66,7 +66,7 @@ export class ContentService {
     const values: Record<string, string | number> = {
       founded: site.company.founded,
       years: new Date().getFullYear() - site.company.founded,
-      vendors: site.vendors.length,
+      vendors: site.partners.length,
       ...extra,
     };
     return text.replace(/\{(\w+)\}/g, (match, key: string) => (key in values ? String(values[key]) : match));

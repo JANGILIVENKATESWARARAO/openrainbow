@@ -53,15 +53,24 @@
   </div>
 </section>
 
-<!-- Vendors -->
-<section class="vendors" [attr.aria-label]="h.vendorsLabel">
+<!-- Partners: logo strip that scrolls slowly and pauses on hover -->
+<section class="partners" [attr.aria-label]="h.vendorsLabel">
   <div class="container">
-    <p class="vendors__label" orReveal="fade">{{ h.vendorsLabel }}</p>
-    <ul class="vendors__list">
-      @for (v of vendors(); track v; let i = $index) {
-        <li orReveal="fade" [revealDelay]="i * 50">{{ v }}</li>
+    <p class="partners__label" orReveal="fade">{{ h.vendorsLabel }}</p>
+  </div>
+  <div class="marquee" orReveal="fade" [revealDelay]="120">
+    <div class="marquee__track">
+      <!-- The list is shown twice so the loop is seamless; the copy is hidden from screen readers -->
+      @for (round of [0, 1]; track round) {
+        <ul class="marquee__group" [attr.aria-hidden]="round === 1 ? 'true' : null">
+          @for (p of partners(); track p.name) {
+            <li [attr.title]="p.name">
+              <img [src]="p.logo" [alt]="round === 0 ? p.name : ''" loading="lazy" decoding="async" />
+            </li>
+          }
+        </ul>
       }
-    </ul>
+    </div>
   </div>
 </section>
 
