@@ -22,7 +22,7 @@ export class ThemeService {
       const root = this.document.documentElement;
       root.setAttribute('data-theme', theme);
       root.style.colorScheme = theme;
-      this.document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#0b1420' : '#ffffff');
+      this.document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#0f1114' : '#ffffff');
     });
 
     // Follow the operating system until the visitor picks a theme themselves.
