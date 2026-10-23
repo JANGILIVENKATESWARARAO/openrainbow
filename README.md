@@ -10,7 +10,7 @@ Professional redesign of https://www.openrainbow.co.uk.
 | Storybook    | 10.6    |
 | Node.js      | 22.22+ or 24.15+ |
 
-Standalone components, signals, new control flow, zoneless change detection. Fonts: Inter (text) and Instrument Serif (headings).
+Standalone components, signals, new control flow, zoneless change detection. Font: Inter only (no serif, no italics).
 
 ## Run it
 
@@ -58,7 +58,7 @@ blog.json        blog posts
 
 Edit the JSON, save, refresh. No code change needed.
 `site.json` texts can use `{founded}`, `{years}`, `{vendors}` and `{category}`; the app fills them in.
-Headings use `"title"` + `"emphasis"` (e.g. "Our" + "services"): the emphasis part is shown in italic.
+Headings use `"title"` + `"emphasis"` (e.g. "Our" + "services"): the emphasis part is shown in a stronger colour (upright Inter, no italics).
 
 ## Remote JSON (Google Drive, later)
 
