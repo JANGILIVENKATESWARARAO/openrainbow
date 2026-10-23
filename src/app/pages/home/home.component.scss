@@ -67,6 +67,7 @@
 
 /* Visual: life cycle ring + live monitoring card (ops-hub component) */
 .hero__visual {
+  min-width: 0;
   margin-top: clamp(40px, 5vw, 56px);
   animation: rise 0.8s 0.12s var(--ease) both;
 }

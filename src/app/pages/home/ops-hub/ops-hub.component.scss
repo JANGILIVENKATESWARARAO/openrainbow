@@ -21,6 +21,9 @@
   overflow: hidden;
 }
 
+/* Grid children may shrink below their content width, so nothing pushes past the panel on small screens */
+.hub > * { min-width: 0; max-width: 100%; }
+
 .hub__note {
   position: absolute;
   right: clamp(24px, 4vw, 48px);
