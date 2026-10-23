@@ -18,9 +18,9 @@
 
 .header {
   position: relative;
-  background: var(--header-bg);
+  /* Solid page colour (no see-through), light and dark theme */
+  background: var(--bg);
   border-bottom: 1px solid transparent;
-  backdrop-filter: saturate(1.4) blur(8px);
   transition: box-shadow 0.25s var(--ease);
 
   &.is-scrolled {
@@ -191,8 +191,7 @@
 @media (max-width: 1080px) {
   .header__toggle { display: grid; }
 
-  /* Full-screen panel under the bar.
-     "absolute" + viewport height (not "fixed"): the bar's blur effect would otherwise squash a fixed panel to the bar's own height. */
+  /* Full-screen panel under the bar (absolute + viewport height) */
   .header__nav {
     position: absolute;
     top: 100%;
