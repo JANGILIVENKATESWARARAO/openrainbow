@@ -56,6 +56,7 @@ Use the theme switch in the Storybook toolbar to see light and dark.
 ## Logo and icons
 
 - Logo files: `public/images/logo-light.svg` (dark text, light theme) and `public/images/logo-dark.svg` (white text, dark theme and footer). Replace them with your own files of the same name at any time.
+- Partner logos: `public/images/partners/*.svg`, listed in `site.json` → `partners` (name + logo path). To add or replace a logo, drop the file in that folder and add/edit the entry.
 - Icons come from Lucide. Short names used in the JSON (e.g. `"shield"`) are mapped in `src/app/shared/icon/icons.ts`. To add an icon, import it there and add it to `ICON_SET`.
 
 ## Content (all from JSON)
@@ -63,7 +64,7 @@ Use the theme switch in the Storybook toolbar to see light and dark.
 Every text on the site comes from JSON files in `public/data`:
 
 ```
-site.json        company, contact, menu, header, footer, vendors, enquiry topics,
+site.json        company, contact, menu, header, footer, partner logos, enquiry topics,
                  home page copy, page titles and texts for every page
 services.json    service practices + service detail pages
 solutions.json   technologies + solution detail pages + featured offers
