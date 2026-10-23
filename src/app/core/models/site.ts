@@ -9,7 +9,7 @@ export interface Link {
   path: string;
 }
 
-/** A heading block: optional pill label, title with an italic ending, optional lead. */
+/** A heading block: optional pill label, title with an emphasised ending, optional lead. */
 export interface Heading {
   eyebrow?: string;
   title: string;
@@ -27,9 +27,8 @@ export interface Office {
 }
 
 export interface NavItem extends Link {
-  /** Shows a mega menu with the pages from services.json or solutions.json. */
+  /** Shows a dropdown with the pages from services.json or solutions.json. */
   menu?: 'services' | 'solutions';
-  intro?: string;
 }
 
 export interface StatusRow {
@@ -54,7 +53,7 @@ export interface SiteData {
     offices: Office[];
   };
   navigation: NavItem[];
-  header: { cta: Link; menuContact: string };
+  header: { cta: Link; viewAll: string };
   footer: { companyLabel: string; servicesLabel: string; solutionsLabel: string; links: Link[]; salesLabel: string };
   vendors: string[];
   enquiryTopics: string[];
@@ -85,7 +84,7 @@ export interface SiteData {
     technologies: Heading & { link: Link; count: number };
     outcomes: { eyebrow: string };
     featured: Heading & { cta: string; topic: string };
-    insights: Heading & { link: Link; cta: string };
+    blog: Heading & { link: Link; cta: string };
     quote: string;
   };
   pages: {
@@ -103,7 +102,7 @@ export interface SiteData {
       specialist: { label: string; text: string; cta: string };
       related: { eyebrow: string; title: string; emphasis: string; link: string };
     };
-    insights: PageHeading & { empty: string; cta: string; readTime: string };
+    blog: PageHeading & { empty: string; cta: string; readTime: string };
     article: {
       crumb: string;
       authorRole: string;

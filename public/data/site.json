@@ -35,28 +35,26 @@
   },
   "navigation": [
     {
-      "label": "Services",
-      "path": "/services",
-      "menu": "services",
-      "intro": "Infrastructure, managed and professional services across the full IT life cycle."
-    },
-    {
-      "label": "Solutions",
-      "path": "/solutions",
-      "menu": "solutions",
-      "intro": "Technology from leading vendors, designed around the outcomes your business needs."
-    },
-    {
-      "label": "Insights",
-      "path": "/insights"
-    },
-    {
       "label": "About",
       "path": "/about"
     },
     {
+      "label": "Services",
+      "path": "/services",
+      "menu": "services"
+    },
+    {
+      "label": "Solutions",
+      "path": "/solutions",
+      "menu": "solutions"
+    },
+    {
       "label": "Contact",
       "path": "/contact"
+    },
+    {
+      "label": "Blog",
+      "path": "/blog"
     }
   ],
   "header": {
@@ -64,7 +62,7 @@
       "label": "Get in touch",
       "path": "/contact"
     },
-    "menuContact": "Speak to a specialist"
+    "viewAll": "View all"
   },
   "footer": {
     "companyLabel": "Company",
@@ -76,8 +74,8 @@
         "path": "/about"
       },
       {
-        "label": "Insights",
-        "path": "/insights"
+        "label": "Blog",
+        "path": "/blog"
       },
       {
         "label": "Contact",
@@ -259,15 +257,15 @@
       "cta": "Request details",
       "topic": "Hardware and software sales"
     },
-    "insights": {
-      "eyebrow": "Insights",
-      "title": "From",
-      "emphasis": "our team",
+    "blog": {
+      "eyebrow": "Blog",
+      "title": "Latest from",
+      "emphasis": "the blog",
       "link": {
-        "label": "All insights",
-        "path": "/insights"
+        "label": "All posts",
+        "path": "/blog"
       },
-      "cta": "Read article"
+      "cta": "Read post"
     },
     "quote": "“We won't ever compromise on quality: of our people, our advice, our services or your solutions.”"
   },
@@ -329,23 +327,23 @@
         "link": "All {category}"
       }
     },
-    "insights": {
-      "crumb": "Insights",
-      "eyebrow": "Insights",
+    "blog": {
+      "crumb": "Blog",
+      "eyebrow": "Blog",
       "title": "Ideas from",
       "emphasis": "our team",
       "lead": "Guidance, news and analysis on the technology that runs your business, from the Open Rainbow team.",
       "empty": "New articles are on their way. Please check back soon.",
-      "cta": "Read article",
+      "cta": "Read post",
       "readTime": "min read"
     },
     "article": {
-      "crumb": "Insights",
+      "crumb": "Blog",
       "authorRole": "Open Rainbow",
       "outline": "On this page",
       "share": "Share",
-      "back": "All insights",
-      "more": "More insights",
+      "back": "All posts",
+      "more": "More from the blog",
       "readTime": "min read",
       "cta": "Need help with your next upgrade?"
     },

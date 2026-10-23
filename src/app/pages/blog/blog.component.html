@@ -1,0 +1,49 @@
+@let page = copy();
+
+<or-page-hero [crumb]="page.crumb" [heading]="page" />
+
+<section class="section">
+  <div class="container">
+    @if (featured(); as post) {
+      <a class="feature card-soft" [routerLink]="['/blog', post.slug]">
+        <div class="feature__panel" aria-hidden="true">
+          <span class="feature__cat">{{ post.category }}</span>
+          <or-icon name="laptop" />
+        </div>
+        <div class="feature__body">
+          <div class="meta">
+            <span class="meta__cat">{{ post.category }}</span>
+            <span><or-icon name="calendar" />{{ post.date | date: 'd MMMM y' }}</span>
+            <span><or-icon name="clock" />{{ post.readingMinutes }} {{ page.readTime }}</span>
+          </div>
+          <h2>{{ post.title }}</h2>
+          <p>{{ post.excerpt }}</p>
+          <span class="meta__author"><or-icon name="user" />{{ post.author }}</span>
+          <span class="arrow-link">{{ page.cta }} <span aria-hidden="true">&rarr;</span></span>
+        </div>
+      </a>
+    } @else if (loaded()) {
+      <p class="empty">{{ page.empty }}</p>
+    }
+
+    @if (rest().length) {
+      <ul class="grid">
+        @for (post of rest(); track post.slug) {
+          <li>
+            <a class="card card-soft" [routerLink]="['/blog', post.slug]">
+              <div class="meta">
+                <span class="meta__cat">{{ post.category }}</span>
+                <span>{{ post.date | date: 'd MMM y' }}</span>
+              </div>
+              <h3>{{ post.title }}</h3>
+              <p>{{ post.excerpt }}</p>
+              <span class="arrow-link">{{ page.cta }} <span aria-hidden="true">&rarr;</span></span>
+            </a>
+          </li>
+        }
+      </ul>
+    }
+  </div>
+</section>
+
+<or-cta-band />
