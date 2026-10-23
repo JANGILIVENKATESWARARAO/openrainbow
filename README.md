@@ -34,7 +34,7 @@ npm run storybook          # http://localhost:6006
 npm run build-storybook    # static build
 ```
 
-Stories: icon, theme toggle, logo, section head, page hero, CTA band, practices, status panel.
+Stories: icon, theme toggle, logo, section head, page hero, CTA band, practices, operations hub.
 Use the theme switch in the Storybook toolbar to see light and dark.
 
 ## Light and dark theme
@@ -55,6 +55,7 @@ Use the theme switch in the Storybook toolbar to see light and dark.
 
 ## Logo and icons
 
+- Social links (footer): `site.json` → `footer.social` (label, icon, url). Icons without a url show but are not clickable yet; just add the url later.
 - Logo files: `public/images/logo-light.svg` (dark text, light theme) and `public/images/logo-dark.svg` (white text, dark theme and footer). Replace them with your own files of the same name at any time.
 - Partner logos: `public/images/partners/*.svg`, listed in `site.json` → `partners` (name + logo path). To add or replace a logo, drop the file in that folder and add/edit the entry.
 - Icons come from Lucide. Short names used in the JSON (e.g. `"shield"`) are mapped in `src/app/shared/icon/icons.ts`. To add an icon, import it there and add it to `ICON_SET`.
@@ -102,7 +103,7 @@ If a remote file fails to load, the app uses the local copy, so the site never g
 | `/blog/:slug`       | Blog post                              |
 | `/about`            | Company                                |
 | `/contact`          | Enquiry form. `?topic=` pre-selects the enquiry type |
-| `**`                | 404                                    |
+| `**`                | 404 page (any wrong address, e.g. `/portfolio`). The "0" is the OR mark with orbiting stars |
 
 ## Contact form
 
