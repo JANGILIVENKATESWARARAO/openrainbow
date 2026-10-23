@@ -263,7 +263,13 @@ a.card-soft:hover,
 .card-soft:has(a:hover) {
   border-color: var(--line-strong);
   box-shadow: 0 18px 40px -28px var(--shadow);
+  transform: translateY(-4px);
 }
+
+/* Icon tiles lift a little when their card is hovered */
+.card-soft .icon-tile { transition: transform 0.3s var(--ease), background-color 0.3s var(--ease); }
+a.card-soft:hover .icon-tile,
+.card-soft:has(a:hover) .icon-tile { transform: translateY(-2px) scale(1.06); }
 
 @media (max-width: 860px) {
   .section-head { grid-template-columns: 1fr; }
@@ -365,7 +371,42 @@ a.card-soft:hover,
   &:hover span { transform: translateX(4px); }
 }
 
+/* ---------- Content reveal (shared/reveal/reveal.directive.ts) ---------- */
+
+.reveal:not(.is-revealed) { opacity: 0; }
+
+/* "backwards" keeps the start frame during the delay, then hands styles back to the element (hover effects keep working). */
+.reveal.is-revealed { animation: reveal-up 0.7s var(--ease) var(--reveal-delay, 0ms) backwards; }
+.reveal.is-revealed[data-reveal='down'] { animation-name: reveal-down; }
+.reveal.is-revealed[data-reveal='left'] { animation-name: reveal-left; }
+.reveal.is-revealed[data-reveal='right'] { animation-name: reveal-right; }
+.reveal.is-revealed[data-reveal='zoom'] { animation-name: reveal-zoom; }
+.reveal.is-revealed[data-reveal='fade'] { animation-name: reveal-fade; animation-duration: 0.9s; }
+
+@keyframes reveal-up { from { opacity: 0; transform: translate3d(0, 28px, 0); } }
+@keyframes reveal-down { from { opacity: 0; transform: translate3d(0, -20px, 0); } }
+@keyframes reveal-left { from { opacity: 0; transform: translate3d(-36px, 0, 0); } }
+@keyframes reveal-right { from { opacity: 0; transform: translate3d(36px, 0, 0); } }
+@keyframes reveal-zoom { from { opacity: 0; transform: scale(0.94); } }
+@keyframes reveal-fade { from { opacity: 0; } }
+
+/* Numbers that count up keep the same width while counting */
+.count-up { font-variant-numeric: tabular-nums; }
+
+/* ---------- Page change animation (router view transitions) ---------- */
+
+or-header { view-transition-name: site-header; }
+
+::view-transition-old(root) { animation: page-out 0.18s var(--ease) both; }
+::view-transition-new(root) { animation: page-in 0.32s var(--ease) both; }
+
+@keyframes page-out { to { opacity: 0; } }
+@keyframes page-in { from { opacity: 0; transform: translate3d(0, 12px, 0); } }
+
 @media (prefers-reduced-motion: reduce) {
+  .reveal:not(.is-revealed) { opacity: 1; }
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

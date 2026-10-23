@@ -84,7 +84,6 @@ export interface SiteData {
     technologies: Heading & { link: Link; count: number };
     outcomes: { eyebrow: string };
     featured: Heading & { cta: string; topic: string };
-    blog: Heading & { link: Link; cta: string };
     quote: string;
   };
   pages: {

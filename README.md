@@ -44,6 +44,14 @@ Use the theme switch in the Storybook toolbar to see light and dark.
 - Tailwind 4 reads the same tokens (`src/tailwind.css`), e.g. `bg-surface`, `text-ink`, `text-accent`, and `dark:` works with the `data-theme` attribute.
 - The toggle in the header saves the choice (`localStorage` key `or-theme`). With no choice, the site follows the system setting.
 
+## Animations
+
+- **Content reveal:** add `orReveal` to any element and it slides in the first time it scrolls into view. Effects: `orReveal` (up, default), `orReveal="down"`, `"left"`, `"right"`, `"zoom"`, `"fade"`. Stagger lists with `[revealDelay]="$index * 80"` (ms, max 480). Code: `src/app/shared/reveal/reveal.directive.ts`, styles: `.reveal` in `src/styles.scss`.
+- **Count up:** `<dt [orCountUp]="'30+'"></dt>` counts the number up when it comes into view (years and values like `24/7` stay as they are).
+- **Page change:** a soft fade between pages (router view transitions). The header stays still.
+- Cards lift on hover, the CTA band glow drifts slowly, and blog posts show a reading bar.
+- Everything respects the "reduce motion" setting of the device.
+
 ## Logo and icons
 
 - Logo files: `public/images/logo-light.svg` (dark text, light theme) and `public/images/logo-dark.svg` (white text, dark theme and footer). Replace them with your own files of the same name at any time.
@@ -64,7 +72,6 @@ blog.json        blog posts
 Edit the JSON, save, refresh. No code change needed.
 `site.json` texts can use `{founded}`, `{years}`, `{vendors}` and `{category}`; the app fills them in.
 Headings use `"title"` + `"emphasis"` (e.g. "Our" + "services"): the emphasis part is shown in a stronger colour (upright Inter, no italics).
-The menu order is the order of `navigation` in `site.json`.
 
 ## Remote JSON (Google Drive, later)
 
@@ -85,14 +92,14 @@ If a remote file fails to load, the app uses the local copy, so the site never g
 | Route               | Page                                   |
 |---------------------|----------------------------------------|
 | `/`                 | Home                                   |
-| `/about`            | Company                                |
 | `/services`         | Services overview                      |
 | `/services/:slug`   | Service detail page (6)                |
 | `/solutions`        | Solutions overview                     |
 | `/solutions/:slug`  | Solution detail page (5)               |
-| `/contact`          | Enquiry form. `?topic=` pre-selects the enquiry type |
 | `/blog`             | Blog listing (old `/insights` links redirect here) |
 | `/blog/:slug`       | Blog post                              |
+| `/about`            | Company                                |
+| `/contact`          | Enquiry form. `?topic=` pre-selects the enquiry type |
 | `**`                | 404                                    |
 
 ## Contact form

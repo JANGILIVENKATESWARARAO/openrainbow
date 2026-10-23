@@ -257,16 +257,6 @@
       "cta": "Request details",
       "topic": "Hardware and software sales"
     },
-    "blog": {
-      "eyebrow": "Blog",
-      "title": "Latest from",
-      "emphasis": "the blog",
-      "link": {
-        "label": "All posts",
-        "path": "/blog"
-      },
-      "cta": "Read post"
-    },
     "quote": "“We won't ever compromise on quality: of our people, our advice, our services or your solutions.”"
   },
   "pages": {
