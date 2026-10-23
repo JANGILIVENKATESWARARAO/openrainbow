@@ -51,7 +51,7 @@
       @for (l of footer().links; track l.path) {
         <a [routerLink]="l.path">{{ l.label }}</a>
       }
-      <a [href]="'mailto:' + contact().salesEmail">{{ footer().salesLabel }}</a>
+      <a [href]="'mailto:' + contact().email">{{ footer().salesLabel }}</a>
     </nav>
   </div>
 

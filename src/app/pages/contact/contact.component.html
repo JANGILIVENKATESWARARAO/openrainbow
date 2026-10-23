@@ -102,7 +102,6 @@
       <div class="detail" orReveal="right" [revealDelay]="180">
         <h2 class="detail__label">{{ page.details.email }}</h2>
         <a [href]="'mailto:' + c.email">{{ c.email }}</a>
-        <a [href]="'mailto:' + c.salesEmail">{{ c.salesEmail }} <span class="opt">{{ page.details.sales }}</span></a>
       </div>
       @for (o of c.offices; track o.label; let i = $index) {
         <address class="detail" orReveal="right" [revealDelay]="260 + i * 80">

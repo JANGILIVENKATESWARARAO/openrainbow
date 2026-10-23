@@ -10,7 +10,6 @@
     "phone": "+44 (0)20 7096 0558",
     "phoneHref": "tel:+442070960558",
     "email": "info@openrainbow.co.uk",
-    "salesEmail": "sales@openrainbow.co.uk",
     "registration": "Registered in England & Wales",
     "offices": [
       {
@@ -448,8 +447,7 @@
       },
       "details": {
         "phone": "Telephone",
-        "email": "Email",
-        "sales": "(sales)"
+        "email": "Email"
       },
       "topicGroup": "General"
     },

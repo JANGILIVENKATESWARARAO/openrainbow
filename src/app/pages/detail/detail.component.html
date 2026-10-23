@@ -27,7 +27,7 @@
       <a routerLink="/contact" [queryParams]="{ topic: p.title }" class="btn btn--primary specialist__cta">{{ labels.specialist.cta }}</a>
       <ul class="specialist__reach">
         <li><or-icon name="phone" /><a [href]="c.phoneHref">{{ c.phone }}</a></li>
-        <li><or-icon name="mail" /><a [href]="'mailto:' + c.salesEmail">{{ c.salesEmail }}</a></li>
+        <li><or-icon name="mail" /><a [href]="'mailto:' + c.email">{{ c.email }}</a></li>
       </ul>
     </aside>
   </div>

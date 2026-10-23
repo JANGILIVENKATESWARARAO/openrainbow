@@ -60,7 +60,6 @@ export interface SiteData {
     phone: string;
     phoneHref: string;
     email: string;
-    salesEmail: string;
     registration: string;
     offices: Office[];
   };
@@ -139,7 +138,7 @@ export interface SiteData {
     contact: PageHeading & {
       topicGroup: string;
       sent: { title: string; text: string; again: string };
-      details: { phone: string; email: string; sales: string };
+      details: { phone: string; email: string };
     };
     notFound: Heading & { code: string; cta: Link; linksLabel: string };
   };
