@@ -1,26 +1,24 @@
 import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
-import { StatusPanelComponent } from './status-panel/status-panel.component';
+import { OpsHubComponent } from './ops-hub/ops-hub.component';
 import { PracticesComponent } from '../../shared/practices/practices.component';
 import { CtaBandComponent } from '../../shared/cta-band/cta-band.component';
 import { IconComponent } from '../../shared/icon/icon.component';
 import { SectionHeadComponent } from '../../shared/section-head/section-head.component';
 import { RevealDirective } from '../../shared/reveal/reveal.directive';
-import { CountUpDirective } from '../../shared/count-up/count-up.directive';
 import { ContentService } from '../../core/services/content.service';
 
 @Component({
   selector: 'or-home',
   imports: [
     RouterLink,
-    StatusPanelComponent,
+    OpsHubComponent,
     PracticesComponent,
     CtaBandComponent,
     IconComponent,
     SectionHeadComponent,
     RevealDirective,
-    CountUpDirective,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

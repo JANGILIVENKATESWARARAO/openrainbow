@@ -1,0 +1,60 @@
+@let d = data();
+
+<figure class="hub" [attr.aria-label]="d.note">
+  <!-- Life cycle ring with the OR mark at its centre -->
+  <div class="cycle" [style.--n]="count()" role="img" [attr.aria-label]="d.cycleLabel">
+    <div class="cycle__ring" aria-hidden="true">
+      <span class="cycle__comet or-loader__arc"></span>
+    </div>
+
+    @for (step of steps(); track step.title; let i = $index) {
+      <span class="cycle__node" [style.--i]="i" aria-hidden="true">
+        <span class="cycle__no">0{{ i + 1 }}</span>{{ step.title }}
+      </span>
+    }
+
+    <div class="cycle__core" aria-hidden="true">
+      <span class="cycle__ping"></span>
+      <span class="cycle__ping cycle__ping--late"></span>
+      <img src="images/logo-mark.svg" alt="" width="88" height="88" />
+    </div>
+
+    <span class="cycle__label">{{ d.cycleLabel }}</span>
+  </div>
+
+  <!-- Live monitoring card -->
+  <div class="card">
+    <div class="card__bar">
+      <span class="card__title">{{ d.title }}</span>
+      <span class="card__live"><span class="dot" aria-hidden="true"></span>{{ d.live }} &middot; {{ time() }} UK</span>
+    </div>
+
+    <dl class="card__stats" [attr.aria-label]="d.coverage.label">
+      @for (s of stats(); track s.label) {
+        <div>
+          <dt [orCountUp]="s.value"></dt>
+          <dd>{{ s.label }}</dd>
+        </div>
+      }
+    </dl>
+
+    <ul class="card__rows">
+      @for (row of d.rows; track row.system; let i = $index) {
+        <li class="row" [style.--i]="i" [style.--rows]="d.rows.length">
+          <div>
+            <span class="row__system">{{ row.system }}</span>
+            <span class="row__detail">{{ row.detail }}</span>
+          </div>
+          <span class="row__state"><span class="dot dot--static" aria-hidden="true"></span>{{ row.state }}</span>
+        </li>
+      }
+    </ul>
+
+    <div class="card__foot">
+      <span>{{ d.footLabel }}</span>
+      <span class="card__mono">{{ d.footValue }}</span>
+    </div>
+  </div>
+
+  <figcaption class="hub__note">{{ d.note }}</figcaption>
+</figure>

@@ -20,35 +20,7 @@
     </div>
 
     <div class="hero__visual">
-      <div class="hero__main">
-        <or-status-panel [data]="m" />
-      </div>
-
-      <div class="hero__side" [attr.aria-label]="m.note" orReveal="right" [revealDelay]="200">
-        <div class="stat-card">
-          <p class="stat-card__label">{{ m.coverage.label }}</p>
-          <dl class="stat-card__row">
-            @for (s of stats(); track s.label) {
-              <div><dt [orCountUp]="s.value"></dt><dd>{{ s.label }}</dd></div>
-            }
-          </dl>
-        </div>
-
-        <div class="stat-card stat-card--ring">
-          <div class="ring" [style.--value]="m.desk.ringPercent" aria-hidden="true">
-            <span class="ring__label">{{ m.desk.ringLabel }}</span>
-            <span class="ring__value">{{ m.desk.ringValue }}</span>
-            <span class="ring__sub">{{ m.desk.ringSub }}</span>
-          </div>
-          <div class="ring__meta">
-            <p class="stat-card__label">{{ m.desk.label }}</p>
-            @for (item of m.desk.items; track item.text) {
-              <p><or-icon [name]="item.icon" />{{ item.text }}</p>
-            }
-          </div>
-        </div>
-        <p class="hero__note">{{ m.note }}</p>
-      </div>
+      <or-ops-hub [data]="m" [steps]="h.approach.steps" [stats]="stats()" />
     </div>
   </div>
 </section>
