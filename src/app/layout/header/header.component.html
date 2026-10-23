@@ -1,13 +1,3 @@
-<div class="utility">
-  <div class="container utility__bar">
-    <span class="utility__note">Hardware, software and IT services for UK organisations since 2014</span>
-    <div class="utility__contact">
-      <a [href]="contact.phoneHref"><or-icon name="phone" />{{ contact.phone }}</a>
-      <a [href]="'mailto:' + contact.salesEmail"><or-icon name="mail" />{{ contact.salesEmail }}</a>
-    </div>
-  </div>
-</div>
-
 <header class="header" [class.is-open]="menuOpen()" [class.is-scrolled]="scrolled()">
   <div class="container header__bar">
     <a routerLink="/" class="header__brand" aria-label="Open Rainbow home">
@@ -60,7 +50,7 @@
           </li>
         }
       </ul>
-      <a routerLink="/contact" class="btn btn--primary header__cta">Request a consultation</a>
+      <a routerLink="/contact" class="btn btn--primary header__cta">Get in touch</a>
     </nav>
   </div>
 </header>

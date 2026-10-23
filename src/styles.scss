@@ -1,6 +1,7 @@
 /* ==========================================================================
    Open Rainbow: global design tokens + base styles
-   Calm, corporate, precise. Inter type, navy and graphite, one restrained bronze accent.
+   Light and airy. Serif display headlines, Inter for everything else,
+   navy pill buttons, soft rounded cards, one warm bronze accent.
    ========================================================================== */
 
 :root {
@@ -10,11 +11,14 @@
   --navy-700: #183652;
   --accent: #8a6220;       /* bronze: small details only */
 
+  --accent-soft: #f6efe3;  /* icon tiles */
+
   /* Surfaces */
   --bg: #ffffff;
-  --paper: #f4f6f8;
-  --line: #dde3e9;
-  --line-strong: #c5cfd9;
+  --paper: #f6f7f9;
+  --card: #fcfcfd;
+  --line: #e6e9ee;
+  --line-strong: #cfd6de;
 
   /* Text */
   --ink: #0f2236;
@@ -28,12 +32,14 @@
 
   /* Type */
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
 
   /* Layout */
   --container: 1240px;
   --gutter: clamp(20px, 4vw, 40px);
-  --radius: 6px;
-  --header-h: 76px;
+  --radius: 8px;
+  --radius-card: 14px;
+  --header-h: 72px;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
@@ -59,10 +65,20 @@ h1, h2, h3, h4 {
   margin: 0;
   font-family: var(--font-sans);
   font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
   color: var(--ink);
 }
+
+/* Large headings use the serif display face; italics carry the emphasis */
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+h1 em, h2 em { font-style: italic; color: var(--ink); }
 
 p { margin: 0; }
 a { color: inherit; }
@@ -88,21 +104,25 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .section { padding-block: clamp(72px, 9vw, 120px); }
 .section--paper { background: var(--paper); }
 
-/* Small label above headings */
+/* Small pill label above headings */
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  font-weight: 600;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--text);
 
   &::before {
     content: '';
-    width: 24px;
-    height: 2px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
     background: var(--accent);
   }
 }
@@ -114,8 +134,31 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   align-items: end;
   margin-bottom: clamp(40px, 5vw, 64px);
 
-  h2 { font-size: clamp(32px, 3.6vw, 46px); margin-top: 16px; }
+  h2 { font-size: clamp(38px, 4.4vw, 56px); margin-top: 18px; }
   p { color: var(--muted); max-width: 56ch; }
+}
+
+/* Centred heading block, used for major sections */
+.section-head--center {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+
+  p { margin-inline: auto; }
+}
+
+/* Soft rounded card */
+.card-soft {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--card);
+  transition: border-color 0.2s var(--ease), box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+a.card-soft:hover,
+.card-soft:has(a:hover) {
+  border-color: var(--line-strong);
+  box-shadow: 0 18px 40px -28px rgba(15, 34, 54, 0.35);
 }
 
 @media (max-width: 860px) {
@@ -140,12 +183,12 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   width: 48px;
   height: 48px;
   border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--paper);
-  color: var(--navy-800);
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
-.icon-tile--sm { width: 36px; height: 36px; border-radius: 6px; }
+.icon-tile--sm { width: 36px; height: 36px; border-radius: 8px; }
 .icon-tile--sm or-icon { width: 20px; height: 20px; }
 .icon-tile--dark { border-color: rgba(255, 255, 255, 0.14); background: rgba(255, 255, 255, 0.06); color: #fff; }
 
@@ -156,16 +199,19 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-height: 50px;
+  min-height: 48px;
   padding: 0 24px;
   border: 1px solid transparent;
-  border-radius: var(--radius);
+  border-radius: 999px;
   font: 500 16px/1 var(--font-sans);
   text-decoration: none;
   cursor: pointer;
   transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
 
   &[disabled] { opacity: 0.6; cursor: progress; }
+
+  .btn__arrow { transition: transform 0.2s var(--ease); }
+  &:hover .btn__arrow { transform: translateX(3px); }
 }
 
 .btn--primary {
@@ -176,9 +222,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 .btn--secondary {
   background: transparent;
-  border-color: var(--line-strong);
+  border-color: var(--navy-800);
   color: var(--ink);
-  &:hover { border-color: var(--ink); }
+  &:hover { background: var(--paper); }
 }
 
 .btn--light {
@@ -199,11 +245,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   align-items: center;
   gap: 8px;
   font-weight: 500;
-  color: var(--ink);
+  color: var(--accent);
   text-decoration: none;
 
   span { transition: transform 0.2s var(--ease); }
-  &:hover { color: var(--navy-700); }
+  &:hover { color: var(--ink); }
   &:hover span { transform: translateX(4px); }
 }
 

@@ -19,7 +19,7 @@ import { Component, input } from '@angular/core';
         place-items: center;
         width: 40px;
         height: 40px;
-        border-radius: 6px;
+        border-radius: 10px;
         background: var(--navy-800);
         color: #fff;
         font: 600 16px/1 var(--font-sans);
