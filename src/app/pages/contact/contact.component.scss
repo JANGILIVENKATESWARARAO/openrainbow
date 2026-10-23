@@ -10,21 +10,26 @@ form {
   gap: 24px;
 }
 
+/* Two fields side by side. Both start at the top, so an error message under one
+   field never pushes or stretches the field next to it. */
 .row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
+  align-items: start;
 }
 
 .field {
   display: grid;
   gap: 8px;
+  align-content: start;
   min-width: 0;
 }
 
 label {
   font-weight: 500;
   font-size: 15px;
+  line-height: 1.4;
   color: var(--ink);
 }
 
@@ -38,8 +43,10 @@ input[type='email'],
 input[type='tel'],
 select,
 textarea {
+  display: block;
   width: 100%;
   min-height: 50px;
+  margin: 0;
   padding: 12px 14px;
   border: 1px solid var(--line-strong);
   border-radius: 10px;
@@ -76,6 +83,12 @@ textarea {
   }
 }
 
+/* Single-line fields all have the same height */
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+select { height: 50px; }
+
 textarea { resize: vertical; min-height: 160px; }
 
 .check {
@@ -101,8 +114,12 @@ textarea { resize: vertical; min-height: 160px; }
 
 .error {
   font-size: 14px;
+  line-height: 1.4;
   color: var(--danger);
+  animation: error-in 0.2s var(--ease) both;
 }
+
+@keyframes error-in { from { opacity: 0; transform: translateY(-4px); } }
 
 .error--form { font-size: 16px; }
 
