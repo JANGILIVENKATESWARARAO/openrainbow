@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Observable, of, delay } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { Observable, delay, of } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 export interface ContactRequest {
   name: string;
@@ -12,14 +14,16 @@ export interface ContactRequest {
 
 /**
  * Sends contact form enquiries.
- *
- * TODO: connect to your real API. For example:
- *   private http = inject(HttpClient);
- *   send(req: ContactRequest) { return this.http.post<void>('/api/contact', req); }
+ * Posts to environment.contactApi when it is set; otherwise uses a short mock delay.
  */
 @Injectable({ providedIn: 'root' })
 export class ContactService {
-  send(_request: ContactRequest): Observable<void> {
-    return of(void 0).pipe(delay(900));
+  private readonly http = inject(HttpClient);
+
+  send(request: ContactRequest): Observable<unknown> {
+    if (environment.contactApi) {
+      return this.http.post(environment.contactApi, request);
+    }
+    return of(null).pipe(delay(900));
   }
 }

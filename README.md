@@ -1,11 +1,25 @@
 # Open Rainbow website (Angular)
 
-Professional redesign of https://www.openrainbow.co.uk built with Angular 19 (standalone components, signals, new control flow). Font: Inter.
+Professional redesign of https://www.openrainbow.co.uk.
+
+| Tool         | Version |
+|--------------|---------|
+| Angular      | 22.2    |
+| TypeScript   | 6.0     |
+| Tailwind CSS | 4.3     |
+| Storybook    | 10.6    |
+| Node.js      | 22.22+ or 24.15+ |
+
+Standalone components, signals, new control flow, zoneless change detection. Fonts: Inter (text) and Instrument Serif (headings).
 
 ## Run it
 
+After pulling this version, do a clean install once:
+
 ```
 cd "D:\Projects\Open Rainbow\openrainbow"
+rmdir /s /q node_modules        (PowerShell: Remove-Item -Recurse -Force node_modules)
+del package-lock.json
 npm install
 npm start
 ```
@@ -13,54 +27,68 @@ npm start
 The site opens at http://localhost:4200. Production build: `npm run build` (output in `dist/openrainbow`).
 On a live server, serve `index.html` for every route (standard Angular single-page set-up).
 
+## Storybook
+
+```
+npm run storybook          # http://localhost:6006
+npm run build-storybook    # static build
+```
+
+Stories: icon, theme toggle, logo, section head, page hero, CTA band, practices, status panel.
+Use the theme switch in the Storybook toolbar to see light and dark.
+
+## Light and dark theme
+
+- Colours are CSS variables in `src/styles.scss`: brand constants (`--navy-*`, `--bronze`) and theme tokens under `[data-theme='light']` and `[data-theme='dark']`.
+- Components only use tokens (`var(--bg)`, `var(--ink)`, `var(--accent)` ...). Change a colour in one place and both themes follow.
+- Tailwind 4 reads the same tokens (`src/tailwind.css`), e.g. `bg-surface`, `text-ink`, `text-accent`, and `dark:` works with the `data-theme` attribute.
+- The toggle in the header saves the choice (`localStorage` key `or-theme`). With no choice, the site follows the system setting.
+
+## Content (all from JSON)
+
+Every text on the site comes from JSON files in `public/data`:
+
+```
+site.json        company, contact, menu, header, footer, vendors, enquiry topics,
+                 home page copy, page titles and texts for every page
+services.json    service practices + service detail pages
+solutions.json   technologies + solution detail pages + featured offers
+blog.json        blog posts
+```
+
+Edit the JSON, save, refresh. No code change needed.
+`site.json` texts can use `{founded}`, `{years}`, `{vendors}` and `{category}`; the app fills them in.
+Headings use `"title"` + `"emphasis"` (e.g. "Our" + "services"): the emphasis part is shown in italic.
+
+## Remote JSON (Google Drive, later)
+
+Settings are in `src/environments/environment.ts`. Right now `content.remote` is `false`, so the local files are used.
+
+To switch to Drive:
+
+1. Upload the 4 JSON files to Google Drive.
+2. Share each file as "Anyone with the link can view".
+3. Paste the share links into `remoteUrls` (site, services, solutions, blog).
+4. Set `remote: true`.
+5. Recommended: add a Google API key (Drive API enabled) to `driveApiKey`. Without a key the browser may block the request (CORS).
+
+If a remote file fails to load, the app uses the local copy, so the site never goes blank.
+
 ## Pages
 
-| Route               | Page                                                                    |
-|---------------------|-------------------------------------------------------------------------|
-| `/`                 | Home: monitoring-panel hero, vendors, services, approach, solutions, offers, latest insight |
-| `/services`         | Service practices + specialist services                                 |
-| `/services/:slug`   | Service detail page (6)                                                 |
-| `/solutions`        | Outcomes, technologies, featured offers                                 |
-| `/solutions/:slug`  | Solution detail page (5)                                                |
-| `/insights`         | Blog listing                                                            |
-| `/insights/:slug`   | Blog article                                                            |
-| `/about`            | Company story, ways to engage, offices                                  |
-| `/contact`          | Enquiry form (reactive forms + validation). `?topic=` pre-selects the enquiry type |
-| `**`                | 404                                                                     |
+| Route               | Page                                   |
+|---------------------|----------------------------------------|
+| `/`                 | Home                                   |
+| `/services`         | Services overview                      |
+| `/services/:slug`   | Service detail page (6)                |
+| `/solutions`        | Solutions overview                     |
+| `/solutions/:slug`  | Solution detail page (5)               |
+| `/insights`         | Blog listing                           |
+| `/insights/:slug`   | Blog article                           |
+| `/about`            | Company                                |
+| `/contact`          | Enquiry form. `?topic=` pre-selects the enquiry type |
+| `**`                | 404                                    |
 
-## Content (JSON)
+## Contact form
 
-Services, solutions and blog content live in JSON files and are loaded at runtime:
-
-```
-public/data/services.json   practices + service pages
-public/data/solutions.json  technologies + solution pages + featured offers
-public/data/blog.json       blog posts
-```
-
-- Add a service or solution: add an object to `items` with a unique `slug`. It appears in the menu, footer, listing pages and contact form automatically.
-- Add a blog post: add an object to `posts`. Body blocks are `p` (paragraph), `h2` (heading with an `id`) or `ul` (list with `items`).
-- `icon` must be one of the names in `src/app/shared/icon/icons.ts`.
-- Types for all files: `src/app/core/models/content.ts`.
-
-## Where things live
-
-```
-src/
-  styles.scss                        design tokens + shared classes
-  app/
-    core/models/content.ts           JSON content types
-    core/services/content.service.ts loads and caches the JSON files
-    core/resolvers.ts                route resolvers + page titles (unknown slugs show the 404)
-    core/data/site-content.ts        company, contact, approach copy
-    core/services/contact.service.ts form submit (mocked, connect your API here)
-    layout/header (mega menu), footer
-    shared/icon, logo, page-hero, cta-band, practices
-    pages/home, services, solutions, detail, insights, article, about, contact, not-found
-```
-
-## To do
-
-- Contact form: replace the mock in `contact.service.ts` with a real `HttpClient` POST.
-- Vendor logos: the vendor strip uses text names. Add official logos only if you have partner rights to use them.
-- The hero monitoring panel uses example data (labelled "Example monitoring view").
+The form uses a mock by default. Set `contactApi` in `environment.ts` to a real endpoint and the form will POST to it.

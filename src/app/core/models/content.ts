@@ -1,6 +1,6 @@
 /**
- * Types for the JSON content files in /public/data.
- * services.json, solutions.json and blog.json can be edited without touching code.
+ * Types for services.json, solutions.json and blog.json in /public/data.
+ * The files can be edited without touching code. Site-wide copy is typed in site.ts.
  */
 
 export interface Item {

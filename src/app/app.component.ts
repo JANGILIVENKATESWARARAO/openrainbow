@@ -21,7 +21,7 @@ import { FooterComponent } from './layout/footer/footer.component';
       .skip-link {
         position: absolute; left: 16px; top: -60px; z-index: 100;
         padding: 10px 16px; border-radius: 8px;
-        background: #fff; color: var(--ink); font-weight: 800;
+        background: var(--surface); color: var(--ink); font-weight: 600; box-shadow: 0 0 0 2px var(--accent);
         transition: top 0.2s;
       }
       .skip-link:focus { top: 12px; }

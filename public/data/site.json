@@ -1,0 +1,432 @@
+{
+  "company": {
+    "name": "Open Rainbow",
+    "legalName": "Open Rainbow Ltd",
+    "founded": 2014,
+    "tagline": "IT services & solutions",
+    "summary": "A complete life cycle of IT services, from business case to round-the-clock support. Established {founded}."
+  },
+  "contact": {
+    "phone": "+44 (0)20 7096 0558",
+    "phoneHref": "tel:+442070960558",
+    "email": "info@openrainbow.co.uk",
+    "salesEmail": "sales@openrainbow.co.uk",
+    "registration": "Registered in England & Wales",
+    "offices": [
+      {
+        "label": "Office",
+        "lines": [
+          "4 Segraves",
+          "Boxworth",
+          "Cambridgeshire",
+          "CB23 4LS"
+        ]
+      },
+      {
+        "label": "Registered office",
+        "lines": [
+          "First Floor, 39 High Street",
+          "Billericay",
+          "CM12 9BA",
+          "United Kingdom"
+        ]
+      }
+    ]
+  },
+  "navigation": [
+    {
+      "label": "Services",
+      "path": "/services",
+      "menu": "services",
+      "intro": "Infrastructure, managed and professional services across the full IT life cycle."
+    },
+    {
+      "label": "Solutions",
+      "path": "/solutions",
+      "menu": "solutions",
+      "intro": "Technology from leading vendors, designed around the outcomes your business needs."
+    },
+    {
+      "label": "Insights",
+      "path": "/insights"
+    },
+    {
+      "label": "About",
+      "path": "/about"
+    },
+    {
+      "label": "Contact",
+      "path": "/contact"
+    }
+  ],
+  "header": {
+    "cta": {
+      "label": "Get in touch",
+      "path": "/contact"
+    },
+    "menuContact": "Speak to a specialist"
+  },
+  "footer": {
+    "companyLabel": "Company",
+    "servicesLabel": "Services",
+    "solutionsLabel": "Solutions",
+    "links": [
+      {
+        "label": "About us",
+        "path": "/about"
+      },
+      {
+        "label": "Insights",
+        "path": "/insights"
+      },
+      {
+        "label": "Contact",
+        "path": "/contact"
+      }
+    ],
+    "salesLabel": "Sales enquiries"
+  },
+  "vendors": [
+    "Hewlett Packard Enterprise",
+    "Cisco",
+    "Microsoft",
+    "VMware",
+    "NetApp",
+    "Dell",
+    "IBM",
+    "Oracle",
+    "Pure Storage",
+    "Veeam"
+  ],
+  "enquiryTopics": [
+    "General enquiry",
+    "Hardware and software sales",
+    "Infrastructure services",
+    "Managed services",
+    "Professional services"
+  ],
+  "cta": {
+    "title": "Discuss your requirements with our team.",
+    "text": "A member of our team will respond to your enquiry.",
+    "primary": "Request a consultation",
+    "phonePrefix": "Call"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Open Rainbow · IT services since {founded}",
+      "title": "Enterprise IT that keeps your business",
+      "emphasis": "moving forward.",
+      "lead": "Hardware, software and IT services for UK organisations, from the first business case to round-the-clock support.",
+      "primary": {
+        "label": "Request a consultation",
+        "path": "/contact"
+      },
+      "secondary": {
+        "label": "Explore services",
+        "path": "/services"
+      },
+      "checks": [
+        "UK based since {founded}",
+        "24/7 monitoring and service desk",
+        "Independent, multi-vendor advice"
+      ]
+    },
+    "monitoring": {
+      "title": "Service overview",
+      "live": "Monitored 24/7",
+      "rows": [
+        {
+          "system": "Core switching",
+          "detail": "Data centre A",
+          "state": "Operational"
+        },
+        {
+          "system": "Storage array",
+          "detail": "Primary cluster",
+          "state": "Operational"
+        },
+        {
+          "system": "Virtual hosts",
+          "detail": "24 of 24 online",
+          "state": "Operational"
+        },
+        {
+          "system": "Nightly backup",
+          "detail": "Completed 02:00",
+          "state": "Verified"
+        },
+        {
+          "system": "DR replication",
+          "detail": "Secondary site",
+          "state": "In sync"
+        }
+      ],
+      "footLabel": "Next maintenance window",
+      "footValue": "Sat 06:00, firmware update",
+      "coverage": {
+        "label": "Coverage",
+        "stats": [
+          {
+            "value": "24/7",
+            "label": "Monitoring"
+          },
+          {
+            "value": "{vendors}+",
+            "label": "Vendors"
+          },
+          {
+            "value": "{years} yrs",
+            "label": "In service"
+          }
+        ]
+      },
+      "desk": {
+        "label": "Service desk",
+        "ringLabel": "Online",
+        "ringValue": "24",
+        "ringSub": "of 24 hosts",
+        "ringPercent": 100,
+        "items": [
+          {
+            "icon": "clock",
+            "text": "Nightly backup verified"
+          },
+          {
+            "icon": "headset",
+            "text": "Engineers on call"
+          }
+        ]
+      },
+      "note": "Example monitoring view"
+    },
+    "vendorsLabel": "Technology from the vendors you already trust",
+    "services": {
+      "title": "Our",
+      "emphasis": "services",
+      "cta": {
+        "label": "Start your project",
+        "path": "/contact"
+      },
+      "more": "Learn more"
+    },
+    "practices": {
+      "eyebrow": "How we work with you",
+      "title": "One partner across the",
+      "emphasis": "full IT life cycle",
+      "lead": "Start a project with us or bring us in at any stage. However you engage, you are working with a responsible and responsive organisation."
+    },
+    "approach": {
+      "eyebrow": "Our approach",
+      "title": "First, we",
+      "emphasis": "listen.",
+      "lead": "We don't default to the latest technology or only the biggest vendors. We get to know your business, then design, build, implement and support solutions that work today and give you room to grow.",
+      "steps": [
+        {
+          "title": "Design",
+          "text": "We start by listening, then shape a solution around your current and future requirements."
+        },
+        {
+          "title": "Deploy",
+          "text": "Procurement, build and implementation, managed by our project teams from start to finish."
+        },
+        {
+          "title": "Operate",
+          "text": "24/7 monitoring, service desk and maintenance that keep your systems running."
+        },
+        {
+          "title": "Improve",
+          "text": "Regular reviews of capacity, availability and cost, so your IT keeps pace with the business."
+        }
+      ]
+    },
+    "technologies": {
+      "eyebrow": "Solutions",
+      "title": "Technology we supply, deploy and",
+      "emphasis": "support",
+      "link": {
+        "label": "All solutions",
+        "path": "/solutions"
+      },
+      "count": 6
+    },
+    "outcomes": {
+      "eyebrow": "What our clients gain"
+    },
+    "featured": {
+      "eyebrow": "Featured",
+      "title": "Current",
+      "emphasis": "offers",
+      "cta": "Request details",
+      "topic": "Hardware and software sales"
+    },
+    "insights": {
+      "eyebrow": "Insights",
+      "title": "From",
+      "emphasis": "our team",
+      "link": {
+        "label": "All insights",
+        "path": "/insights"
+      },
+      "cta": "Read article"
+    },
+    "quote": "“We won't ever compromise on quality: of our people, our advice, our services or your solutions.”"
+  },
+  "pages": {
+    "services": {
+      "crumb": "Services",
+      "eyebrow": "Services",
+      "title": "A complete life cycle of",
+      "emphasis": "IT services",
+      "lead": "Whether you need a business case, a new network design, or your systems managed and maintained, we can start a project with you or join at any stage.",
+      "specialist": {
+        "eyebrow": "Specialist services",
+        "title": "Focused services for",
+        "emphasis": "specific needs",
+        "lead": "Delivered on their own or as part of a wider project."
+      },
+      "more": "Learn more"
+    },
+    "solutions": {
+      "crumb": "Solutions",
+      "eyebrow": "Solutions",
+      "title": "The right technology for",
+      "emphasis": "your business",
+      "lead": "Hyper-converged, on premise or in the cloud. We help you decide what is right, supply it from leading vendors, and support it for the long term.",
+      "outcomes": {
+        "eyebrow": "Outcomes",
+        "title": "What our solutions",
+        "emphasis": "deliver",
+        "lead": "Every solution is designed around a clear business outcome."
+      },
+      "technologies": {
+        "eyebrow": "Technology",
+        "title": "Platforms we supply, deploy and",
+        "emphasis": "support"
+      },
+      "featured": {
+        "eyebrow": "Featured",
+        "title": "Current",
+        "emphasis": "offers"
+      },
+      "featuredCta": "Request details",
+      "more": "Learn more",
+      "cta": {
+        "title": "Talk to us about hardware and software sales.",
+        "topic": "Hardware and software sales"
+      }
+    },
+    "detail": {
+      "benefitsLabel": "Key benefits",
+      "specialist": {
+        "label": "Speak to a specialist",
+        "text": "Tell us about your requirements and a member of our team will respond to your enquiry.",
+        "cta": "Request a consultation"
+      },
+      "related": {
+        "eyebrow": "More {category}",
+        "title": "Related",
+        "emphasis": "{category}",
+        "link": "All {category}"
+      }
+    },
+    "insights": {
+      "crumb": "Insights",
+      "eyebrow": "Insights",
+      "title": "Ideas from",
+      "emphasis": "our team",
+      "lead": "Guidance, news and analysis on the technology that runs your business, from the Open Rainbow team.",
+      "empty": "New articles are on their way. Please check back soon.",
+      "cta": "Read article",
+      "readTime": "min read"
+    },
+    "article": {
+      "crumb": "Insights",
+      "authorRole": "Open Rainbow",
+      "outline": "On this page",
+      "share": "Share",
+      "back": "All insights",
+      "more": "More insights",
+      "readTime": "min read",
+      "cta": "Need help with your next upgrade?"
+    },
+    "about": {
+      "crumb": "About",
+      "eyebrow": "About us",
+      "title": "A responsible and responsive",
+      "emphasis": "IT partner",
+      "lead": "Formed to provide technical consultancy and Agile services to corporate IT organisations, we now deliver full IT services directly to a wide variety of organisations.",
+      "facts": [
+        {
+          "label": "Established",
+          "value": "{founded}"
+        },
+        {
+          "label": "Company",
+          "value": "Open Rainbow Ltd"
+        },
+        {
+          "label": "Registration",
+          "value": "Registered in England & Wales"
+        }
+      ],
+      "storyLead": "We believe in combining knowledge, methodology and experience to make ideas successful.",
+      "story": [
+        "The right solution starts with understanding your current and future requirements. Our highly trained team works with you to find the most effective way to access your business-critical applications: strong performance and availability for the people who should have access, and the best security against those who shouldn't.",
+        "We don't always follow convention, default to the latest technologies or only select solutions from the biggest vendors. First we listen. Then we use all our experience to design, build, implement and support solutions that work for you today and offer opportunities to grow tomorrow. It's why our clients trust us, and why we continue to grow through recommendation."
+      ],
+      "engagement": {
+        "eyebrow": "Working with us",
+        "title": "However you choose to",
+        "emphasis": "engage",
+        "lead": "We are flexible about how we work with you. We never compromise on the quality of our people, our advice, our services or your solutions.",
+        "items": [
+          {
+            "title": "Start a project together",
+            "text": "From the first business case, through design, procurement and deployment."
+          },
+          {
+            "title": "Join at any stage",
+            "text": "Already under way? We pick up wherever you are in your IT journey."
+          },
+          {
+            "title": "Ongoing partnership",
+            "text": "Managed services and regular reviews that keep your IT performing."
+          }
+        ]
+      },
+      "offices": {
+        "eyebrow": "Offices",
+        "title": "Where to",
+        "emphasis": "find us"
+      }
+    },
+    "contact": {
+      "crumb": "Contact",
+      "eyebrow": "Contact",
+      "title": "Talk to",
+      "emphasis": "our team",
+      "lead": "Tell us about your requirements and a member of our team will respond to your enquiry.",
+      "sent": {
+        "title": "Thank you for your enquiry.",
+        "text": "A member of our team will respond to your enquiry.",
+        "again": "Send another enquiry"
+      },
+      "details": {
+        "phone": "Telephone",
+        "email": "Email",
+        "sales": "(sales)"
+      },
+      "topicGroup": "General"
+    },
+    "notFound": {
+      "eyebrow": "Error 404",
+      "title": "Page not",
+      "emphasis": "found.",
+      "lead": "The page you are looking for has moved or no longer exists.",
+      "cta": {
+        "label": "Back to home",
+        "path": "/"
+      }
+    }
+  }
+}
