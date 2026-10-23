@@ -125,6 +125,8 @@
     transition: background-color 0.15s, color 0.15s;
 
     &:hover, &.is-current { background: var(--paper); color: var(--ink); }
+    /* Page you are on: highlighted and bold */
+    &.is-current { font-weight: 700; }
   }
 }
 
