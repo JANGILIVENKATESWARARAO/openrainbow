@@ -469,13 +469,13 @@ a.card-soft:hover .icon-tile,
   inset: 0;
   animation: or-loader-spin 1.6s cubic-bezier(0.45, 0.1, 0.4, 0.9) infinite;
 
-  /* Tail: a ring that fades from clear to full colour, ending at the top */
+  /* Tail: a ring that fades from clear to full colour, ending at the top (under half a turn, so the two tails never overlap) */
   &::before {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    background: conic-gradient(from 0deg, transparent 0deg 150deg, color-mix(in srgb, var(--arc) 35%, transparent) 260deg, var(--arc) 358deg, transparent 360deg);
+    background: conic-gradient(from 0deg, transparent 0deg 190deg, color-mix(in srgb, var(--arc) 35%, transparent) 285deg, var(--arc) 358deg, transparent 360deg);
     mask: radial-gradient(farthest-side, transparent calc(100% - var(--thick)), #000 calc(100% - var(--thick) + 0.5px));
   }
 
@@ -495,13 +495,11 @@ a.card-soft:hover .icon-tile,
   }
 }
 
-/* Second arc: closer to the logo, different colour and speed, starts on the other side */
+/* Second arc: same circle and same speed, half a turn behind, so the two stars chase each other.
+   "rotate" adds to the spinning "transform", so they always stay exactly opposite. */
 .or-loader__arc--inner {
   --arc: var(--loader-arc-2);
-  --thick: 2px;
-  inset: 16px;
-  animation-duration: 2.4s;
-  animation-delay: -1.2s;
+  rotate: 180deg;
 }
 
 @keyframes or-loader-spin { to { transform: rotate(360deg); } }
