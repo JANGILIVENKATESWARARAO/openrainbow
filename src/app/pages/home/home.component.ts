@@ -22,6 +22,7 @@ export class HomeComponent {
   readonly vendors = VENDORS;
   readonly approach = APPROACH;
   readonly years = new Date().getFullYear() - COMPANY.founded;
+  readonly checks = ['UK based since 2014', '24/7 monitoring and service desk', 'Independent, multi-vendor advice'];
 
   readonly services = toSignal(this.content.services$);
   readonly solutions = toSignal(this.content.solutions$);

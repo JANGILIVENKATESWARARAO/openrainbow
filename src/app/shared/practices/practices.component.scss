@@ -3,23 +3,17 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+  gap: 20px;
 }
 
 .card {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  padding: 36px 32px 32px;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background: var(--bg);
-  transition: background-color 0.25s var(--ease);
+  padding: 32px;
+  background: #fff;
 
-  &:hover { background: var(--paper); }
-
-  h3 { font-size: 24px; }
+  h3 { font-size: 22px; }
   .icon-tile { margin-bottom: 4px; }
   .arrow-link { margin-top: auto; padding-top: 8px; }
 }
@@ -76,7 +70,7 @@
   position: sticky;
   top: calc(var(--header-h) + 32px);
 
-  h2 { font-size: clamp(30px, 3vw, 40px); }
+  h2 { font-size: clamp(36px, 3.6vw, 48px); }
   p { color: var(--muted); }
   .icon-tile { margin-bottom: 4px; }
 }
@@ -84,14 +78,16 @@
 .detail__items {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 36px 40px;
+  gap: 20px;
 
   li {
     display: grid;
     gap: 8px;
     align-content: start;
-    padding-top: 20px;
-    border-top: 2px solid var(--ink);
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: var(--card);
   }
 
   h3 { font-size: 20px; letter-spacing: -0.01em; }
@@ -106,5 +102,5 @@
 
 @media (max-width: 600px) {
   .detail__items { grid-template-columns: 1fr; }
-  .card { padding: 28px 24px; }
+  .card { padding: 24px; }
 }

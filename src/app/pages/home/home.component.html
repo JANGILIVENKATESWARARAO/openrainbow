@@ -1,30 +1,58 @@
 <!-- Hero -->
 <section class="hero">
-  <div class="container hero__grid">
+  <div class="container">
     <div class="hero__copy">
-      <p class="eyebrow">Established {{ company.founded }}</p>
-      <h1>Enterprise IT, designed, supplied and supported.</h1>
-      <p class="hero__lead">
-        Hardware, software and IT services for UK organisations. From the first business case to round-the-clock support.
-      </p>
+      <p class="eyebrow">Open Rainbow &middot; IT services since {{ company.founded }}</p>
+      <h1>Enterprise IT that keeps <br class="hero__br" />your business <em>moving forward.</em></h1>
+      <p class="hero__lead">Hardware, software and IT services for UK organisations, from the first business case to round-the-clock support.</p>
       <div class="hero__actions">
-        <a routerLink="/contact" class="btn btn--primary">Request a consultation</a>
+        <a routerLink="/contact" class="btn btn--primary">Request a consultation <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
         <a routerLink="/services" class="btn btn--secondary">Explore services</a>
       </div>
-      <dl class="hero__facts">
-        <div><dt>{{ years }}+ years</dt><dd>delivering IT services</dd></div>
-        <div><dt>24/7</dt><dd>monitoring and service desk</dd></div>
-        <div><dt>Independent</dt><dd>advice across vendors</dd></div>
-      </dl>
+      <ul class="hero__checks">
+        @for (c of checks; track c) {
+          <li><or-icon name="check" />{{ c }}</li>
+        }
+      </ul>
     </div>
-    <or-status-panel class="hero__panel" />
+
+    <div class="hero__visual">
+      <div class="hero__main">
+        <or-status-panel />
+      </div>
+
+      <div class="hero__side" aria-label="Example service figures">
+        <div class="stat-card">
+          <p class="stat-card__label">Coverage</p>
+          <dl class="stat-card__row">
+            <div><dt>24/7</dt><dd>Monitoring</dd></div>
+            <div><dt>{{ vendors.length }}+</dt><dd>Vendors</dd></div>
+            <div><dt>{{ years }} yrs</dt><dd>In service</dd></div>
+          </dl>
+        </div>
+
+        <div class="stat-card stat-card--ring">
+          <div class="ring" style="--value: 100" aria-hidden="true">
+            <span class="ring__label">Online</span>
+            <span class="ring__value">24</span>
+            <span class="ring__sub">of 24 hosts</span>
+          </div>
+          <div class="ring__meta">
+            <p class="stat-card__label">Service desk</p>
+            <p><or-icon name="clock" />Nightly backup verified</p>
+            <p><or-icon name="headset" />Engineers on call</p>
+          </div>
+        </div>
+        <p class="hero__note">Example monitoring view</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- Vendors -->
 <section class="vendors" aria-label="Technology partners">
-  <div class="container vendors__inner">
-    <p class="vendors__label">Technology from leading vendors</p>
+  <div class="container">
+    <p class="vendors__label">Technology from the vendors you already trust</p>
     <ul class="vendors__list">
       @for (v of vendors; track v) {
         <li>{{ v }}</li>
@@ -37,38 +65,48 @@
 @if (services(); as s) {
   <section class="section">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head section-head--center">
         <div>
-          <p class="eyebrow">Services</p>
-          <h2>One partner across the full IT life cycle.</h2>
+          <h2>Our <em>services</em></h2>
+        </div>
+      </div>
+      <ul class="svc-grid">
+        @for (item of s.items; track item.slug) {
+          <li class="card-soft svc">
+            <span class="icon-tile icon-tile--sm"><or-icon [name]="item.icon" /></span>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.summary }}</p>
+            <a class="arrow-link" [routerLink]="['/services', item.slug]">Learn more <span aria-hidden="true">&rarr;</span><span class="sr-only"> about {{ item.title }}</span></a>
+          </li>
+        }
+      </ul>
+      <div class="center-cta">
+        <a routerLink="/contact" class="btn btn--primary">Start your project <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Practices -->
+  <section class="section section--paper">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <div>
+          <p class="eyebrow">How we work with you</p>
+          <h2>One partner across the <em>full IT life cycle</em></h2>
         </div>
         <p>Start a project with us or bring us in at any stage. However you engage, you are working with a responsible and responsive organisation.</p>
       </div>
       <or-practices [practices]="s.practices" />
-
-      <div class="specialist">
-        <p class="specialist__label">Specialist services</p>
-        <ul class="specialist__list">
-          @for (item of s.items; track item.slug) {
-            <li>
-              <a [routerLink]="['/services', item.slug]">
-                <or-icon [name]="item.icon" />
-                <span>{{ item.title }}</span>
-              </a>
-            </li>
-          }
-        </ul>
-      </div>
     </div>
   </section>
 }
 
 <!-- Approach -->
-<section class="section section--paper">
+<section class="section">
   <div class="container approach">
     <div class="approach__intro">
       <p class="eyebrow">Our approach</p>
-      <h2>First, we listen.</h2>
+      <h2>First, we <em>listen.</em></h2>
       <p>
         We don't default to the latest technology or only the biggest vendors. We get to know your business, then design, build, implement and support
         solutions that work today and give you room to grow.
@@ -88,18 +126,18 @@
 
 @if (solutions(); as sol) {
   <!-- Technologies -->
-  <section class="section">
+  <section class="section section--paper">
     <div class="container">
       <div class="section-head">
         <div>
           <p class="eyebrow">Solutions</p>
-          <h2>Technology we supply, deploy and support.</h2>
+          <h2>Technology we supply, deploy and <em>support</em></h2>
         </div>
         <a routerLink="/solutions" class="arrow-link section-head__link">All solutions <span aria-hidden="true">&rarr;</span></a>
       </div>
       <ul class="areas">
         @for (a of technologies(); track a.title) {
-          <li class="area">
+          <li class="area card-soft">
             <span class="icon-tile"><or-icon [name]="a.icon" /></span>
             <h3>{{ a.title }}</h3>
             <p>{{ a.text }}</p>
@@ -134,12 +172,12 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">Featured</p>
-          <h2>Current offers.</h2>
+          <h2>Current <em>offers</em></h2>
         </div>
       </div>
       <div class="featured">
         @for (f of sol.featured; track f.title) {
-          <a class="offer" routerLink="/contact" [queryParams]="{ topic: 'Hardware and software sales' }">
+          <a class="offer card-soft" routerLink="/contact" [queryParams]="{ topic: 'Hardware and software sales' }">
             <span class="offer__label">{{ f.label }}</span>
             <h3>{{ f.title }}</h3>
             <p>{{ f.text }}</p>
@@ -158,11 +196,11 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">Insights</p>
-          <h2>From our team.</h2>
+          <h2>From <em>our team</em></h2>
         </div>
         <a routerLink="/insights" class="arrow-link section-head__link">All insights <span aria-hidden="true">&rarr;</span></a>
       </div>
-      <a class="insight" [routerLink]="['/insights', post.slug]">
+      <a class="insight card-soft" [routerLink]="['/insights', post.slug]">
         <div class="insight__meta">
           <span class="insight__cat">{{ post.category }}</span>
           <span>{{ post.date | date: 'd MMMM y' }}</span>
