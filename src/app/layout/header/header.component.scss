@@ -102,6 +102,9 @@
   transition: transform 0.2s var(--ease);
 }
 
+/* Mobile-only toggle for Services / Solutions (hidden on desktop) */
+.top--mob { display: none; }
+
 /* ---------- Simple dropdown (desktop) ---------- */
 
 .drop {
@@ -230,24 +233,64 @@
     }
 
     /* Sub pages sit under their heading, slightly indented */
-    .has-menu .top { border-bottom: 0; padding-bottom: 6px; }
+    .has-menu .top { border-bottom: 0; }
+    .is-expanded .top--mob { padding-bottom: 6px; }
     .has-menu { border-bottom: 1px solid var(--line); }
   }
 
-  .top__chevron { display: none; }
+  /* Services / Solutions: a button that opens the list instead of a link */
+  .header__links .top--desk { display: none; }
 
-  .drop {
+  .header__links .top--mob {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border: 0;
+    background: none;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .top--mob .top__chevron { width: 20px; height: 20px; }
+  .is-expanded .top--mob .top__chevron { transform: rotate(180deg); opacity: 1; }
+
+  .has-menu:hover .top__chevron,
+  .has-menu:focus-within .top__chevron { transform: none; }
+  .is-expanded.has-menu .top__chevron { transform: rotate(180deg); }
+
+  /* Closed by default; slides open when tapped */
+  .drop,
+  .has-menu:hover .drop,
+  .has-menu:focus-within .drop {
     position: static;
+    display: grid;
+    grid-template-rows: 0fr;
     min-width: 0;
-    padding: 4px 0 12px;
+    padding: 0;
     border: 0;
     border-radius: 0;
     background: transparent;
     box-shadow: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: none;
+    transition: grid-template-rows 0.28s var(--ease), opacity 0.2s var(--ease), visibility 0.28s;
+  }
+
+  .is-expanded .drop,
+  .is-expanded.has-menu:hover .drop,
+  .is-expanded.has-menu:focus-within .drop {
+    grid-template-rows: 1fr;
     opacity: 1;
     visibility: visible;
-    transform: none;
+  }
 
+  .drop__inner { overflow: hidden; min-height: 0; }
+  .drop__inner > :first-child { margin-top: 4px; }
+  .drop__inner > :last-child { margin-bottom: 14px; }
+
+  .drop {
     ul { padding-left: 14px; border-left: 2px solid var(--line); }
     ul a { padding: 8px 0; font-size: 16px; white-space: normal; color: var(--muted); }
     ul a:hover, ul a.is-current { background: transparent; color: var(--ink); }

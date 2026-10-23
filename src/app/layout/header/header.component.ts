@@ -33,6 +33,10 @@ export class HeaderComponent {
 
   readonly header = computed(() => this.site().header);
   readonly menuOpen = signal(false);
+  /** Mobile menu: the section (Services or Solutions) that is open. All closed by default. */
+  readonly expanded = signal<string | null>(null);
+  /** Current address, to mark Services/Solutions as active in the mobile menu. */
+  private readonly url = signal('');
   readonly scrolled = signal(false);
   /** True while scrolling down: the bar slides up out of view. Scrolling up brings it back. */
   readonly hidden = signal(false);
@@ -53,12 +57,27 @@ export class HeaderComponent {
 
   constructor() {
     // Close the mobile menu after every navigation.
-    inject(Router)
-      .events.pipe(
-        filter((e) => e instanceof NavigationEnd),
+    const router = inject(Router);
+    this.url.set(router.url);
+    router.events
+      .pipe(
+        filter((e): e is NavigationEnd => e instanceof NavigationEnd),
         takeUntilDestroyed(),
       )
-      .subscribe(() => this.close());
+      .subscribe((e) => {
+        this.url.set(e.urlAfterRedirects);
+        this.close();
+      });
+  }
+
+  /** Opens one section of the mobile menu and closes the other; tap again to close it. */
+  toggleSection(path: string): void {
+    this.expanded.update((open) => (open === path ? null : path));
+  }
+
+  isActive(path: string): boolean {
+    const url = this.url().split(/[?#]/)[0];
+    return url === path || url.startsWith(path + '/');
   }
 
   toggle(): void {
@@ -72,6 +91,7 @@ export class HeaderComponent {
   /** Opens/closes the mobile menu and stops the page behind it from scrolling while it is open. */
   private setMenu(open: boolean): void {
     this.menuOpen.set(open);
+    if (!open) this.expanded.set(null); // sections start closed every time the menu opens
     this.document.documentElement.style.overflow = open ? 'hidden' : '';
     if (open) this.setHidden(false);
   }

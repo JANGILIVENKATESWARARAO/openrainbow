@@ -18,8 +18,8 @@
     <nav id="main-nav" class="header__nav" aria-label="Main">
       <ul class="header__links">
         @for (link of links(); track link.path) {
-          <li [class.has-menu]="link.items.length > 0">
-            <a class="top" [routerLink]="link.path" routerLinkActive="is-active" (click)="blur($event)">
+          <li [class.has-menu]="link.items.length > 0" [class.is-expanded]="expanded() === link.path">
+            <a class="top" [class.top--desk]="link.items.length > 0" [routerLink]="link.path" routerLinkActive="is-active" (click)="blur($event)">
               <span class="top__label" [attr.data-label]="link.label">{{ link.label }}</span>
               @if (link.items.length) {
                 <or-icon class="top__chevron" name="chevron" />
@@ -27,17 +27,32 @@
             </a>
 
             @if (link.items.length) {
-              <div class="drop">
-                <ul>
-                  @for (item of link.items; track item.slug) {
-                    <li>
-                      <a [routerLink]="[link.path, item.slug]" routerLinkActive="is-current" (click)="blur($event)">{{ item.title }}</a>
-                    </li>
-                  }
-                </ul>
-                <a class="drop__all" [routerLink]="link.path" (click)="blur($event)">
-                  {{ header().viewAll }} {{ link.label.toLowerCase() }} <or-icon name="arrow" />
-                </a>
+              <!-- Mobile menu: tap to open or close the list of pages (closed by default) -->
+              <button
+                type="button"
+                class="top top--mob"
+                [class.is-active]="isActive(link.path)"
+                [attr.aria-expanded]="expanded() === link.path"
+                [attr.aria-controls]="'drop-' + link.menu"
+                (click)="toggleSection(link.path)"
+              >
+                <span class="top__label" [attr.data-label]="link.label">{{ link.label }}</span>
+                <or-icon class="top__chevron" name="chevron" />
+              </button>
+
+              <div class="drop" [id]="'drop-' + link.menu">
+                <div class="drop__inner">
+                  <ul>
+                    @for (item of link.items; track item.slug) {
+                      <li>
+                        <a [routerLink]="[link.path, item.slug]" routerLinkActive="is-current" (click)="blur($event)">{{ item.title }}</a>
+                      </li>
+                    }
+                  </ul>
+                  <a class="drop__all" [routerLink]="link.path" (click)="blur($event)">
+                    {{ header().viewAll }} {{ link.label.toLowerCase() }} <or-icon name="arrow" />
+                  </a>
+                </div>
               </div>
             }
           </li>
