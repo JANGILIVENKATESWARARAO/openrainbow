@@ -21,7 +21,12 @@ export class ContentService {
   );
 
   pages(category: Category): Observable<ContentPage[]> {
-    return (category === 'services' ? this.services$ : this.solutions$).pipe(map((data) => data.items));
+    // Map each typed stream before choosing between them. Calling pipe on a
+    // union of differently typed Observables loses the operator overloads.
+    if (category === 'services') {
+      return this.services$.pipe(map((data) => data.items));
+    }
+    return this.solutions$.pipe(map((data) => data.items));
   }
 
   page(category: Category, slug: string): Observable<ContentPage | undefined> {
