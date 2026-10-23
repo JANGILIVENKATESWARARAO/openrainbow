@@ -7,6 +7,7 @@
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  min-width: 0;
   gap: clamp(24px, 4vw, 56px);
   align-items: center;
   margin: 0;
@@ -31,17 +32,19 @@
 
 /* ---------- Life cycle ring ---------- */
 
+/* The ring scales with the space it has (never wider than its column), so it fits every screen */
 .cycle {
-  --ring: min(340px, 72vw);
+  --pad: 40px; /* room around the ring for the step pills */
   position: relative;
   justify-self: center;
-  width: calc(var(--ring) + 80px);
-  height: calc(var(--ring) + 80px);
+  width: min(100%, 420px);
+  aspect-ratio: 1;
+  container-type: inline-size;
 }
 
 .cycle__ring {
   position: absolute;
-  inset: 40px;
+  inset: var(--pad);
   border: 1px dashed var(--band-line);
   border-radius: 50%;
 }
@@ -58,6 +61,7 @@
 /* Steps sit on the ring, evenly spaced, starting at the top */
 .cycle__node {
   --angle: calc(360deg / var(--n) * var(--i));
+  --ring: calc(100cqw - var(--pad) * 2); /* ring diameter, from the .cycle width */
   position: absolute;
   left: 50%;
   top: 50%;
@@ -269,16 +273,23 @@
 /* ---------- Responsive ---------- */
 
 @media (max-width: 1000px) {
-  .hub { grid-template-columns: 1fr; padding-bottom: 48px; }
+  .hub { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-bottom: 48px; }
 }
 
 @media (max-width: 520px) {
-  .cycle { --ring: 72vw; width: calc(var(--ring) + 64px); height: calc(var(--ring) + 64px); }
-  .cycle__ring { inset: 32px; }
-  .cycle__node { padding: 6px 10px; font-size: 13px; }
-  .card__bar, .card__foot { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .hub { gap: 32px; padding: 16px 16px 44px; border-radius: 16px; }
+  .hub__note { right: 16px; }
+  .cycle { --pad: 46px; }
+  .cycle__node { gap: 6px; padding: 6px 10px; font-size: 13px; }
+  .cycle__core, .cycle__core img { width: 64px; height: 64px; }
+  .cycle__label { bottom: -18px; }
+  .card__bar, .card__foot { flex-direction: column; align-items: flex-start; gap: 8px; padding-inline: 16px; }
   .card__stats div { padding: 12px 14px; }
-  .row { padding: 12px 16px; }
+  .card__stats dt { font-size: 20px; }
+  .card__stats dd { font-size: 12px; }
+  .row { gap: 12px; padding: 12px 16px; }
+  .row > div { min-width: 0; }
+  .row__state { padding: 5px 9px; font-size: 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
