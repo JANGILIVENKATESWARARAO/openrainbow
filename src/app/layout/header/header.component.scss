@@ -3,7 +3,16 @@
   position: sticky;
   top: 0;
   z-index: 50;
+  transition: transform 0.35s var(--ease);
 }
+
+/* Scrolling down hides the bar; scrolling up slides it back in from the top */
+:host(.is-hidden) {
+  transform: translateY(-100%);
+}
+
+/* Keep dropdowns closed while the bar is out of view */
+:host(.is-hidden) .drop { visibility: hidden; opacity: 0; }
 
 /* ---------- Main bar ---------- */
 

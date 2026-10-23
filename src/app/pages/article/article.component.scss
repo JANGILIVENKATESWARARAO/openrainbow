@@ -8,6 +8,12 @@
   z-index: 51;
   height: 3px;
   pointer-events: none;
+  transition: transform 0.35s var(--ease);
+}
+
+/* When the navbar slides away, the reading bar moves up to the top of the screen */
+:host-context(html.header-hidden) .progress {
+  transform: translateY(calc(-1 * var(--header-h)));
 }
 
 .progress__bar {
