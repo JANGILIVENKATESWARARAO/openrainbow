@@ -10,7 +10,7 @@
             <li>{{ item.title }}</li>
           }
         </ul>
-        <a class="arrow-link" routerLink="/services" [fragment]="p.id">Learn more <span aria-hidden="true">&rarr;</span></a>
+        <a class="arrow-link" routerLink="/services" [fragment]="p.id">{{ more() }} <span aria-hidden="true">&rarr;</span></a>
       </article>
     }
   </div>

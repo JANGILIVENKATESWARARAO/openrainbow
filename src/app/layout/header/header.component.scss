@@ -9,14 +9,14 @@
 
 .header {
   position: relative;
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--header-bg);
   border-bottom: 1px solid transparent;
   backdrop-filter: saturate(1.4) blur(8px);
   transition: box-shadow 0.25s var(--ease);
 
   &.is-scrolled {
     border-bottom-color: var(--line);
-    box-shadow: 0 8px 24px -20px rgba(15, 34, 54, 0.3);
+    box-shadow: 0 8px 24px -20px var(--shadow);
   }
 }
 
@@ -64,7 +64,7 @@
       right: 14px;
       bottom: 18px;
       height: 2px;
-      background: var(--navy-800);
+      background: var(--ink);
       transform: scaleX(0);
       transition: transform 0.25s var(--ease);
     }
@@ -105,8 +105,8 @@
   grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr);
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
-  background: #fff;
-  box-shadow: 0 32px 64px -32px rgba(15, 34, 54, 0.4);
+  background: var(--surface);
+  box-shadow: 0 32px 64px -32px var(--shadow);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-4px);
@@ -175,13 +175,15 @@
     transition: background-color 0.15s;
 
     &:hover, &.is-current { background: var(--paper); }
-    &:hover .mega__title { color: var(--navy-700); }
+    &:hover .mega__title { color: var(--accent); }
   }
 }
 
 .mega__item { display: grid; gap: 3px; }
 .mega__title { font-weight: 600; font-size: 15px; color: var(--ink); }
 .mega__summary { font-size: 14px; line-height: 1.45; color: var(--muted); }
+
+.header__actions { display: flex; align-items: center; gap: 12px; flex: none; }
 
 .header__cta { flex: none; min-height: 42px; padding: 0 20px; font-size: 15px; }
 
@@ -193,7 +195,7 @@
   height: 46px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #fff;
+  background: var(--surface);
   color: var(--ink);
   cursor: pointer;
 }
@@ -229,7 +231,7 @@
     gap: 24px;
     height: auto;
     padding: 8px var(--gutter) 40px;
-    background: #fff;
+    background: var(--bg);
     overflow-y: auto;
     opacity: 0;
     visibility: hidden;
@@ -274,4 +276,6 @@
   }
 
   .mega__summary { display: none; }
+
+  .header__actions { justify-content: space-between; }
 }

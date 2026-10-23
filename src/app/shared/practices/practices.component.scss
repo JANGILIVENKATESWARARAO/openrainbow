@@ -11,7 +11,7 @@
   flex-direction: column;
   gap: 18px;
   padding: 32px;
-  background: #fff;
+  background: var(--surface);
 
   h3 { font-size: 22px; }
   .icon-tile { margin-bottom: 4px; }

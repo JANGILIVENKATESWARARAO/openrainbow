@@ -1,6 +1,7 @@
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IconComponent } from '../icon/icon.component';
+import { Heading } from '../../core/models/site';
 
 export interface Crumb {
   label: string;
@@ -26,17 +27,17 @@ export interface Crumb {
         @if (icon()) {
           <span class="icon-tile heading__icon"><or-icon [name]="icon()" /></span>
         }
-        @if (eyebrow()) {
-          <p class="eyebrow">{{ eyebrow() }}</p>
+        @if (heading().eyebrow) {
+          <p class="eyebrow">{{ heading().eyebrow }}</p>
         }
         <h1>
-          {{ title() }}
-          @if (emphasis()) {
-            <em>{{ emphasis() }}</em>
+          {{ heading().title }}
+          @if (heading().emphasis) {
+            <em>{{ heading().emphasis }}</em>
           }
         </h1>
-        @if (lead()) {
-          <p class="lead">{{ lead() }}</p>
+        @if (heading().lead) {
+          <p class="lead">{{ heading().lead }}</p>
         }
       </div>
     </section>
@@ -100,14 +101,12 @@ export interface Crumb {
   ],
 })
 export class PageHeroComponent {
-  crumb = input.required<string>();
-  title = input.required<string>();
-  lead = input<string>('');
-  eyebrow = input<string>('');
+  /** Current page name in the breadcrumb. */
+  readonly crumb = input.required<string>();
+  /** Pill label, title, italic ending and lead, usually straight from site.json. */
+  readonly heading = input.required<Heading>();
   /** Optional middle breadcrumb, e.g. Services. */
-  parent = input<Crumb | null>(null);
+  readonly parent = input<Crumb | null>(null);
   /** Optional icon name shown above the title. */
-  icon = input<string>('');
-  /** Optional words shown in italics after the title. */
-  emphasis = input<string>('');
+  readonly icon = input<string>('');
 }

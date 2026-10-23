@@ -1,5 +1,6 @@
 .footer {
-  background: var(--navy-900);
+  border-top: 1px solid var(--band-line);
+  background: var(--band-to);
   color: var(--on-dark-muted);
   font-size: 15px;
 }
@@ -30,7 +31,7 @@
   a {
     color: var(--on-dark);
     text-decoration: none;
-    &:hover { color: #fff; text-decoration: underline; }
+    &:hover { color: var(--on-band); text-decoration: underline; }
   }
 }
 
@@ -42,7 +43,7 @@
   a {
     color: var(--on-dark);
     text-decoration: none;
-    &:hover { color: #fff; text-decoration: underline; }
+    &:hover { color: var(--on-band); text-decoration: underline; }
   }
 }
 
@@ -51,7 +52,7 @@
   font: 600 13px/1.2 var(--font-sans);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--on-band);
 }
 
 .footer__base {
@@ -60,7 +61,7 @@
   justify-content: space-between;
   gap: 8px 24px;
   padding-block: 24px 32px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--band-line);
   font-size: 14px;
 }
 

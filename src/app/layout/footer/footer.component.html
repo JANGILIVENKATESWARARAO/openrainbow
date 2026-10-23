@@ -1,44 +1,44 @@
 <footer class="footer">
   <div class="container footer__top">
     <div class="footer__brand">
-      <a routerLink="/" aria-label="Open Rainbow home"><or-logo [inverse]="true" /></a>
-      <p>A complete life cycle of IT services, from business case to round-the-clock support. Established {{ company.founded }}.</p>
+      <a routerLink="/" aria-label="Home"><or-logo [inverse]="true" /></a>
+      <p>{{ summary() }}</p>
       <ul class="footer__reach">
-        <li><or-icon name="phone" /><a [href]="contact.phoneHref">{{ contact.phone }}</a></li>
-        <li><or-icon name="mail" /><a [href]="'mailto:' + contact.email">{{ contact.email }}</a></li>
-        @if (office) {
-          <li><or-icon name="pin" /><span>{{ office.lines.join(', ') }}</span></li>
+        <li><or-icon name="phone" /><a [href]="contact().phoneHref">{{ contact().phone }}</a></li>
+        <li><or-icon name="mail" /><a [href]="'mailto:' + contact().email">{{ contact().email }}</a></li>
+        @if (office(); as o) {
+          <li><or-icon name="pin" /><span>{{ o.lines.join(', ') }}</span></li>
         }
       </ul>
     </div>
 
-    <nav class="footer__col" aria-label="Services">
-      <h2 class="footer__label">Services</h2>
+    <nav class="footer__col" [attr.aria-label]="footer().servicesLabel">
+      <h2 class="footer__label">{{ footer().servicesLabel }}</h2>
       @for (s of services(); track s.slug) {
         <a [routerLink]="['/services', s.slug]">{{ s.title }}</a>
       }
     </nav>
 
-    <nav class="footer__col" aria-label="Solutions">
-      <h2 class="footer__label">Solutions</h2>
+    <nav class="footer__col" [attr.aria-label]="footer().solutionsLabel">
+      <h2 class="footer__label">{{ footer().solutionsLabel }}</h2>
       @for (s of solutions(); track s.slug) {
         <a [routerLink]="['/solutions', s.slug]">{{ s.title }}</a>
       }
     </nav>
 
-    <nav class="footer__col" aria-label="Company">
-      <h2 class="footer__label">Company</h2>
-      <a routerLink="/about">About us</a>
-      <a routerLink="/insights">Insights</a>
-      <a routerLink="/contact">Contact</a>
-      <a [href]="'mailto:' + contact.salesEmail">Sales enquiries</a>
+    <nav class="footer__col" [attr.aria-label]="footer().companyLabel">
+      <h2 class="footer__label">{{ footer().companyLabel }}</h2>
+      @for (l of footer().links; track l.path) {
+        <a [routerLink]="l.path">{{ l.label }}</a>
+      }
+      <a [href]="'mailto:' + contact().salesEmail">{{ footer().salesLabel }}</a>
     </nav>
   </div>
 
   <div class="container footer__base">
-    <span>&copy; {{ year }} {{ company.legalName }}. {{ contact.registration }}.</span>
-    @if (registered) {
-      <span>Registered office: {{ registered.lines.join(', ') }}</span>
+    <span>&copy; {{ year }} {{ company().legalName }}. {{ contact().registration }}.</span>
+    @if (registered(); as r) {
+      <span>{{ r.label }}: {{ r.lines.join(', ') }}</span>
     }
   </div>
 </footer>

@@ -1,0 +1,36 @@
+import { Component, input } from '@angular/core';
+import { Heading } from '../../core/models/site';
+
+/**
+ * Section heading from JSON: pill label, serif title with an italic ending, and an optional lead.
+ * Anything placed inside (for example an "All solutions" link) is shown on the right.
+ */
+@Component({
+  selector: 'or-section-head',
+  template: `
+    <div class="section-head" [class.section-head--center]="center()">
+      <div>
+        @if (heading().eyebrow) {
+          <p class="eyebrow" [class.eyebrow--dark]="dark()">{{ heading().eyebrow }}</p>
+        }
+        <h2>
+          {{ heading().title }}
+          @if (heading().emphasis) {
+            <em>{{ heading().emphasis }}</em>
+          }
+        </h2>
+      </div>
+      @if (heading().lead) {
+        <p>{{ heading().lead }}</p>
+      }
+      <ng-content />
+    </div>
+  `,
+  styles: [':host { display: block; }'],
+})
+export class SectionHeadComponent {
+  readonly heading = input.required<Heading>();
+  readonly center = input(false);
+  /** Use on dark band sections. */
+  readonly dark = input(false);
+}
