@@ -1,17 +1,18 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ContentService } from '../../core/services/content.service';
+import { RevealDirective } from '../reveal/reveal.directive';
 
 @Component({
   selector: 'or-cta-band',
-  imports: [RouterLink],
+  imports: [RouterLink, RevealDirective],
   template: `
     <section class="cta">
-      <div class="container">
+      <div class="container" orReveal="zoom">
         <div class="cta__card">
-          <h2>{{ heading() }}</h2>
-          <p>{{ cta().text }}</p>
-          <div class="cta__actions">
+          <h2 orReveal [revealDelay]="120">{{ heading() }}</h2>
+          <p orReveal [revealDelay]="200">{{ cta().text }}</p>
+          <div class="cta__actions" orReveal [revealDelay]="280">
             <a routerLink="/contact" [queryParams]="query()" class="btn btn--light">{{ cta().primary }} <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
             <a class="btn btn--outline-light" [href]="contact().phoneHref">{{ cta().phonePrefix }} {{ contact().phone }}</a>
           </div>
@@ -34,7 +35,11 @@ import { ContentService } from '../../core/services/content.service';
           linear-gradient(160deg, var(--band-from), var(--band-to));
         color: var(--on-dark-muted);
         text-align: center;
+        background-size: 160% 160%, auto;
+        animation: glow-drift 14s ease-in-out infinite alternate;
       }
+      /* Slow drift of the corner glow, so the band feels alive */
+      @keyframes glow-drift { from { background-position: 100% 0%, 0 0; } to { background-position: 60% 40%, 0 0; } }
       h2 { color: var(--on-band); font-size: clamp(36px, 4.4vw, 56px); max-width: 20ch; }
       .cta__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 12px; }
     `,

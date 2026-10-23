@@ -5,7 +5,7 @@
 <section class="section">
   <div class="container">
     @if (featured(); as post) {
-      <a class="feature card-soft" [routerLink]="['/blog', post.slug]">
+      <a class="feature card-soft" [routerLink]="['/blog', post.slug]" orReveal>
         <div class="feature__panel" aria-hidden="true">
           <span class="feature__cat">{{ post.category }}</span>
           <or-icon name="laptop" />
@@ -28,8 +28,8 @@
 
     @if (rest().length) {
       <ul class="grid">
-        @for (post of rest(); track post.slug) {
-          <li>
+        @for (post of rest(); track post.slug; let i = $index) {
+          <li orReveal [revealDelay]="(i % 3) * 90">
             <a class="card card-soft" [routerLink]="['/blog', post.slug]">
               <div class="meta">
                 <span class="meta__cat">{{ post.category }}</span>

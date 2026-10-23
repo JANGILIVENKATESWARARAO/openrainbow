@@ -7,8 +7,8 @@
     <div class="container">
       <or-section-head [heading]="page.outcomes" />
       <ul class="outcomes">
-        @for (o of d.items; track o.slug) {
-          <li class="card-soft">
+        @for (o of d.items; track o.slug; let i = $index) {
+          <li class="card-soft" orReveal [revealDelay]="(i % 3) * 90">
             <a [routerLink]="['/solutions', o.slug]">
               <span class="icon-tile"><or-icon [name]="o.icon" /></span>
               <h3>{{ o.title }}</h3>
@@ -25,8 +25,8 @@
     <div class="container">
       <or-section-head [heading]="page.technologies" />
       <ul class="areas">
-        @for (a of d.technologies; track a.title) {
-          <li class="area card-soft">
+        @for (a of d.technologies; track a.title; let i = $index) {
+          <li class="area card-soft" orReveal [revealDelay]="(i % 2) * 90">
             <span class="icon-tile"><or-icon [name]="a.icon" /></span>
             <div class="area__body">
               <h3>{{ a.title }}</h3>
@@ -47,8 +47,8 @@
     <div class="container">
       <or-section-head [heading]="page.featured" />
       <div class="featured">
-        @for (f of d.featured; track f.title) {
-          <a class="offer card-soft" routerLink="/contact" [queryParams]="{ topic: page.cta.topic }">
+        @for (f of d.featured; track f.title; let i = $index) {
+          <a class="offer card-soft" [orReveal]="i % 2 ? 'right' : 'left'" routerLink="/contact" [queryParams]="{ topic: page.cta.topic }">
             <span class="offer__label">{{ f.label }}</span>
             <h3>{{ f.title }}</h3>
             <p>{{ f.text }}</p>

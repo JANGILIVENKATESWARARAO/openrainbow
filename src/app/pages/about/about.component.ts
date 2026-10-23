@@ -3,10 +3,11 @@ import { PageHeroComponent } from '../../shared/page-hero/page-hero.component';
 import { CtaBandComponent } from '../../shared/cta-band/cta-band.component';
 import { SectionHeadComponent } from '../../shared/section-head/section-head.component';
 import { ContentService } from '../../core/services/content.service';
+import { RevealDirective } from '../../shared/reveal/reveal.directive';
 
 @Component({
   selector: 'or-about',
-  imports: [PageHeroComponent, CtaBandComponent, SectionHeadComponent],
+  imports: [PageHeroComponent, CtaBandComponent, SectionHeadComponent, RevealDirective],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })

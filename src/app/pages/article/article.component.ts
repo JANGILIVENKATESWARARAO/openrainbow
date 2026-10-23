@@ -7,11 +7,12 @@ import { CtaBandComponent } from '../../shared/cta-band/cta-band.component';
 import { IconComponent } from '../../shared/icon/icon.component';
 import { Post } from '../../core/models/content';
 import { ContentService } from '../../core/services/content.service';
+import { RevealDirective } from '../../shared/reveal/reveal.directive';
 
 /** Blog article. The post comes from the route resolver. */
 @Component({
   selector: 'or-article',
-  imports: [RouterLink, DatePipe, CtaBandComponent, IconComponent],
+  imports: [RouterLink, DatePipe, CtaBandComponent, IconComponent, RevealDirective],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
   host: {

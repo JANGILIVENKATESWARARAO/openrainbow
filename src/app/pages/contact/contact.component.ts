@@ -4,13 +4,14 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PageHeroComponent } from '../../shared/page-hero/page-hero.component';
 import { ContactService } from '../../core/services/contact.service';
 import { ContentService } from '../../core/services/content.service';
+import { RevealDirective } from '../../shared/reveal/reveal.directive';
 
 type Status = 'idle' | 'sending' | 'sent' | 'error';
 type ControlName = 'name' | 'email' | 'company' | 'phone' | 'topic' | 'message' | 'consent';
 
 @Component({
   selector: 'or-contact',
-  imports: [ReactiveFormsModule, PageHeroComponent],
+  imports: [ReactiveFormsModule, PageHeroComponent, RevealDirective],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })

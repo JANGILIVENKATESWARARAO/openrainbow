@@ -4,12 +4,12 @@
 
 <section class="section">
   <div class="container story">
-    <dl class="facts">
+    <dl class="facts" orReveal="left">
       @for (fact of facts(); track fact.label) {
         <div><dt>{{ fact.label }}</dt><dd>{{ fact.value }}</dd></div>
       }
     </dl>
-    <div class="story__text">
+    <div class="story__text" orReveal [revealDelay]="120">
       <p class="story__lead">{{ page.storyLead }}</p>
       @for (paragraph of page.story; track $index) {
         <p>{{ paragraph }}</p>
@@ -22,8 +22,8 @@
   <div class="container">
     <or-section-head [heading]="page.engagement" />
     <ul class="ways">
-      @for (w of page.engagement.items; track w.title) {
-        <li>
+      @for (w of page.engagement.items; track w.title; let i = $index) {
+        <li orReveal [revealDelay]="i * 90">
           <h3>{{ w.title }}</h3>
           <p>{{ w.text }}</p>
         </li>
@@ -36,8 +36,8 @@
   <div class="container">
     <or-section-head [heading]="page.offices" />
     <div class="offices">
-      @for (o of offices(); track o.label) {
-        <address>
+      @for (o of offices(); track o.label; let i = $index) {
+        <address orReveal [revealDelay]="i * 90">
           <h3>{{ o.label }}</h3>
           @for (line of o.lines; track line) {
             <span>{{ line }}</span>

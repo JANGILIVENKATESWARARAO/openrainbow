@@ -13,8 +13,8 @@
     <div class="container">
       <or-section-head [heading]="page.specialist" />
       <ul class="spec">
-        @for (s of d.items; track s.slug) {
-          <li class="card-soft">
+        @for (s of d.items; track s.slug; let i = $index) {
+          <li class="card-soft" orReveal [revealDelay]="(i % 3) * 90">
             <a [routerLink]="['/services', s.slug]">
               <span class="icon-tile"><or-icon [name]="s.icon" /></span>
               <h3>{{ s.title }}</h3>

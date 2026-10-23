@@ -46,7 +46,7 @@
       }
     }
 
-    <footer class="byline">
+    <footer class="byline" orReveal>
       <span class="byline__avatar" aria-hidden="true"><or-icon name="user" /></span>
       <div>
         <p class="byline__name">{{ p.author }}</p>
@@ -55,7 +55,7 @@
     </footer>
   </article>
 
-  <aside class="aside">
+  <aside class="aside" orReveal="fade" [revealDelay]="200">
     @if (outline().length) {
       <nav class="toc" aria-label="On this page">
         <p class="aside__label">{{ labels.outline }}</p>
@@ -82,10 +82,10 @@
 @if (more().length) {
   <section class="section more">
     <div class="container">
-      <h2>{{ labels.more }}</h2>
+      <h2 orReveal>{{ labels.more }}</h2>
       <ul class="more__list">
-        @for (m of more(); track m.slug) {
-          <li>
+        @for (m of more(); track m.slug; let i = $index) {
+          <li orReveal [revealDelay]="i * 90">
             <a [routerLink]="['/blog', m.slug]">
               <span class="more__meta">{{ m.category }} &middot; {{ m.date | date: 'd MMM y' }}</span>
               <span class="more__title">{{ m.title }}</span>

@@ -8,20 +8,20 @@
 <!-- Overview + specialist card -->
 <section class="section">
   <div class="container overview">
-    <div class="overview__main">
+    <div class="overview__main" orReveal="left">
       <h2>{{ p.whatTitle }}</h2>
       <p>{{ p.what }}</p>
       <div class="overview__points">
         <p class="overview__label">{{ labels.benefitsLabel }}</p>
         <ul>
-          @for (point of keyPoints(); track point) {
-            <li><or-icon name="check" />{{ point }}</li>
+          @for (point of keyPoints(); track point; let i = $index) {
+            <li orReveal="fade" [revealDelay]="150 + i * 60"><or-icon name="check" />{{ point }}</li>
           }
         </ul>
       </div>
     </div>
 
-    <aside class="specialist" [attr.aria-label]="labels.specialist.label">
+    <aside class="specialist" [attr.aria-label]="labels.specialist.label" orReveal="right" [revealDelay]="120">
       <p class="specialist__label">{{ labels.specialist.label }}</p>
       <p class="specialist__text">{{ labels.specialist.text }}</p>
       <a routerLink="/contact" [queryParams]="{ topic: p.title }" class="btn btn--primary specialist__cta">{{ labels.specialist.cta }}</a>
@@ -42,8 +42,8 @@
       @switch (s.layout) {
         @case ('grid') {
           <ul class="cells">
-            @for (item of s.items; track item.title) {
-              <li>
+            @for (item of s.items; track item.title; let i = $index) {
+              <li orReveal [revealDelay]="i * 80">
                 <h3>{{ item.title }}</h3>
                 <p>{{ item.text }}</p>
               </li>
@@ -53,7 +53,7 @@
         @case ('steps') {
           <ol class="steps" [style.--count]="s.items.length">
             @for (item of s.items; track item.title; let i = $index) {
-              <li>
+              <li orReveal [revealDelay]="i * 100">
                 <span class="steps__no">{{ pad(i + 1) }}</span>
                 <h3>{{ item.title }}</h3>
                 <p>{{ item.text }}</p>
@@ -63,8 +63,8 @@
         }
         @default {
           <ul class="cols">
-            @for (item of s.items; track item.title) {
-              <li>
+            @for (item of s.items; track item.title; let i = $index) {
+              <li orReveal [revealDelay]="i * 80">
                 <span class="cols__check"><or-icon name="check" /></span>
                 <h3>{{ item.title }}</h3>
                 <p>{{ item.text }}</p>
@@ -85,8 +85,8 @@
         <a [routerLink]="'/' + category()" class="arrow-link section-head__link">{{ related().link }} <span aria-hidden="true">&rarr;</span></a>
       </or-section-head>
       <ul class="related__list">
-        @for (r of others(); track r.slug) {
-          <li>
+        @for (r of others(); track r.slug; let i = $index) {
+          <li orReveal [revealDelay]="i * 70">
             <a [routerLink]="['/', category(), r.slug]">
               <span class="icon-tile icon-tile--sm"><or-icon [name]="r.icon" /></span>
               <span class="related__text">

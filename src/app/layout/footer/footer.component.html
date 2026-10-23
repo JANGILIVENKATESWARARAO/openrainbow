@@ -1,6 +1,6 @@
 <footer class="footer">
   <div class="container footer__top">
-    <div class="footer__brand">
+    <div class="footer__brand" orReveal="fade">
       <a routerLink="/" aria-label="Home"><or-logo [inverse]="true" /></a>
       <p>{{ summary() }}</p>
       <ul class="footer__reach">
@@ -12,21 +12,21 @@
       </ul>
     </div>
 
-    <nav class="footer__col" [attr.aria-label]="footer().servicesLabel">
+    <nav class="footer__col" [attr.aria-label]="footer().servicesLabel" orReveal="fade" [revealDelay]="80">
       <h2 class="footer__label">{{ footer().servicesLabel }}</h2>
       @for (s of services(); track s.slug) {
         <a [routerLink]="['/services', s.slug]">{{ s.title }}</a>
       }
     </nav>
 
-    <nav class="footer__col" [attr.aria-label]="footer().solutionsLabel">
+    <nav class="footer__col" [attr.aria-label]="footer().solutionsLabel" orReveal="fade" [revealDelay]="160">
       <h2 class="footer__label">{{ footer().solutionsLabel }}</h2>
       @for (s of solutions(); track s.slug) {
         <a [routerLink]="['/solutions', s.slug]">{{ s.title }}</a>
       }
     </nav>
 
-    <nav class="footer__col" [attr.aria-label]="footer().companyLabel">
+    <nav class="footer__col" [attr.aria-label]="footer().companyLabel" orReveal="fade" [revealDelay]="240">
       <h2 class="footer__label">{{ footer().companyLabel }}</h2>
       @for (l of footer().links; track l.path) {
         <a [routerLink]="l.path">{{ l.label }}</a>

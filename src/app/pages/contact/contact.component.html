@@ -5,9 +5,9 @@
 
 <section class="section">
   <div class="container contact">
-    <div class="contact__form">
+    <div class="contact__form" orReveal>
       @if (status() === 'sent') {
-        <div class="sent" role="status">
+        <div class="sent" role="status" orReveal="zoom">
           <span class="sent__icon" aria-hidden="true">&#10003;</span>
           <h2>{{ page.sent.title }}</h2>
           <p>{{ page.sent.text }}</p>
@@ -95,17 +95,17 @@
     </div>
 
     <aside class="contact__details">
-      <div class="detail">
+      <div class="detail" orReveal="right" [revealDelay]="100">
         <h2 class="detail__label">{{ page.details.phone }}</h2>
         <a class="detail__big" [href]="c.phoneHref">{{ c.phone }}</a>
       </div>
-      <div class="detail">
+      <div class="detail" orReveal="right" [revealDelay]="180">
         <h2 class="detail__label">{{ page.details.email }}</h2>
         <a [href]="'mailto:' + c.email">{{ c.email }}</a>
         <a [href]="'mailto:' + c.salesEmail">{{ c.salesEmail }} <span class="opt">{{ page.details.sales }}</span></a>
       </div>
-      @for (o of c.offices; track o.label) {
-        <address class="detail">
+      @for (o of c.offices; track o.label; let i = $index) {
+        <address class="detail" orReveal="right" [revealDelay]="260 + i * 80">
           <h2 class="detail__label">{{ o.label }}</h2>
           @for (line of o.lines; track line) {
             <span>{{ line }}</span>

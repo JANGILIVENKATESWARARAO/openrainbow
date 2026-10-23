@@ -3,11 +3,12 @@ import { RouterLink } from '@angular/router';
 import { IconComponent } from '../icon/icon.component';
 import { Practice } from '../../core/models/content';
 import { ContentService } from '../../core/services/content.service';
+import { RevealDirective } from '../reveal/reveal.directive';
 
 /** The three service practices. Compact on Home, full detail on Services. */
 @Component({
   selector: 'or-practices',
-  imports: [RouterLink, IconComponent],
+  imports: [RouterLink, IconComponent, RevealDirective],
   templateUrl: './practices.component.html',
   styleUrl: './practices.component.scss',
 })

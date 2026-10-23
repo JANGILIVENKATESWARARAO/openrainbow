@@ -1,7 +1,7 @@
 @if (!detailed()) {
   <div class="grid">
-    @for (p of practices(); track p.id) {
-      <article class="card card-soft">
+    @for (p of practices(); track p.id; let i = $index) {
+      <article class="card card-soft" orReveal [revealDelay]="(i % 3) * 90">
         <span class="icon-tile"><or-icon [name]="p.icon" /></span>
         <h3>{{ p.title }}</h3>
         <p class="card__summary">{{ p.summary }}</p>
@@ -18,14 +18,14 @@
   <div class="detail">
     @for (p of practices(); track p.id) {
       <section class="detail__block" [id]="p.id">
-        <div class="detail__intro">
+        <div class="detail__intro" orReveal="left">
           <span class="icon-tile"><or-icon [name]="p.icon" /></span>
           <h2>{{ p.title }}</h2>
           <p>{{ p.summary }}</p>
         </div>
         <ul class="detail__items">
-          @for (item of p.items; track item.title) {
-            <li>
+          @for (item of p.items; track item.title; let i = $index) {
+            <li orReveal [revealDelay]="i * 70">
               <h3>{{ item.title }}</h3>
               <p>{{ item.text }}</p>
             </li>

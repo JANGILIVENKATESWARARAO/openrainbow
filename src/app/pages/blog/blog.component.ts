@@ -6,11 +6,12 @@ import { PageHeroComponent } from '../../shared/page-hero/page-hero.component';
 import { CtaBandComponent } from '../../shared/cta-band/cta-band.component';
 import { IconComponent } from '../../shared/icon/icon.component';
 import { ContentService } from '../../core/services/content.service';
+import { RevealDirective } from '../../shared/reveal/reveal.directive';
 
 /** Blog listing. Posts come from /public/data/blog.json. */
 @Component({
   selector: 'or-blog',
-  imports: [RouterLink, DatePipe, PageHeroComponent, CtaBandComponent, IconComponent],
+  imports: [RouterLink, DatePipe, PageHeroComponent, CtaBandComponent, IconComponent, RevealDirective],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.scss',
 })

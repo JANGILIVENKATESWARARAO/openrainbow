@@ -4,10 +4,11 @@ import { RouterLink } from '@angular/router';
 import { LogoComponent } from '../../shared/logo/logo.component';
 import { IconComponent } from '../../shared/icon/icon.component';
 import { ContentService } from '../../core/services/content.service';
+import { RevealDirective } from '../../shared/reveal/reveal.directive';
 
 @Component({
   selector: 'or-footer',
-  imports: [RouterLink, LogoComponent, IconComponent],
+  imports: [RouterLink, LogoComponent, IconComponent, RevealDirective],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })

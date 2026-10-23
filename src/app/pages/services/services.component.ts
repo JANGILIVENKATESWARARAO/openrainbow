@@ -7,10 +7,11 @@ import { CtaBandComponent } from '../../shared/cta-band/cta-band.component';
 import { IconComponent } from '../../shared/icon/icon.component';
 import { SectionHeadComponent } from '../../shared/section-head/section-head.component';
 import { ContentService } from '../../core/services/content.service';
+import { RevealDirective } from '../../shared/reveal/reveal.directive';
 
 @Component({
   selector: 'or-services',
-  imports: [RouterLink, PageHeroComponent, PracticesComponent, CtaBandComponent, IconComponent, SectionHeadComponent],
+  imports: [RouterLink, PageHeroComponent, PracticesComponent, CtaBandComponent, IconComponent, SectionHeadComponent, RevealDirective],
   templateUrl: './services.component.html',
   styleUrl: './services.component.scss',
 })

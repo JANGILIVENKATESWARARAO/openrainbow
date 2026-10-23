@@ -9,11 +9,12 @@ import { IconComponent } from '../../shared/icon/icon.component';
 import { SectionHeadComponent } from '../../shared/section-head/section-head.component';
 import { Category, ContentPage } from '../../core/models/content';
 import { ContentService } from '../../core/services/content.service';
+import { RevealDirective } from '../../shared/reveal/reveal.directive';
 
 /** One template for every service and solution page. Content comes from the route resolver. */
 @Component({
   selector: 'or-detail',
-  imports: [RouterLink, PageHeroComponent, CtaBandComponent, IconComponent, SectionHeadComponent],
+  imports: [RouterLink, PageHeroComponent, CtaBandComponent, IconComponent, SectionHeadComponent, RevealDirective],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss',
 })
