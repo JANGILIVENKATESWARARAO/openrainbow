@@ -42,7 +42,7 @@ textarea {
   min-height: 50px;
   padding: 12px 14px;
   border: 1px solid var(--line-strong);
-  border-radius: var(--radius);
+  border-radius: 10px;
   background: var(--bg);
   color: var(--ink);
   font: 400 16px/1.4 var(--font-sans);
@@ -115,7 +115,7 @@ textarea { resize: vertical; min-height: 160px; }
   justify-items: start;
   padding: 48px 40px;
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: var(--radius-card);
   background: var(--paper);
 
   h2 { font-size: clamp(28px, 3vw, 36px); }

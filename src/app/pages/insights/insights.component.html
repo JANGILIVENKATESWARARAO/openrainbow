@@ -1,13 +1,15 @@
 <or-page-hero
   crumb="Insights"
-  title="Insights"
+  eyebrow="Insights"
+  title="Ideas from"
+  emphasis="our team"
   lead="Guidance, news and analysis on the technology that runs your business, from the Open Rainbow team."
 />
 
 <section class="section">
   <div class="container">
     @if (featured(); as post) {
-      <a class="feature" [routerLink]="['/insights', post.slug]">
+      <a class="feature card-soft" [routerLink]="['/insights', post.slug]">
         <div class="feature__panel" aria-hidden="true">
           <span class="feature__cat">{{ post.category }}</span>
           <or-icon name="laptop" />
@@ -32,7 +34,7 @@
       <ul class="grid">
         @for (post of rest(); track post.slug) {
           <li>
-            <a class="card" [routerLink]="['/insights', post.slug]">
+            <a class="card card-soft" [routerLink]="['/insights', post.slug]">
               <div class="meta">
                 <span class="meta__cat">{{ post.category }}</span>
                 <span>{{ post.date | date: 'd MMM y' }}</span>
