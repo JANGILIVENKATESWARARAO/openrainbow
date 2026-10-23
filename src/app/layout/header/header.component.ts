@@ -72,7 +72,7 @@ export class HeaderComponent {
   /** Opens/closes the mobile menu and stops the page behind it from scrolling while it is open. */
   private setMenu(open: boolean): void {
     this.menuOpen.set(open);
-    this.document.documentElement.classList.toggle('menu-open', open);
+    this.document.documentElement.style.overflow = open ? 'hidden' : '';
     if (open) this.setHidden(false);
   }
 
