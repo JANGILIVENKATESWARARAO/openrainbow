@@ -65,21 +65,24 @@
     text-decoration: none;
     transition: color 0.2s;
 
-    &::after {
-      content: '';
-      position: absolute;
-      left: 14px;
-      right: 14px;
-      bottom: 18px;
-      height: 2px;
-      background: var(--ink);
-      transform: scaleX(0);
-      transition: transform 0.25s var(--ease);
-    }
-
     &:hover { color: var(--ink); }
-    &.is-active { color: var(--ink); }
-    &.is-active::after { transform: scaleX(1); }
+    /* Current page: bold text, no underline */
+    &.is-active { color: var(--ink); font-weight: 700; }
+  }
+}
+
+/* A hidden bold copy of the label keeps the width the same, so links never shift when one turns bold */
+.top__label {
+  display: inline-grid;
+
+  &::after {
+    content: attr(data-label);
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    font-weight: 700;
+    user-select: none;
+    pointer-events: none;
   }
 }
 
@@ -205,7 +208,6 @@
       padding: 18px 0;
       border-bottom: 1px solid var(--line);
       font-size: 20px;
-      &::after { display: none; }
     }
   }
 

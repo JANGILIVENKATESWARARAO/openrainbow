@@ -20,7 +20,7 @@
         @for (link of links(); track link.path) {
           <li [class.has-menu]="link.items.length > 0">
             <a class="top" [routerLink]="link.path" routerLinkActive="is-active" (click)="blur($event)">
-              {{ link.label }}
+              <span class="top__label" [attr.data-label]="link.label">{{ link.label }}</span>
               @if (link.items.length) {
                 <or-icon class="top__chevron" name="chevron" />
               }
