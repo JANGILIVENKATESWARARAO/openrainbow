@@ -10,7 +10,7 @@ Professional redesign of https://www.openrainbow.co.uk.
 | Storybook    | 10.6    |
 | Node.js      | 22.22+ or 24.15+ |
 
-Standalone components, signals, new control flow, zoneless change detection. Font: Inter only (no serif, no italics).
+Standalone components, signals, new control flow, zoneless change detection. Font: Inter only (no serif, no italics). Icons: [Lucide](https://lucide.dev) via `@lucide/angular`.
 
 ## Run it
 
@@ -44,6 +44,11 @@ Use the theme switch in the Storybook toolbar to see light and dark.
 - Tailwind 4 reads the same tokens (`src/tailwind.css`), e.g. `bg-surface`, `text-ink`, `text-accent`, and `dark:` works with the `data-theme` attribute.
 - The toggle in the header saves the choice (`localStorage` key `or-theme`). With no choice, the site follows the system setting.
 
+## Logo and icons
+
+- Logo files: `public/images/logo-light.svg` (dark text, light theme) and `public/images/logo-dark.svg` (white text, dark theme and footer). Replace them with your own files of the same name at any time.
+- Icons come from Lucide. Short names used in the JSON (e.g. `"shield"`) are mapped in `src/app/shared/icon/icons.ts`. To add an icon, import it there and add it to `ICON_SET`.
+
 ## Content (all from JSON)
 
 Every text on the site comes from JSON files in `public/data`:
@@ -59,6 +64,7 @@ blog.json        blog posts
 Edit the JSON, save, refresh. No code change needed.
 `site.json` texts can use `{founded}`, `{years}`, `{vendors}` and `{category}`; the app fills them in.
 Headings use `"title"` + `"emphasis"` (e.g. "Our" + "services"): the emphasis part is shown in a stronger colour (upright Inter, no italics).
+The menu order is the order of `navigation` in `site.json`.
 
 ## Remote JSON (Google Drive, later)
 
@@ -79,14 +85,14 @@ If a remote file fails to load, the app uses the local copy, so the site never g
 | Route               | Page                                   |
 |---------------------|----------------------------------------|
 | `/`                 | Home                                   |
+| `/about`            | Company                                |
 | `/services`         | Services overview                      |
 | `/services/:slug`   | Service detail page (6)                |
 | `/solutions`        | Solutions overview                     |
 | `/solutions/:slug`  | Solution detail page (5)               |
-| `/insights`         | Blog listing                           |
-| `/insights/:slug`   | Blog article                           |
-| `/about`            | Company                                |
 | `/contact`          | Enquiry form. `?topic=` pre-selects the enquiry type |
+| `/blog`             | Blog listing (old `/insights` links redirect here) |
+| `/blog/:slug`       | Blog post                              |
 | `**`                | 404                                    |
 
 ## Contact form

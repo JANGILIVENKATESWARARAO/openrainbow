@@ -6,7 +6,7 @@
     <nav class="crumbs" aria-label="Breadcrumb">
       <a routerLink="/">Home</a>
       <span aria-hidden="true">/</span>
-      <a routerLink="/insights">{{ labels.crumb }}</a>
+      <a routerLink="/blog">{{ labels.crumb }}</a>
       <span aria-hidden="true">/</span>
       <span aria-current="page">{{ p.category }}</span>
     </nav>
@@ -68,7 +68,7 @@
         <a [href]="shareEmail()">Email</a>
       </div>
     </div>
-    <a routerLink="/insights" class="arrow-link back"><span aria-hidden="true">&larr;</span> {{ labels.back }}</a>
+    <a routerLink="/blog" class="arrow-link back"><span aria-hidden="true">&larr;</span> {{ labels.back }}</a>
   </aside>
 </div>
 
@@ -79,7 +79,7 @@
       <ul class="more__list">
         @for (m of more(); track m.slug) {
           <li>
-            <a [routerLink]="['/insights', m.slug]">
+            <a [routerLink]="['/blog', m.slug]">
               <span class="more__meta">{{ m.category }} &middot; {{ m.date | date: 'd MMM y' }}</span>
               <span class="more__title">{{ m.title }}</span>
             </a>

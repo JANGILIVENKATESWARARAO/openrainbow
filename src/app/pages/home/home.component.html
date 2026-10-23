@@ -171,22 +171,22 @@
   </section>
 }
 
-<!-- Insights -->
+<!-- Blog -->
 @if (latestPost(); as post) {
   <section class="section section--paper">
     <div class="container">
-      <or-section-head [heading]="h.insights">
-        <a [routerLink]="h.insights.link.path" class="arrow-link section-head__link">{{ h.insights.link.label }} <span aria-hidden="true">&rarr;</span></a>
+      <or-section-head [heading]="h.blog">
+        <a [routerLink]="h.blog.link.path" class="arrow-link section-head__link">{{ h.blog.link.label }} <span aria-hidden="true">&rarr;</span></a>
       </or-section-head>
-      <a class="insight card-soft" [routerLink]="['/insights', post.slug]">
+      <a class="insight card-soft" [routerLink]="['/blog', post.slug]">
         <div class="insight__meta">
           <span class="insight__cat">{{ post.category }}</span>
           <span>{{ post.date | date: 'd MMMM y' }}</span>
-          <span>{{ post.readingMinutes }} {{ site().pages.insights.readTime }}</span>
+          <span>{{ post.readingMinutes }} {{ site().pages.blog.readTime }}</span>
         </div>
         <h3>{{ post.title }}</h3>
         <p>{{ post.excerpt }}</p>
-        <span class="arrow-link">{{ h.insights.cta }} <span aria-hidden="true">&rarr;</span></span>
+        <span class="arrow-link">{{ h.blog.cta }} <span aria-hidden="true">&rarr;</span></span>
       </a>
     </div>
   </section>
