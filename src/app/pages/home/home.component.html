@@ -24,12 +24,12 @@
         <or-status-panel [data]="m" />
       </div>
 
-      <div class="hero__side" [attr.aria-label]="m.note">
+      <div class="hero__side" [attr.aria-label]="m.note" orReveal="right" [revealDelay]="200">
         <div class="stat-card">
           <p class="stat-card__label">{{ m.coverage.label }}</p>
           <dl class="stat-card__row">
             @for (s of stats(); track s.label) {
-              <div><dt>{{ s.value }}</dt><dd>{{ s.label }}</dd></div>
+              <div><dt [orCountUp]="s.value"></dt><dd>{{ s.label }}</dd></div>
             }
           </dl>
         </div>
@@ -56,10 +56,10 @@
 <!-- Vendors -->
 <section class="vendors" [attr.aria-label]="h.vendorsLabel">
   <div class="container">
-    <p class="vendors__label">{{ h.vendorsLabel }}</p>
+    <p class="vendors__label" orReveal="fade">{{ h.vendorsLabel }}</p>
     <ul class="vendors__list">
-      @for (v of vendors(); track v) {
-        <li>{{ v }}</li>
+      @for (v of vendors(); track v; let i = $index) {
+        <li orReveal="fade" [revealDelay]="i * 50">{{ v }}</li>
       }
     </ul>
   </div>
@@ -71,8 +71,8 @@
     <div class="container">
       <or-section-head [heading]="h.services" [center]="true" />
       <ul class="svc-grid">
-        @for (item of s.items; track item.slug) {
-          <li class="card-soft svc">
+        @for (item of s.items; track item.slug; let i = $index) {
+          <li class="card-soft svc" orReveal [revealDelay]="(i % 3) * 90">
             <span class="icon-tile icon-tile--sm"><or-icon [name]="item.icon" /></span>
             <h3>{{ item.title }}</h3>
             <p>{{ item.summary }}</p>
@@ -80,7 +80,7 @@
           </li>
         }
       </ul>
-      <div class="center-cta">
+      <div class="center-cta" orReveal>
         <a [routerLink]="h.services.cta.path" class="btn btn--primary">{{ h.services.cta.label }} <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
@@ -98,14 +98,14 @@
 <!-- Approach -->
 <section class="section">
   <div class="container approach">
-    <div class="approach__intro">
+    <div class="approach__intro" orReveal="left">
       <p class="eyebrow">{{ h.approach.eyebrow }}</p>
       <h2>{{ h.approach.title }} <span class="emphasis">{{ h.approach.emphasis }}</span></h2>
       <p>{{ h.approach.lead }}</p>
     </div>
     <ol class="approach__steps">
       @for (step of h.approach.steps; track step.title; let i = $index) {
-        <li>
+        <li orReveal [revealDelay]="i * 100">
           <span class="approach__no">0{{ i + 1 }}</span>
           <h3>{{ step.title }}</h3>
           <p>{{ step.text }}</p>
@@ -123,8 +123,8 @@
         <a [routerLink]="h.technologies.link.path" class="arrow-link section-head__link">{{ h.technologies.link.label }} <span aria-hidden="true">&rarr;</span></a>
       </or-section-head>
       <ul class="areas">
-        @for (a of technologies(); track a.title) {
-          <li class="area card-soft">
+        @for (a of technologies(); track a.title; let i = $index) {
+          <li class="area card-soft" orReveal [revealDelay]="(i % 3) * 90">
             <span class="icon-tile"><or-icon [name]="a.icon" /></span>
             <h3>{{ a.title }}</h3>
             <p>{{ a.text }}</p>
@@ -138,10 +138,10 @@
   <!-- Outcomes -->
   <section class="outcomes">
     <div class="container">
-      <p class="eyebrow eyebrow--dark">{{ h.outcomes.eyebrow }}</p>
+      <p class="eyebrow eyebrow--dark" orReveal="fade">{{ h.outcomes.eyebrow }}</p>
       <ul class="outcomes__list">
-        @for (o of sol.items; track o.slug) {
-          <li>
+        @for (o of sol.items; track o.slug; let i = $index) {
+          <li orReveal [revealDelay]="i * 70">
             <a [routerLink]="['/solutions', o.slug]">
               <span class="icon-tile icon-tile--dark"><or-icon [name]="o.icon" /></span>
               <h3>{{ o.title }}</h3>
@@ -158,8 +158,8 @@
     <div class="container">
       <or-section-head [heading]="h.featured" />
       <div class="featured">
-        @for (f of sol.featured; track f.title) {
-          <a class="offer card-soft" routerLink="/contact" [queryParams]="{ topic: h.featured.topic }">
+        @for (f of sol.featured; track f.title; let i = $index) {
+          <a class="offer card-soft" [orReveal]="i % 2 ? 'right' : 'left'" routerLink="/contact" [queryParams]="{ topic: h.featured.topic }">
             <span class="offer__label">{{ f.label }}</span>
             <h3>{{ f.title }}</h3>
             <p>{{ f.text }}</p>
@@ -171,31 +171,10 @@
   </section>
 }
 
-<!-- Blog -->
-@if (latestPost(); as post) {
-  <section class="section section--paper">
-    <div class="container">
-      <or-section-head [heading]="h.blog">
-        <a [routerLink]="h.blog.link.path" class="arrow-link section-head__link">{{ h.blog.link.label }} <span aria-hidden="true">&rarr;</span></a>
-      </or-section-head>
-      <a class="insight card-soft" [routerLink]="['/blog', post.slug]">
-        <div class="insight__meta">
-          <span class="insight__cat">{{ post.category }}</span>
-          <span>{{ post.date | date: 'd MMMM y' }}</span>
-          <span>{{ post.readingMinutes }} {{ site().pages.blog.readTime }}</span>
-        </div>
-        <h3>{{ post.title }}</h3>
-        <p>{{ post.excerpt }}</p>
-        <span class="arrow-link">{{ h.blog.cta }} <span aria-hidden="true">&rarr;</span></span>
-      </a>
-    </div>
-  </section>
-}
-
 <!-- Quality -->
 <section class="quality">
   <div class="container">
-    <blockquote>
+    <blockquote orReveal="zoom">
       <p>{{ h.quote }}</p>
     </blockquote>
   </div>

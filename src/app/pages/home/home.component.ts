@@ -1,17 +1,27 @@
 import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { StatusPanelComponent } from './status-panel/status-panel.component';
 import { PracticesComponent } from '../../shared/practices/practices.component';
 import { CtaBandComponent } from '../../shared/cta-band/cta-band.component';
 import { IconComponent } from '../../shared/icon/icon.component';
 import { SectionHeadComponent } from '../../shared/section-head/section-head.component';
+import { RevealDirective } from '../../shared/reveal/reveal.directive';
+import { CountUpDirective } from '../../shared/count-up/count-up.directive';
 import { ContentService } from '../../core/services/content.service';
 
 @Component({
   selector: 'or-home',
-  imports: [RouterLink, DatePipe, StatusPanelComponent, PracticesComponent, CtaBandComponent, IconComponent, SectionHeadComponent],
+  imports: [
+    RouterLink,
+    StatusPanelComponent,
+    PracticesComponent,
+    CtaBandComponent,
+    IconComponent,
+    SectionHeadComponent,
+    RevealDirective,
+    CountUpDirective,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -32,8 +42,6 @@ export class HomeComponent {
 
   readonly services = toSignal(this.content.services$);
   readonly solutions = toSignal(this.content.solutions$);
-  private readonly posts = toSignal(this.content.posts$, { initialValue: [] });
 
   readonly technologies = computed(() => this.solutions()?.technologies.slice(0, this.home().technologies.count) ?? []);
-  readonly latestPost = computed(() => this.posts()[0]);
 }
