@@ -48,12 +48,12 @@ textarea {
   font: 400 16px/1.4 var(--font-sans);
   transition: border-color 0.2s, box-shadow 0.2s;
 
-  &:hover { border-color: #9fadbb; }
+  &:hover { border-color: var(--input-hover); }
 
   &:focus {
     outline: none;
-    border-color: var(--navy-800);
-    box-shadow: 0 0 0 3px rgba(15, 34, 54, 0.12);
+    border-color: var(--ink);
+    box-shadow: 0 0 0 3px var(--focus-ring);
   }
 }
 
@@ -91,17 +91,17 @@ textarea { resize: vertical; min-height: 160px; }
     width: 18px;
     height: 18px;
     margin: 3px 0 0;
-    accent-color: var(--navy-800);
+    accent-color: var(--ink);
   }
 }
 
 .has-error {
-  input, textarea { border-color: #b4323a; }
+  input, textarea { border-color: var(--danger); }
 }
 
 .error {
   font-size: 14px;
-  color: #b4323a;
+  color: var(--danger);
 }
 
 .error--form { font-size: 16px; }
@@ -128,8 +128,8 @@ textarea { resize: vertical; min-height: 160px; }
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--navy-800);
-  color: #fff;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
   font-size: 20px;
 }
 

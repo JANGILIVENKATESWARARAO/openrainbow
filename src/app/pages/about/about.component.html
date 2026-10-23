@@ -1,47 +1,28 @@
-<or-page-hero
-  crumb="About"
-  eyebrow="About us"
-  title="A responsible and responsive"
-  emphasis="IT partner"
-  lead="Formed to provide technical consultancy and Agile services to corporate IT organisations, we now deliver full IT services directly to a wide variety of organisations."
-/>
+@let page = copy();
+
+<or-page-hero [crumb]="page.crumb" [heading]="page" />
 
 <section class="section">
   <div class="container story">
     <dl class="facts">
-      <div><dt>Established</dt><dd>{{ company.founded }}</dd></div>
-      <div><dt>Company</dt><dd>{{ company.legalName }}</dd></div>
-      <div><dt>Registration</dt><dd>{{ contact.registration }}</dd></div>
+      @for (fact of facts(); track fact.label) {
+        <div><dt>{{ fact.label }}</dt><dd>{{ fact.value }}</dd></div>
+      }
     </dl>
     <div class="story__text">
-      <p class="story__lead">
-        We believe in combining knowledge, methodology and experience to make ideas successful.
-      </p>
-      <p>
-        The right solution starts with understanding your current and future requirements. Our highly trained team works with you to find the most
-        effective way to access your business-critical applications: strong performance and availability for the people who should have access, and the
-        best security against those who shouldn't.
-      </p>
-      <p>
-        We don't always follow convention, default to the latest technologies or only select solutions from the biggest vendors. First we listen. Then we
-        use all our experience to design, build, implement and support solutions that work for you today and offer opportunities to grow tomorrow. It's why
-        our clients trust us, and why we continue to grow through recommendation.
-      </p>
+      <p class="story__lead">{{ page.storyLead }}</p>
+      @for (paragraph of page.story; track $index) {
+        <p>{{ paragraph }}</p>
+      }
     </div>
   </div>
 </section>
 
 <section class="section section--paper">
   <div class="container">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">Working with us</p>
-        <h2>However you choose to <em>engage</em></h2>
-      </div>
-      <p>We are flexible about how we work with you. We never compromise on the quality of our people, our advice, our services or your solutions.</p>
-    </div>
+    <or-section-head [heading]="page.engagement" />
     <ul class="ways">
-      @for (w of engagement; track w.title) {
+      @for (w of page.engagement.items; track w.title) {
         <li>
           <h3>{{ w.title }}</h3>
           <p>{{ w.text }}</p>
@@ -53,14 +34,9 @@
 
 <section class="section">
   <div class="container">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">Offices</p>
-        <h2>Where to <em>find us</em></h2>
-      </div>
-    </div>
+    <or-section-head [heading]="page.offices" />
     <div class="offices">
-      @for (o of contact.offices; track o.label) {
+      @for (o of offices(); track o.label) {
         <address>
           <h3>{{ o.label }}</h3>
           @for (line of o.lines; track line) {

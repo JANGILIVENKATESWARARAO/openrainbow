@@ -1,6 +1,6 @@
-import { Component, computed, effect, inject, input } from '@angular/core';
+import { Component, DOCUMENT, computed, effect, inject, input } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { DOCUMENT, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { Meta } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { CtaBandComponent } from '../../shared/cta-band/cta-band.component';
@@ -18,7 +18,12 @@ import { ContentService } from '../../core/services/content.service';
 export class ArticleComponent {
   private readonly meta = inject(Meta);
   private readonly document = inject(DOCUMENT);
-  private readonly posts = toSignal(inject(ContentService).posts$, { initialValue: [] });
+  private readonly content = inject(ContentService);
+  private readonly posts = toSignal(this.content.posts$, { initialValue: [] });
+
+  /** Labels from site.json → pages.article. */
+  readonly copy = computed(() => this.content.site().pages.article);
+  readonly authorRole = computed(() => this.copy().authorRole || this.content.site().company.name);
 
   readonly post = input.required<Post>();
 

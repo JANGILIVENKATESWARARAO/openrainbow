@@ -1,10 +1,7 @@
-<or-page-hero
-  crumb="Contact"
-  eyebrow="Contact"
-  title="Talk to"
-  emphasis="our team"
-  lead="Tell us about your requirements and a member of our team will respond to your enquiry."
-/>
+@let page = copy();
+@let c = contact();
+
+<or-page-hero [crumb]="page.crumb" [heading]="page" />
 
 <section class="section">
   <div class="container contact">
@@ -12,9 +9,9 @@
       @if (status() === 'sent') {
         <div class="sent" role="status">
           <span class="sent__icon" aria-hidden="true">&#10003;</span>
-          <h2>Thank you for your enquiry.</h2>
-          <p>A member of our team will respond to your enquiry.</p>
-          <button type="button" class="btn btn--secondary" (click)="sendAnother()">Send another enquiry</button>
+          <h2>{{ page.sent.title }}</h2>
+          <p>{{ page.sent.text }}</p>
+          <button type="button" class="btn btn--secondary" (click)="sendAnother()">{{ page.sent.again }}</button>
         </div>
       } @else {
         <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
@@ -79,7 +76,7 @@
           <div class="field" [class.has-error]="showError('consent')">
             <label class="check">
               <input type="checkbox" formControlName="consent" />
-              <span>I agree to Open Rainbow contacting me about this enquiry.</span>
+              <span>I agree to {{ companyName() }} contacting me about this enquiry.</span>
             </label>
             @if (showError('consent')) {
               <span class="error">Please confirm so we can reply to you.</span>
@@ -99,15 +96,15 @@
 
     <aside class="contact__details">
       <div class="detail">
-        <h2 class="detail__label">Telephone</h2>
-        <a class="detail__big" [href]="contact.phoneHref">{{ contact.phone }}</a>
+        <h2 class="detail__label">{{ page.details.phone }}</h2>
+        <a class="detail__big" [href]="c.phoneHref">{{ c.phone }}</a>
       </div>
       <div class="detail">
-        <h2 class="detail__label">Email</h2>
-        <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>
-        <a [href]="'mailto:' + contact.salesEmail">{{ contact.salesEmail }} <span class="opt">(sales)</span></a>
+        <h2 class="detail__label">{{ page.details.email }}</h2>
+        <a [href]="'mailto:' + c.email">{{ c.email }}</a>
+        <a [href]="'mailto:' + c.salesEmail">{{ c.salesEmail }} <span class="opt">{{ page.details.sales }}</span></a>
       </div>
-      @for (o of contact.offices; track o.label) {
+      @for (o of c.offices; track o.label) {
         <address class="detail">
           <h2 class="detail__label">{{ o.label }}</h2>
           @for (line of o.lines; track line) {

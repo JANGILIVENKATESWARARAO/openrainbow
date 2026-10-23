@@ -1,11 +1,12 @@
 @let p = post();
+@let labels = copy();
 
 <header class="head">
   <div class="container head__inner">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a routerLink="/">Home</a>
       <span aria-hidden="true">/</span>
-      <a routerLink="/insights">Insights</a>
+      <a routerLink="/insights">{{ labels.crumb }}</a>
       <span aria-hidden="true">/</span>
       <span aria-current="page">{{ p.category }}</span>
     </nav>
@@ -15,7 +16,7 @@
     <div class="head__meta">
       <span><or-icon name="user" />{{ p.author }}</span>
       <span><or-icon name="calendar" /><time [attr.datetime]="p.date">{{ p.date | date: 'd MMMM y' }}</time></span>
-      <span><or-icon name="clock" />{{ p.readingMinutes }} min read</span>
+      <span><or-icon name="clock" />{{ p.readingMinutes }} {{ labels.readTime }}</span>
     </div>
   </div>
 </header>
@@ -44,7 +45,7 @@
       <span class="byline__avatar" aria-hidden="true"><or-icon name="user" /></span>
       <div>
         <p class="byline__name">{{ p.author }}</p>
-        <p class="byline__role">Open Rainbow</p>
+        <p class="byline__role">{{ authorRole() }}</p>
       </div>
     </footer>
   </article>
@@ -52,7 +53,7 @@
   <aside class="aside">
     @if (outline().length) {
       <nav class="toc" aria-label="On this page">
-        <p class="aside__label">On this page</p>
+        <p class="aside__label">{{ labels.outline }}</p>
         <ul>
           @for (h of outline(); track h.id) {
             <li><a routerLink="." [fragment]="h.id">{{ h.text }}</a></li>
@@ -61,20 +62,20 @@
       </nav>
     }
     <div class="share">
-      <p class="aside__label">Share</p>
+      <p class="aside__label">{{ labels.share }}</p>
       <div class="share__links">
         <a [href]="shareLinkedIn()" target="_blank" rel="noopener">LinkedIn</a>
         <a [href]="shareEmail()">Email</a>
       </div>
     </div>
-    <a routerLink="/insights" class="arrow-link back"><span aria-hidden="true">&larr;</span> All insights</a>
+    <a routerLink="/insights" class="arrow-link back"><span aria-hidden="true">&larr;</span> {{ labels.back }}</a>
   </aside>
 </div>
 
 @if (more().length) {
   <section class="section more">
     <div class="container">
-      <h2>More insights</h2>
+      <h2>{{ labels.more }}</h2>
       <ul class="more__list">
         @for (m of more(); track m.slug) {
           <li>
@@ -89,4 +90,4 @@
   </section>
 }
 
-<or-cta-band title="Need help with your next upgrade?" />
+<or-cta-band [title]="labels.cta" />

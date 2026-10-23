@@ -3,7 +3,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PageHeroComponent } from '../../shared/page-hero/page-hero.component';
 import { ContactService } from '../../core/services/contact.service';
-import { CONTACT, ENQUIRY_TOPICS } from '../../core/data/site-content';
 import { ContentService } from '../../core/services/content.service';
 
 type Status = 'idle' | 'sending' | 'sent' | 'error';
@@ -22,15 +21,20 @@ export class ContactComponent {
   /** Optional ?topic= query parameter, e.g. from a service page. */
   readonly topic = input<string>();
 
-  readonly contact = CONTACT;
   private readonly content = inject(ContentService);
+
+  /** Copy and contact details from site.json. */
+  readonly copy = computed(() => this.content.site().pages.contact);
+  readonly contact = computed(() => this.content.site().contact);
+  readonly companyName = computed(() => this.content.site().company.name);
+  private readonly enquiryTopics = this.content.site().enquiryTopics;
   private readonly services = toSignal(this.content.pages('services'), { initialValue: [] });
   private readonly solutions = toSignal(this.content.pages('solutions'), { initialValue: [] });
 
   readonly topicGroups = computed(() => [
-    { label: 'General', options: ENQUIRY_TOPICS },
-    { label: 'Services', options: this.services().map((p) => p.title) },
-    { label: 'Solutions', options: this.solutions().map((p) => p.title) },
+    { label: this.copy().topicGroup, options: this.enquiryTopics },
+    { label: this.content.site().pages.services.crumb, options: this.services().map((p) => p.title) },
+    { label: this.content.site().pages.solutions.crumb, options: this.solutions().map((p) => p.title) },
   ]);
   readonly status = signal<Status>('idle');
 
@@ -39,7 +43,7 @@ export class ContactComponent {
     email: ['', [Validators.required, Validators.email]],
     company: ['', [Validators.maxLength(120)]],
     phone: ['', [Validators.pattern(/^[+()\d\s-]{7,20}$/)]],
-    topic: [ENQUIRY_TOPICS[0]],
+    topic: [this.enquiryTopics[0] ?? ''],
     message: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(2000)]],
     consent: [false, [Validators.requiredTrue]],
   });
