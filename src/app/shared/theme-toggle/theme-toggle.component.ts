@@ -2,14 +2,14 @@ import { Component, computed, inject } from '@angular/core';
 import { IconComponent } from '../icon/icon.component';
 import { ThemeService } from '../../core/services/theme.service';
 
-/** Round button that switches between the light and dark theme. Styled with Tailwind utilities. */
+/** Round button that switches between the light and dark theme. Border and background show on hover only. Styled with Tailwind utilities. */
 @Component({
   selector: 'or-theme-toggle',
   imports: [IconComponent],
   template: `
     <button
       type="button"
-      class="inline-grid size-10 cursor-pointer place-items-center rounded-full border border-line bg-surface text-ink transition-colors duration-200 hover:border-line-strong hover:bg-paper"
+      class="inline-grid size-10 cursor-pointer place-items-center rounded-full border border-transparent bg-transparent text-ink transition-colors duration-200 hover:border-line hover:bg-paper"
       [attr.aria-label]="label()"
       [attr.title]="label()"
       [attr.aria-pressed]="isDark()"

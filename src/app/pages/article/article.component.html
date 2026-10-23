@@ -1,6 +1,11 @@
 @let p = post();
 @let labels = copy();
 
+<!-- Reading progress, fixed under the navbar -->
+<div class="progress" aria-hidden="true">
+  <span class="progress__bar" [style.transform]="'scaleX(' + progress() + ')'"></span>
+</div>
+
 <header class="head">
   <div class="container head__inner">
     <nav class="crumbs" aria-label="Breadcrumb">
@@ -22,7 +27,7 @@
 </header>
 
 <div class="container layout">
-  <article class="prose">
+  <article class="prose" #prose>
     @for (block of p.body; track $index) {
       @switch (block.type) {
         @case ('h2') {
@@ -56,7 +61,9 @@
         <p class="aside__label">{{ labels.outline }}</p>
         <ul>
           @for (h of outline(); track h.id) {
-            <li><a routerLink="." [fragment]="h.id">{{ h.text }}</a></li>
+            <li>
+              <a routerLink="." [fragment]="h.id" [class.is-active]="activeId() === h.id" [attr.aria-current]="activeId() === h.id ? 'location' : null">{{ h.text }}</a>
+            </li>
           }
         </ul>
       </nav>

@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import { ScrollTopComponent } from './shared/scroll-top/scroll-top.component';
 
 @Component({
   selector: 'or-root',
-  imports: [RouterOutlet, HeaderComponent, FooterComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, ScrollTopComponent],
   template: `
     <a class="skip-link" href="#main">Skip to content</a>
     <or-header />
@@ -13,6 +14,7 @@ import { FooterComponent } from './layout/footer/footer.component';
       <router-outlet />
     </main>
     <or-footer />
+    <or-scroll-top />
   `,
   styles: [
     `

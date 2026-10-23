@@ -1,3 +1,24 @@
+/* ---------- Reading progress (under the sticky navbar) ---------- */
+
+.progress {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: var(--header-h);
+  z-index: 51;
+  height: 3px;
+  pointer-events: none;
+}
+
+.progress__bar {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.1s linear;
+}
+
 /* ---------- Header ---------- */
 
 .head {
@@ -170,8 +191,12 @@ h1 {
     line-height: 1.4;
     color: var(--text);
     text-decoration: none;
+    transition: color 0.2s, border-color 0.2s;
 
-    &:hover { border-left-color: var(--accent); color: var(--ink); }
+    &:hover { border-left-color: var(--line-strong); color: var(--ink); }
+
+    /* Section currently on screen */
+    &.is-active { border-left-color: var(--accent); font-weight: 600; color: var(--ink); }
   }
 }
 
