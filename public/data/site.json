@@ -4,7 +4,7 @@
     "legalName": "Open Rainbow Ltd",
     "founded": 2014,
     "tagline": "IT services & solutions",
-    "summary": "A complete life cycle of IT services, from business case to round-the-clock support."
+    "summary": "A complete life cycle of IT services, from business case to round-the-clock support. Established {founded}."
   },
   "contact": {
     "phone": "+44 (0)20 7096 0558",
@@ -46,10 +46,6 @@
       "label": "Solutions",
       "path": "/solutions",
       "menu": "solutions"
-    },
-    {
-      "label": "Contact",
-      "path": "/contact"
     },
     {
       "label": "Blog",
