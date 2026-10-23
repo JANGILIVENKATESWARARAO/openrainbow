@@ -37,11 +37,18 @@
   height: 100%;
 }
 
+/* Desktop: logo left, links centred on the page, theme toggle + CTA right */
 .header__links {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: stretch;
-  height: 100%;
   gap: 2px;
+  width: max-content;
+  white-space: nowrap;
 
   > li { position: relative; display: flex; align-items: center; }
 
@@ -184,6 +191,10 @@
   .is-open .header__nav { opacity: 1; visibility: visible; }
 
   .header__links {
+    position: static;
+    transform: none;
+    width: auto;
+    white-space: normal;
     flex-direction: column;
     height: auto;
 
