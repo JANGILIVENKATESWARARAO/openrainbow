@@ -102,8 +102,9 @@
   transition: transform 0.2s var(--ease);
 }
 
-/* Mobile-only toggle for Services / Solutions (hidden on desktop) */
-.top--mob { display: none; }
+/* Mobile-only toggle for Services / Solutions (hidden on desktop).
+   Same strength as ".header__links .top", so it really stays hidden. */
+.header__links .top--mob { display: none; }
 
 /* ---------- Simple dropdown (desktop) ---------- */
 
