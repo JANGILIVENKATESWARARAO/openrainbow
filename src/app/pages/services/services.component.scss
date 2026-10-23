@@ -3,7 +3,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
 
-  li { background: #fff; }
+  li { background: var(--surface); }
 
   a {
     display: grid;

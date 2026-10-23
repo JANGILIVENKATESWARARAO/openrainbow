@@ -1,14 +1,9 @@
-import { Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
-
-interface StatusRow {
-  system: string;
-  detail: string;
-  state: string;
-}
+import { Component, DestroyRef, OnInit, inject, input, signal } from '@angular/core';
+import { SiteData } from '../../../core/models/site';
 
 /**
  * Illustrative 24/7 monitoring view shown in the home hero.
- * It shows what a managed customer sees; the data is example data.
+ * Rows and labels come from site.json → home.monitoring (example data).
  */
 @Component({
   selector: 'or-status-panel',
@@ -18,15 +13,8 @@ interface StatusRow {
 export class StatusPanelComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
 
+  readonly data = input.required<SiteData['home']['monitoring']>();
   readonly time = signal(this.ukTime());
-
-  readonly rows: StatusRow[] = [
-    { system: 'Core switching', detail: 'Data centre A', state: 'Operational' },
-    { system: 'Storage array', detail: 'Primary cluster', state: 'Operational' },
-    { system: 'Virtual hosts', detail: '24 of 24 online', state: 'Operational' },
-    { system: 'Nightly backup', detail: 'Completed 02:00', state: 'Verified' },
-    { system: 'DR replication', detail: 'Secondary site', state: 'In sync' },
-  ];
 
   ngOnInit(): void {
     const timer = setInterval(() => this.time.set(this.ukTime()), 1000);

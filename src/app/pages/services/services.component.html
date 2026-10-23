@@ -1,10 +1,6 @@
-<or-page-hero
-  crumb="Services"
-  eyebrow="Services"
-  title="A complete life cycle of"
-  emphasis="IT services"
-  lead="Whether you need a business case, a new network design, or your systems managed and maintained, we can start a project with you or join at any stage."
-/>
+@let page = copy();
+
+<or-page-hero [crumb]="page.crumb" [heading]="page" />
 
 @if (data(); as d) {
   <section class="section">
@@ -15,13 +11,7 @@
 
   <section class="section section--paper">
     <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Specialist services</p>
-          <h2>Focused services for <em>specific needs</em></h2>
-        </div>
-        <p>Delivered on their own or as part of a wider project.</p>
-      </div>
+      <or-section-head [heading]="page.specialist" />
       <ul class="spec">
         @for (s of d.items; track s.slug) {
           <li class="card-soft">
@@ -29,7 +19,7 @@
               <span class="icon-tile"><or-icon [name]="s.icon" /></span>
               <h3>{{ s.title }}</h3>
               <p>{{ s.summary }}</p>
-              <span class="arrow-link">Learn more <span aria-hidden="true">&rarr;</span></span>
+              <span class="arrow-link">{{ page.more }} <span aria-hidden="true">&rarr;</span></span>
             </a>
           </li>
         }

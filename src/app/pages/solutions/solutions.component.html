@@ -1,21 +1,11 @@
-<or-page-hero
-  crumb="Solutions"
-  eyebrow="Solutions"
-  title="The right technology for"
-  emphasis="your business"
-  lead="Hyper-converged, on premise or in the cloud. We help you decide what is right, supply it from leading vendors, and support it for the long term."
-/>
+@let page = copy();
+
+<or-page-hero [crumb]="page.crumb" [heading]="page" />
 
 @if (data(); as d) {
   <section class="section">
     <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Outcomes</p>
-          <h2>What our solutions <em>deliver</em></h2>
-        </div>
-        <p>Every solution is designed around a clear business outcome.</p>
-      </div>
+      <or-section-head [heading]="page.outcomes" />
       <ul class="outcomes">
         @for (o of d.items; track o.slug) {
           <li class="card-soft">
@@ -23,7 +13,7 @@
               <span class="icon-tile"><or-icon [name]="o.icon" /></span>
               <h3>{{ o.title }}</h3>
               <p>{{ o.summary }}</p>
-              <span class="arrow-link">Learn more <span aria-hidden="true">&rarr;</span></span>
+              <span class="arrow-link">{{ page.more }} <span aria-hidden="true">&rarr;</span></span>
             </a>
           </li>
         }
@@ -33,12 +23,7 @@
 
   <section class="section section--paper">
     <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Technology</p>
-          <h2>Platforms we supply, deploy and <em>support</em></h2>
-        </div>
-      </div>
+      <or-section-head [heading]="page.technologies" />
       <ul class="areas">
         @for (a of d.technologies; track a.title) {
           <li class="area card-soft">
@@ -60,19 +45,14 @@
 
   <section class="section">
     <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Featured</p>
-          <h2>Current <em>offers</em></h2>
-        </div>
-      </div>
+      <or-section-head [heading]="page.featured" />
       <div class="featured">
         @for (f of d.featured; track f.title) {
-          <a class="offer card-soft" routerLink="/contact" [queryParams]="{ topic: 'Hardware and software sales' }">
+          <a class="offer card-soft" routerLink="/contact" [queryParams]="{ topic: page.cta.topic }">
             <span class="offer__label">{{ f.label }}</span>
             <h3>{{ f.title }}</h3>
             <p>{{ f.text }}</p>
-            <span class="arrow-link">Request details <span aria-hidden="true">&rarr;</span></span>
+            <span class="arrow-link">{{ page.featuredCta }} <span aria-hidden="true">&rarr;</span></span>
           </a>
         }
       </div>
@@ -80,4 +60,4 @@
   </section>
 }
 
-<or-cta-band title="Talk to us about hardware and software sales." topic="Hardware and software sales" />
+<or-cta-band [title]="page.cta.title" [topic]="page.cta.topic" />
