@@ -6,7 +6,19 @@
   <base href="/" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Open Rainbow: hardware, software and IT services for UK organisations. Design, deploy, operate and improve, since 2014." />
-  <meta name="theme-color" content="#0f2236" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="color-scheme" content="light dark" />
+  <!-- Apply the saved or system theme before the first paint (no flash). ThemeService takes over after start-up. -->
+  <script>
+    (function () {
+      var theme = 'light';
+      try {
+        var saved = localStorage.getItem('or-theme');
+        theme = saved === 'dark' || saved === 'light' ? saved : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      } catch (e) {}
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

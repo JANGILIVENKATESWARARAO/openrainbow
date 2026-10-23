@@ -1,0 +1,35 @@
+/*
+ * Tailwind CSS v4 entry.
+ * Utilities are mapped to the theme tokens in styles.scss, so classes like
+ * bg-surface, text-ink, border-line or text-accent switch with light / dark theme.
+ */
+@import 'tailwindcss';
+
+/* dark: variant follows <html data-theme="dark"> instead of the OS setting */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-band-from: var(--band-from);
+  --color-band-to: var(--band-to);
+  --color-on-band: var(--on-band);
+  --color-ok: var(--ok);
+  --color-danger: var(--danger);
+}
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --radius-card: 14px;
+}

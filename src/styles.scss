@@ -2,45 +2,134 @@
    Open Rainbow: global design tokens + base styles
    Light and airy. Serif display headlines, Inter for everything else,
    navy pill buttons, soft rounded cards, one warm bronze accent.
+   Light and dark themes share one set of semantic tokens.
    ========================================================================== */
 
 :root {
-  /* Brand */
+  /* ---------- Brand constants (same in both themes) ---------- */
   --navy-900: #0a1828;
   --navy-800: #0f2236;
   --navy-700: #183652;
-  --accent: #8a6220;       /* bronze: small details only */
+  --bronze: #8a6220;
+  --gold: #e6c88f;
 
-  --accent-soft: #f6efe3;  /* icon tiles */
+  /* Monitoring panel glass (sits on the dark band in both themes) */
+  --panel-glass: rgba(10, 24, 40, 0.62);
+  --panel-foot: rgba(5, 12, 22, 0.45);
+  --panel-shadow: rgba(5, 12, 22, 0.7);
+  --ok-soft: rgba(52, 168, 114, 0.14);
+  --ok-on-band: #8fdcb6;
 
-  /* Surfaces */
-  --bg: #ffffff;
-  --paper: #f6f7f9;
-  --card: #fcfcfd;
-  --line: #e6e9ee;
-  --line-strong: #cfd6de;
-
-  /* Text */
-  --ink: #0f2236;
-  --text: #2a3d51;
-  --muted: #5a6b7d;
-  --on-dark: #e8eef4;
-  --on-dark-muted: #c0ccd8;
-
-  /* Status (used in the monitoring panel only) */
-  --ok: #34a872;
-
-  /* Type */
+  /* ---------- Type ---------- */
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
 
-  /* Layout */
+  /* ---------- Layout ---------- */
   --container: 1240px;
   --gutter: clamp(20px, 4vw, 40px);
   --radius: 8px;
   --radius-card: 14px;
   --header-h: 72px;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ==========================================================================
+   Theme tokens. Components only use these semantic names, never raw colours.
+   The theme is set on <html data-theme="light|dark"> by ThemeService.
+   ========================================================================== */
+
+:root,
+[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #ffffff;
+  --surface: #ffffff;        /* raised cards and panels */
+  --paper: #f6f7f9;          /* alternate section background */
+  --card: #fcfcfd;
+  --line: #e6e9ee;
+  --line-strong: #cfd6de;
+
+  --ink: #0f2236;            /* headings, strong text */
+  --text: #2a3d51;           /* body text */
+  --muted: #5a6b7d;
+  --subtle: #8d98a5;         /* vendor names, quiet labels */
+
+  --accent: #8a6220;
+  --accent-soft: #f6efe3;
+
+  /* Dark "band" surfaces: hero panel, outcomes, CTA, footer */
+  --band-from: #183652;
+  --band-to: #0a1828;
+  --band-glow: rgba(138, 98, 32, 0.35);
+  --band-line: rgba(255, 255, 255, 0.14);
+  --band-tint: rgba(255, 255, 255, 0.05);
+  --on-band: #ffffff;
+  --on-dark: #e8eef4;
+  --on-dark-muted: #c0ccd8;
+  --accent-on-band: #e6c88f;
+
+  --header-bg: rgba(255, 255, 255, 0.92);
+  --shadow: rgba(15, 34, 54, 0.35);
+
+  --btn-bg: #0f2236;
+  --btn-fg: #ffffff;
+  --btn-hover: #183652;
+
+  --hero-side-1: #e9d6b3;
+  --hero-side-2: #c9d6e4;
+  --hero-side-3: #efe9df;
+
+  --ok: #34a872;
+  --ok-text: #2f8a5f;
+  --danger: #b4323a;
+  --focus-ring: rgba(15, 34, 54, 0.12);
+  --input-hover: #9fadbb;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #0b1420;
+  --surface: #131f2e;
+  --paper: #0e1824;
+  --card: #111c2a;
+  --line: #213042;
+  --line-strong: #33475d;
+
+  --ink: #f1f5f9;
+  --text: #c6d1dc;
+  --muted: #93a3b5;
+  --subtle: #6c7d90;
+
+  --accent: #d4a95e;
+  --accent-soft: rgba(212, 169, 94, 0.14);
+
+  --band-from: #172a40;
+  --band-to: #0d1826;
+  --band-glow: rgba(212, 169, 94, 0.2);
+  --band-line: rgba(255, 255, 255, 0.12);
+  --band-tint: rgba(255, 255, 255, 0.04);
+  --on-band: #ffffff;
+  --on-dark: #e8eef4;
+  --on-dark-muted: #b4c1ce;
+  --accent-on-band: #e6c88f;
+
+  --header-bg: rgba(11, 20, 32, 0.86);
+  --shadow: rgba(0, 0, 0, 0.55);
+
+  --btn-bg: #f1f5f9;
+  --btn-fg: #0b1420;
+  --btn-hover: #ffffff;
+
+  --hero-side-1: #3a2f1c;
+  --hero-side-2: #1a2b3e;
+  --hero-side-3: #142030;
+
+  --ok: #3cc083;
+  --ok-text: #6fd3a3;
+  --danger: #f08a90;
+  --focus-ring: rgba(212, 169, 94, 0.25);
+  --input-hover: #4a5f76;
 }
 
 *,
@@ -57,6 +146,7 @@ body {
   color: var(--text);
   background: var(--bg);
   font-feature-settings: 'cv11', 'ss01';
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -85,7 +175,7 @@ a { color: inherit; }
 img, svg { display: block; max-width: 100%; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 
-::selection { background: var(--navy-800); color: #fff; }
+::selection { background: var(--accent); color: var(--bg); }
 
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -138,6 +228,13 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   p { color: var(--muted); max-width: 56ch; }
 }
 
+/* Pill label on dark band sections */
+.eyebrow--dark {
+  border-color: var(--band-line);
+  background: transparent;
+  color: var(--on-dark);
+}
+
 /* Centred heading block, used for major sections */
 .section-head--center {
   grid-template-columns: 1fr;
@@ -158,7 +255,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 a.card-soft:hover,
 .card-soft:has(a:hover) {
   border-color: var(--line-strong);
-  box-shadow: 0 18px 40px -28px rgba(15, 34, 54, 0.35);
+  box-shadow: 0 18px 40px -28px var(--shadow);
 }
 
 @media (max-width: 860px) {
@@ -190,7 +287,15 @@ a.card-soft:hover,
 
 .icon-tile--sm { width: 36px; height: 36px; border-radius: 8px; }
 .icon-tile--sm or-icon { width: 20px; height: 20px; }
-.icon-tile--dark { border-color: rgba(255, 255, 255, 0.14); background: rgba(255, 255, 255, 0.06); color: #fff; }
+.icon-tile--dark { border-color: var(--band-line); background: var(--band-tint); color: var(--accent-on-band); }
+
+/* Dark band surface used for feature panels */
+.band {
+  background:
+    radial-gradient(90% 80% at 100% 0%, var(--band-glow), transparent 60%),
+    linear-gradient(160deg, var(--band-from), var(--band-to));
+  color: var(--on-dark-muted);
+}
 
 /* ---------- Buttons ---------- */
 
@@ -215,29 +320,29 @@ a.card-soft:hover,
 }
 
 .btn--primary {
-  background: var(--navy-800);
-  color: #fff;
-  &:hover { background: var(--navy-700); }
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  &:hover { background: var(--btn-hover); }
 }
 
 .btn--secondary {
   background: transparent;
-  border-color: var(--navy-800);
+  border-color: var(--ink);
   color: var(--ink);
   &:hover { background: var(--paper); }
 }
 
 .btn--light {
-  background: #fff;
-  color: var(--ink);
-  &:hover { background: var(--paper); }
+  background: var(--on-band);
+  color: var(--navy-800);
+  &:hover { background: var(--on-dark); }
 }
 
 .btn--outline-light {
   background: transparent;
-  border-color: rgba(255, 255, 255, 0.35);
-  color: #fff;
-  &:hover { border-color: #fff; }
+  border-color: var(--band-line);
+  color: var(--on-band);
+  &:hover { border-color: var(--on-band); }
 }
 
 .arrow-link {
