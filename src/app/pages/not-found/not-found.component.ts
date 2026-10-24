@@ -12,8 +12,7 @@ import { RevealDirective } from '../../shared/reveal/reveal.directive';
     @let page = copy();
     <section class="nf">
       <div class="container nf__inner">
-        <p class="eyebrow" orReveal="fade">{{ page.eyebrow }}</p>
-
+        <!-- No chip here: the big 404 already says it ("eyebrow" in site.json is used for the tab title) -->
         <div class="nf__code" role="img" [attr.aria-label]="page.code">
           <span aria-hidden="true">{{ first() }}</span>
           <or-orbit class="nf__orbit" />

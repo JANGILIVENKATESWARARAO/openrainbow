@@ -304,7 +304,6 @@
   "pages": {
     "services": {
       "crumb": "Services",
-      "eyebrow": "Services",
       "title": "A complete life cycle of",
       "emphasis": "IT services",
       "lead": "Whether you need a business case, a new network design, or your systems managed and maintained, we can start a project with you or join at any stage.",
@@ -318,7 +317,6 @@
     },
     "solutions": {
       "crumb": "Solutions",
-      "eyebrow": "Solutions",
       "title": "The right technology for",
       "emphasis": "your business",
       "lead": "Hyper-converged, on premise or in the cloud. We help you decide what is right, supply it from leading vendors, and support it for the long term.",
@@ -361,7 +359,6 @@
     },
     "blog": {
       "crumb": "Blog",
-      "eyebrow": "Blog",
       "title": "Ideas from",
       "emphasis": "our team",
       "lead": "Guidance, news and analysis on the technology that runs your business, from the Open Rainbow team.",
@@ -381,7 +378,6 @@
     },
     "about": {
       "crumb": "About",
-      "eyebrow": "About us",
       "title": "A responsible and responsive",
       "emphasis": "IT partner",
       "lead": "Formed to provide technical consultancy and Agile services to corporate IT organisations, we now deliver full IT services directly to a wide variety of organisations.",
@@ -432,7 +428,6 @@
     },
     "contact": {
       "crumb": "Contact",
-      "eyebrow": "Contact",
       "title": "Talk to",
       "emphasis": "our team",
       "lead": "Tell us about your requirements and a member of our team will respond to your enquiry.",
