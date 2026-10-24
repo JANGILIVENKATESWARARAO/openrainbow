@@ -20,14 +20,19 @@
   > a { text-decoration: none; justify-self: start; }
 }
 
-/* Footer links: grey, bold on hover (no underline) */
+/* Footer links: dull at rest (about 50%), full colour and bold on hover, no underline.
+   Inter is loaded as a variable font (index.html), so the weight change animates smoothly. */
 .footer__reach a,
 .footer__col a {
-  color: var(--on-dark-muted);
+  color: color-mix(in srgb, var(--on-dark) 55%, transparent);
+  font-weight: 400;
   text-decoration: none;
-  transition: color 0.2s var(--ease);
+  transition:
+    color 0.35s var(--ease),
+    font-weight 0.35s var(--ease);
 
-  &:hover { color: var(--on-band); font-weight: 600; text-decoration: none; }
+  &:hover,
+  &:focus-visible { color: var(--on-band); font-weight: 600; text-decoration: none; }
 }
 
 .footer__reach {
