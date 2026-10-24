@@ -21,7 +21,6 @@ export class FooterComponent {
   readonly company = computed(() => this.site().company);
   readonly contact = computed(() => this.site().contact);
   readonly footer = computed(() => this.site().footer);
-  readonly summary = computed(() => this.content.fill(this.company().summary));
   readonly office = computed(() => this.contact().offices[0]);
   readonly registered = computed(() => this.contact().offices[1]);
 

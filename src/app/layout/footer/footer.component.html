@@ -2,7 +2,6 @@
   <div class="container footer__top">
     <div class="footer__brand" orReveal="fade">
       <a routerLink="/" aria-label="Home"><or-logo [inverse]="true" /></a>
-      <p>{{ summary() }}</p>
       <ul class="footer__reach">
         <li><or-icon name="phone" /><a [href]="contact().phoneHref">{{ contact().phone }}</a></li>
         <li><or-icon name="mail" /><a [href]="'mailto:' + contact().email">{{ contact().email }}</a></li>

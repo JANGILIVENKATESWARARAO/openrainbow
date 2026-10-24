@@ -18,7 +18,16 @@
   align-content: start;
 
   > a { text-decoration: none; justify-self: start; }
-  > p { max-width: 36ch; }
+}
+
+/* Footer links: grey, bold on hover (no underline) */
+.footer__reach a,
+.footer__col a {
+  color: var(--on-dark-muted);
+  text-decoration: none;
+  transition: color 0.2s var(--ease);
+
+  &:hover { color: var(--on-band); font-weight: 600; text-decoration: none; }
 }
 
 .footer__reach {
@@ -27,12 +36,6 @@
 
   li { display: flex; gap: 12px; align-items: flex-start; }
   or-icon { width: 18px; height: 18px; margin-top: 2px; color: var(--on-dark-muted); }
-
-  a {
-    color: var(--on-dark);
-    text-decoration: none;
-    &:hover { color: var(--on-band); text-decoration: underline; }
-  }
 }
 
 .footer__social {
@@ -66,12 +69,7 @@
   display: grid;
   gap: 10px;
   align-content: start;
-
-  a {
-    color: var(--on-dark);
-    text-decoration: none;
-    &:hover { color: var(--on-band); text-decoration: underline; }
-  }
+  justify-items: start;
 }
 
 .footer__label {
