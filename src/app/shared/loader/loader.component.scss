@@ -1,0 +1,5 @@
+/* The loader styles (.or-loader, .or-loader__orbit, .or-loader__arc) live in src/styles.scss,
+   because the start-up loader in index.html uses the same look before Angular starts. */
+:host {
+  display: contents;
+}

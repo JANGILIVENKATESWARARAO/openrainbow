@@ -1,0 +1,15 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+}
+
+img {
+  display: block;
+  width: auto;
+  height: 40px;
+}
+
+/* Footer (white logo) is a little larger */
+:host(.is-inverse) img {
+  height: 44px;
+}

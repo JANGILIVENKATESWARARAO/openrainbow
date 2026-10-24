@@ -9,15 +9,9 @@ import { ThemeService } from '../../core/services/theme.service';
  */
 @Component({
   selector: 'or-logo',
-  template: `<img [src]="src()" [alt]="name()" width="413" height="88" />`,
+  templateUrl: './logo.component.html',
+  styleUrl: './logo.component.scss',
   host: { '[class.is-inverse]': 'inverse()' },
-  styles: [
-    `
-      :host { display: inline-flex; align-items: center; }
-      img { display: block; width: auto; height: 40px; }
-      :host(.is-inverse) img { height: 44px; }
-    `,
-  ],
 })
 export class LogoComponent {
   private readonly theme = inject(ThemeService).theme;

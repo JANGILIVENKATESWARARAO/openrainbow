@@ -7,14 +7,8 @@ import { Component, input } from '@angular/core';
  */
 @Component({
   selector: 'or-orbit',
-  template: `
-    <span class="or-loader__orbit">
-      <span class="or-loader__arc"></span>
-      <span class="or-loader__arc or-loader__arc--inner"></span>
-      <img class="or-loader__mark" src="images/logo-mark.svg" [attr.alt]="label() || null" [attr.aria-hidden]="label() ? null : 'true'" />
-    </span>
-  `,
-  styles: [':host { display: inline-grid; place-items: center; }'],
+  templateUrl: './orbit.component.html',
+  styleUrl: './orbit.component.scss',
 })
 export class OrbitComponent {
   /** Text for screen readers. Leave empty when the orbit is only decoration. */

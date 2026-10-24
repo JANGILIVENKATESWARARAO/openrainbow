@@ -11,16 +11,8 @@ const SHOW_AFTER = 250;
  */
 @Component({
   selector: 'or-loader',
-  template: `
-    <div class="or-loader or-loader--overlay" [class.is-hidden]="!visible()" role="status" [attr.aria-hidden]="!visible()">
-      <div class="or-loader__orbit">
-        <span class="or-loader__arc"></span>
-        <span class="or-loader__arc or-loader__arc--inner"></span>
-        <img class="or-loader__mark" src="images/logo-mark.svg" alt="" width="56" height="56" />
-      </div>
-      <span class="sr-only">Loading</span>
-    </div>
-  `,
+  templateUrl: './loader.component.html',
+  styleUrl: './loader.component.scss',
 })
 export class LoaderComponent {
   protected readonly visible = signal(false);
