@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { contentPageResolver, contentPageTitle, postResolver, postTitle, siteTitle } from './core/resolvers';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const detailPage = () => import('./pages/detail/detail.component').then((m) => m.DetailComponent);
 
@@ -57,9 +58,11 @@ export const routes: Routes = [
   // Old Insights links keep working.
   { path: 'insights', redirectTo: 'blog', pathMatch: 'full' },
   { path: 'insights/:slug', redirectTo: 'blog/:slug' },
+  // 404: loaded with the app (no wait) and never shows the page loader.
   {
     path: '**',
-    loadComponent: () => import('./pages/not-found/not-found.component').then((m) => m.NotFoundComponent),
+    component: NotFoundComponent,
+    data: { loader: false },
     title: siteTitle((site) => site.pages.notFound.eyebrow ?? ''),
   },
 ];

@@ -5,7 +5,8 @@
   left: 0;
   right: 0;
   top: var(--header-h);
-  z-index: 51;
+  /* Below the navbar (z-index 50), so menu dropdowns open on top of the bar */
+  z-index: 49;
   height: 3px;
   pointer-events: none;
   transition: transform 0.35s var(--ease);

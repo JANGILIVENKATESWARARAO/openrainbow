@@ -25,7 +25,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Start-up loader (styles: .or-loader in styles.scss). AppComponent fades it out after the first render. -->
+  <!-- Start-up loader (styles: .or-loader in styles.scss). AppComponent fades it out after the first render; skipped for 404 pages. -->
   <div id="or-boot" class="or-loader" role="status">
     <div class="or-loader__orbit">
       <span class="or-loader__arc"></span>
@@ -34,6 +34,15 @@
     </div>
     <span class="sr-only">Loading</span>
   </div>
+  <script>
+    // Unknown addresses (the 404 page) open without the start-up loader.
+    // Keep this list in step with the top-level paths in src/app/app.routes.ts.
+    (function () {
+      var known = ['', 'services', 'solutions', 'blog', 'about', 'contact', 'insights'];
+      var first = location.pathname.split('/')[1] || '';
+      if (known.indexOf(first) < 0) document.getElementById('or-boot')?.remove();
+    })();
+  </script>
   <or-root></or-root>
 </body>
 </html>
