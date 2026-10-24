@@ -14,7 +14,7 @@ Standalone components, signals, new control flow, zoneless change detection. Fon
 
 ## Run it
 
-After pulling this version, do a clean install once:
+After pulling this version, do a clean install once (new test packages: vitest, jsdom):
 
 ```
 cd "D:\Projects\Open Rainbow\openrainbow"
@@ -26,6 +26,27 @@ npm start
 
 The site opens at http://localhost:4200. Production build: `npm run build` (output in `dist/openrainbow`).
 On a live server, serve `index.html` for every route (standard Angular single-page set-up).
+
+## Tests
+
+```
+npm test                   # runs every *.spec.ts with Vitest (ng test)
+```
+
+Every component has its own spec file. Shared test setup (providers and the real JSON content) is in `src/testing/test-helpers.ts`.
+
+## Code structure
+
+Every component has four files of its own, never one file with everything inline:
+
+```
+example.component.ts       logic
+example.component.html     template
+example.component.scss     styles
+example.component.spec.ts  tests
+```
+
+Directives (`orReveal`, `orCountUp`) have a `.ts` and a `.spec.ts`.
 
 ## Storybook
 
