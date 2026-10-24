@@ -1,0 +1,11 @@
+<button
+  type="button"
+  class="top"
+  [class.is-visible]="visible()"
+  [attr.tabindex]="visible() ? null : -1"
+  aria-label="Back to top"
+  title="Back to top"
+  (click)="toTop()"
+>
+  <or-icon name="arrow-up" />
+</button>

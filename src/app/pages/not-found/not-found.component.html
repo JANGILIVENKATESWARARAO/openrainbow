@@ -1,0 +1,31 @@
+@let page = copy();
+<section class="nf">
+  <div class="container nf__inner">
+    <!-- No chip here: the big 404 already says it ("eyebrow" in site.json is used for the tab title) -->
+    <div class="nf__code" role="img" [attr.aria-label]="page.code">
+      <span aria-hidden="true">{{ first() }}</span>
+      <or-orbit class="nf__orbit" />
+      <span aria-hidden="true">{{ last() }}</span>
+    </div>
+
+    <h1 orReveal>
+      {{ page.title }}
+      @if (page.emphasis) {
+        <span class="emphasis">{{ page.emphasis }}</span>
+      }
+    </h1>
+    <p class="lead" orReveal [revealDelay]="80">{{ page.lead }}</p>
+    <a [routerLink]="page.cta.path" class="btn btn--primary" orReveal [revealDelay]="160">
+      {{ page.cta.label }} <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+    </a>
+
+    <nav class="nf__links" [attr.aria-label]="page.linksLabel" orReveal="fade" [revealDelay]="240">
+      <p>{{ page.linksLabel }}</p>
+      <ul>
+        @for (link of links(); track link.path) {
+          <li><a [routerLink]="link.path">{{ link.label }}</a></li>
+        }
+      </ul>
+    </nav>
+  </div>
+</section>

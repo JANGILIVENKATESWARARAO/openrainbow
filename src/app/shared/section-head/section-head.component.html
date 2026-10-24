@@ -1,0 +1,17 @@
+<div class="section-head" [class.section-head--center]="center()" [class.section-head--dark]="dark()" orReveal>
+  <div class="section-head__main">
+    @if (heading().eyebrow) {
+      <p class="eyebrow" [class.eyebrow--dark]="dark()">{{ heading().eyebrow }}</p>
+    }
+    <h2>
+      {{ heading().title }}
+      @if (heading().emphasis) {
+        <span class="emphasis">{{ heading().emphasis }}</span>
+      }
+    </h2>
+    @if (heading().lead) {
+      <p class="section-head__lead">{{ heading().lead }}</p>
+    }
+  </div>
+  <div class="section-head__aside"><ng-content /></div>
+</div>
