@@ -51,6 +51,12 @@
           },
           "defaultConfiguration": "development"
         },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "tsconfig.spec.json"
+          }
+        },
         "storybook": {
           "builder": "@storybook/angular:start-storybook",
           "options": {
